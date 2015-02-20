@@ -1,0 +1,303 @@
+/*------------------------------------*\
+    $VARIABLES
+\*------------------------------------*/
+/**
+ *
+ * Definimos y configuramos las variables CSS que vamos a utilizar
+ *
+ */
+$incluir-grid:          true!default;
+$incluir-botones:       true!default;
+$incluir-navegacion:    true!default;
+$incluir-paginacion:    false!default;
+$incluir-tablas:        false!default;
+$incluir-texturas:      true!default;
+$incluir-flexbox:       true!default;
+$incluir-fonticon:      true!default;
+
+$incluir-imgclass:      false!default;
+$incluir-debug:         false!default;
+
+
+/*------------------------------------*\
+    $BREAKPOINTS
+\*------------------------------------*/
+/**
+ * "Start with the small screen first, then expand until it looks like shit. Time to insert a breakpoint!"
+ */
+
+$bp1 : 30em;    //480px
+$bp2 : 37.5em;  //600px
+$bp3 : 48em;    //768px
+$bp4 : 56.25em; //900px
+$bp5 : 68.75em; //1100px
+
+
+                                        // Height (Full Screen) y Content-View Height (Without Nav Bar)
+$bp00: 20em;    //  320px    | xxs      || height:  480x  ·  C-V height:  367px;           
+$bp01: 30em;    //  480px    |  xs      || height:  800x  ·  C-V height:  690px;  
+$bp02: 45em;    //  720px    |   s      || height: 1280x  ·  C-V height: 1038px;  
+$bp03: 67.5em;  // 1080px    |   m      || height: 1920x  ·  C-V height: 1533px;    Last Smartphone Size
+$bp04: 90em;    // 1440px    |   l      || height:  900x  ·                         PC  
+$bp05: 120em;   // 1920px    |  xl      || height: 1080x  ·  C-V height:  px;    PC
+$bp06: 160em;   // 2560px    | xxl      || height: 1600x  ·  C-V height:  px;    PC
+$bp07: 320em;   // 5120px    |   monster|| height:     x  ·  C-V height:  px;    PC
+
+
+
+$breakpoints: (
+  'small'  : 48em,
+  'medium' : 56.25em,
+  'large'  : 68.75em,
+) !default;
+
+
+
+/*------------------------------------*\
+    $grid
+\*------------------------------------*/
+$bp3 : 48em;
+$gap : 5px;
+$grid-size: 5;
+
+
+
+/*------------------------------------*\
+    $LAYOUT
+\*------------------------------------*/
+/**
+ * Definimos elementos constantes del layout
+ */
+$baselineheight :     1.5em;
+$baseline :           $baselineheight;
+$gutterwidth :        24px;
+$pagemaxwidth :       80%;
+$radius :             2px;
+$hovertransition :    .3s;
+$animationtime :      .8s;
+
+
+
+
+$z-layers: (
+  "goku":            9001,
+  "shoryuken":       8000,
+  "default":            1,
+  "below":             -1,
+  "bottomless-pit": -9000
+);
+
+
+
+/*------------------------------------*\
+    $FONT-FACE
+\*------------------------------------*/
+/**
+ * Definimos las fuentes a utilizar:
+ * $basefont para todos los textos inline
+ * $altfont para textos alternativos, como citas, intro, etc...
+ * $codefont para código
+ */
+$basefont : "Alegreya Sans SC", "Helvetica Neue", sans-serif;
+$altfont : Georgia, Times, "Times New Roman";
+$codefont : "Courier New", monospace;
+$baseheadingfont : inherit;
+
+$baseheadingfontweight : bold;
+$baseheadingfontcolor : inherit;
+
+$altlineheight : 1.35em;
+
+
+
+
+/*------------------------------------*\
+    $TAMAÑOS
+\*------------------------------------*/
+/**eeddd
+ * Definimos las fuentes a utilizar:
+ * $basefont para todos los textos inline
+ * $altfont para textos alternativos, como citas, intro, etc...
+ * $codefont para código
+ */
+$basefontsize :      16;
+
+
+
+
+
+/*------------------------------------*\
+    $COLORS        (Colors = UUEE | COLOURS = UK)
+\*------------------------------------*/
+/**
+ * Brand stuff
+ */
+// Color Base & Variantes  ////////////////////////////////
+$basecolor    : rgb(43,47,58); // Gris azulado// Hexadecimal: #2b2f3a  hsl(223,225,22)
+$bclighter    : lighten($basecolor, 20%);
+$bclight      : lighten($basecolor, 10%);
+$bcdark       : darken($basecolor, 10%);
+$bcdarker     : darken($basecolor, 20%);
+
+// Color Corporativo Secundario //////////////////////////
+
+$secondary    : rgb(255,24,8); // Rojo     // Hexadecimal: #ff1812  hsl(2,93,100)
+$sclighter    : lighten($secondary, 20%);
+$sclight      : lighten($secondary, 10%);
+$scdark       : darken($secondary, 10%);
+$scdarker     : darken($secondary, 20%);
+$scnight      : darken($secondary, 30%);
+
+
+// BORDERS
+$bordercolor  : lighten($secondary, 50%); // Verde Bordes
+// Variantes (Opuesto en el círculo cromático
+/*
+$secondcolor  : spin($basecolor);
+
+*/
+// Escala de grises   /////////////////////////////////////
+ 
+$black 			  : rgb(0,0,0);
+$superdark  	: lighten($black, 10%);
+$darkergrey 	: lighten($black, 15%);
+$darkgrey 		: lighten($black, 25%);
+$grey 			  : lighten($black, 50%);
+$lightgrey 		: lighten($black, 75%);
+$lightergrey 	: lighten($black, 90%);
+$white 			  : rgb(255,255,255);
+
+// Web
+$background       : $white;
+$textcolor        : $darkergrey;
+$textcolor-strong :	$black;
+
+//Other Colors
+$wine             : rgb(150,17,13); // Rojo Vino// Hexadecimal: #96110d  hsl(2,91,59)
+$greenlime        : rgb(148,254,84);  /*Verde Lima #94fe54 hsl(97,67,99)  CMYK (53,1,73,0)  */
+$cyan             : rgb(30,226,231);  /*Cyan       #1ee2e7 hsl(181,87,91) CMYK (66,2,27,0)  */
+
+
+// Links  /////////////////////////////////////////////////
+$linkcolor 		    : $white;
+$linkcolorhover 	: darken($linkcolor, 10);
+$linkcolorvisited : $basecolor;
+$linkcolorfocus 	: darken($linkcolorvisited, 10);
+
+
+
+
+
+/*------------------------------------*\
+    $ALERTAS
+\*------------------------------------*/
+/**
+ * Definimos Colores y elementos de popups, mensajes de alerta, etc...
+ */
+$color-alert 	  : rgb(252,228,207);       //Tonalidad Naranja Claro
+$color-error 	  : rgb(218,79,73);         //Tonalidad Roja
+$color-info 	  : rgb(165,221,223);       //Tonalidad Blanca
+$color-inverse 	: invert($secondary);     //Color Corporativo Secundario
+$color-success 	: rgb(91,183,91);         //Tonalidad Verde
+$color-warning 	: rgb(250,167,50);        //Tonalidad Naranja
+
+
+// Texturas de popups
+$alertbordercolor	: darken($color-alert, 20%);
+$alertborderwidth : 1px;
+$alertborderstyle : solid;
+$alerttext			  : darken($color-alert, 60%);
+
+// Error
+$alerterrorcolor 	: lighten($color-error, 30%);
+$alerterrorborder : lighten($color-error, 20%);
+$alerterrortext 	: $color-error;
+
+// Info
+$alertinfocolor 	: lighten($color-info, 10%);
+$alertinfoborder  : darken($color-info, 10%);
+$alertinfotext 		: darken($color-info, 50%);
+
+// Inverso
+$alertinversecolor 	: $color-inverse;
+$alertinverseborder : $black;
+$alertinversetext 	: $white;
+
+// Success
+$alertsuccesscolor 	: lighten($color-success, 30%);
+$alertsuccessborder : lighten($color-success, 20%);
+$alertsuccesstext 	: darken($color-success, 20%);
+
+// Advertencia
+$alertwarningcolor 	: lighten($color-warning, 30%);
+$alertwarningborder : lighten($color-warning, 20%);
+$alertwarningtext 	: darken($color-warning, 20%);
+
+/* Colores sociales -> son los colores corporativos, pero cambiadlos
+ * si hace falta. (también podéis añadir más)  ///////////////////////
+ */
+
+ 
+$facebook     :   rgb(59,89,182);
+$twitter      :   rgb(64,153,255);
+$googleplus   :   rgb(221,75,57);
+$pinterest    :   rgb(203,32,39);
+$skype        :   rgb(18,165,244);
+$spotify      :   rgb(129,183,26);
+$instagram    :   #4E433C;
+$tumblr       :   #2B4964;
+$vimeo        :   #86B32D;
+$soundcloud   :   #f76600;
+$youtube      :   #FF3333;
+$linkedin     :   #4875B4;
+$flickr       :   #FE0883;
+$foursquare   :   #8FD400;
+
+
+// Badges
+$badgebackground    : $basecolor;
+$badgecolor         : $textcolor;
+
+// Botones  |  Buttons
+$buttonbackground   : $bclight;
+$buttonbordercolor  : darken($buttonbackground, 10%);
+$buttonbottombordercolor : darken($buttonbordercolor, 10%);
+$buttoncolor        : $black;
+$buttonborderwidth  : 1px;
+$buttonborderstyle  : solid;
+
+// Boxes (well)
+$wellbackground     : lighten($basecolor, 75%);
+$wellbordercolor    : darken($wellbackground, 20%);
+$wellborderwidth    : 1px;
+$wellborderstyle    : solid;
+$wellshadow         : darken($wellbackground, 10%);
+$wellshadowblur     : 10px;
+
+// Tablas | Tables
+$tablebackground    : transparent;
+$tablestripe        : lighten($basecolor, 60%);
+$tablehover         : lighten($basecolor, 50%);
+$tableborder        : lighten($basecolor, 40%);
+$tableborderwidth   : 1px;
+$tableborderstyle   : solid;
+
+// Formularios | Forms
+$inputbackground    : $white;
+$inputborder        : $lightgrey;
+$inputborderwidth   : 1px;
+$inputborderstyle   : solid;
+$inputhover         : lighten($black, 50%);
+$inputfocus         : $basecolor, 40%;
+$placeholdercolor   : $lightergrey;
+
+
+// Navegación | Navigation
+
+$nav-width:               44px;
+$nav-height:              $nav-width * 1.2;
+$nav-icon-size:           20px;
+$nav-color:               $secondary;
+$nav-background:          $darkergrey;
+$nav-borders:             lighten($nav-background, 10%);
+$nav-lists-background:    $basecolor;

@@ -1,0 +1,42 @@
+/*------------------------------------*\
+    $STYLE
+\*------------------------------------*/
+/**
+ * Aquí incluímos todos los módulos (archivos .scss) que se van
+ * a compilar en el CSS definitivo: /css/style.css.
+ */
+
+/* ===== LIBS ===== */
+@import "lib/variables.scss";
+@import "lib/mixins.scss";
+@import "lib/flex.scss";
+@import "lib/placeholders.scss";
+
+
+/* ===== BASE ===== */
+@import "base/content.scss";
+@import "base/reset.scss";
+@import "base/debug.scss";
+
+
+/**
+* Selectores de elemento: un super "normalize":
+**/
+@import "elements/figure.scss";
+@import "elements/forms.scss";
+@import "elements/links.scss";
+@import "elements/tables.scss";
+@import "elements/tipography.scss";
+
+
+/* ===== ADD-ONS ===== */
+@import "addons/burguers.scss";
+@import "addons/buttons.scss";
+@import "addons/fonticon.scss";
+@import "addons/grid.scss";
+@import "addons/img.scss";
+@import "addons/notifications.scss";
+@import "addons/pagination.scss";
+
+
+@import "layouts/site.scss";

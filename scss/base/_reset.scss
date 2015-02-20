@@ -1,0 +1,83 @@
+
+
+
+
+
+/*------------------------------------*\
+    $RESET
+\*------------------------------------*/
+
+html,
+header, nav, footer,
+body, section, aside, article, div,
+main, menu,
+img, caption, figure, figcaption, video, audio, progress,
+span, small, strong
+h1, h2, h3, h4, h5, h6,
+p,
+ol, ul, li,
+dl, dt, dd,
+blockquote,
+form, fieldset, legend, label,
+table, caption, tbody, tfoot, thead, tr, th, td,
+pre, abbr, address, cite, summary, code, del, dfn, em, ins, kbd, q,samp , sub, sup, var, time, mark {
+
+  background: transparent;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  -moz-text-size-adjust:  100%;
+  -ms-text-size-adjust:   100%;
+  text-size-adjust:     100%;
+  text-align: justify;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+article, 
+aside,
+details,
+figcaption, 
+figure, 
+footer, 
+header, 
+nav, 
+section,
+summary {
+  display:block
+}
+
+*{
+  &,
+  &::before,
+  &::after{
+    @include vendor(box-sizing, border-box);
+    }
+}
+
+li {
+  list-style-type: none;   // Elimina los puntos ·  en las listas
+}
+
+
+
+// ES: Imágenes responsive ////////////////////////////////////////////////
+// EN: Responsive images   ////////////////////////////////////////////////
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align : middle;
+  -ms-interpolation-mode : bicubic;   //Suaviza el escalado de imágenes en IE
+}
+
+// ES: Arregla los problemas con las imágenes responsive en IE  ///////////
+// EN: Fix IE problems with responsive images                   ///////////
+.ie img {
+width: inherit;  /* Make images fill their parent's space. Solves IE8. */
+max-width: 100%; /* Add !important if needed. */
+height: auto;    /* Add !important if needed. */
+}
