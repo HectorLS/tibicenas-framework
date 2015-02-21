@@ -10,7 +10,6 @@
 // Like bootstrap
 
 
-@if $incluir-imgclass == true {
 
 	.img--rounded {
 	  border-radius :$radius * 4;
@@ -27,4 +26,3 @@
 	  border-radius : 100%;
 	}
 
-} //endif

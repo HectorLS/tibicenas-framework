@@ -4,12 +4,12 @@
 <!-- Mobile Menu Icon -->
 // Check hleon-js.js file to check jQuery functions
 <div id="js-btn--burguer" class="btn--burguer">
-      <div>
-        <span class="the-burguer"></span>
-        <span class="the-burguer"></span>
-        <span class="the-burguer"></span>
-      </div>
-    </div>
+  <div>
+    <span class="the-burguer"></span>
+    <span class="the-burguer"></span>
+    <span class="the-burguer"></span>
+  </div>
+</div>
 */
 
 .btn--burguer {
@@ -17,19 +17,16 @@
   position: relative;
   padding: 5px;
   width: 50px;
-  background: #37588A;
+  background: $basecolor;
   cursor: pointer;
-  
-  &.js-active {
-    background: #1B3369;
-  }
-  
-  
+  margin-top: .6%;
+  margin-left: .5%;
+
   .the-burguer {
     display: block;
     width: 35px;
     height: 3px;
-    background: #fff;
+    background: $white;
     margin: 5px auto;
     transition: transform .2s, width .2s;
   }

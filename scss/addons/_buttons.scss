@@ -1,5 +1,3 @@
-@if $incluir-botones == true{
-
 
 
 
@@ -234,23 +232,3 @@ EN: Button - Warning
 .btn--group .btn.large:last-child {
 	@include border-radius(0, $radius, 0, $radius);
 }
-
-
-
-/*------------------------------------*\
-    $BUTTONS-BURGUER
-\*------------------------------------*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-} // endif

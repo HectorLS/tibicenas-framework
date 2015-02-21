@@ -38,12 +38,9 @@ html {
 }
 
 body {
-	margin : 0;
-	padding : 0;
 	width : 100%;
-	background-color : transparent;
-	font-family : $basefont;
 	@include font-size();
+	font-family : $basefont;
 	line-height : $baselineheight;
 	color : $textcolor;
 }
@@ -52,14 +49,9 @@ body {
 /* NOW START YOUR SITE STYLE HERE, 
 I GIVE YOU THE TOOLS, BUT THE DESIGN IT'S UP TO YOU */
 
-/*------------------------------------*\
-    $AWESOME
-\*------------------------------------*/
 
-
-
-/* HEADER  ================================================================== */
+/* $HEADER  ================================================================== */
 @import "organisms/header.scss";
 
-/* FOOTER  ================================================================== */
+/* $FOOTER  ================================================================== */
 @import "organisms/footer.scss";

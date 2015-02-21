@@ -1,22 +1,6 @@
 /*------------------------------------*\
     $VARIABLES
 \*------------------------------------*/
-/**
- *
- * Definimos y configuramos las variables CSS que vamos a utilizar
- *
- */
-$incluir-grid:          true!default;
-$incluir-botones:       true!default;
-$incluir-navegacion:    true!default;
-$incluir-paginacion:    false!default;
-$incluir-tablas:        false!default;
-$incluir-texturas:      true!default;
-$incluir-flexbox:       true!default;
-$incluir-fonticon:      true!default;
-
-$incluir-imgclass:      false!default;
-$incluir-debug:         false!default;
 
 
 /*------------------------------------*\
@@ -37,8 +21,8 @@ $bp5 : 68.75em; //1100px
 $bp00: 20em;    //  320px    | xxs      || height:  480x  ·  C-V height:  367px;           
 $bp01: 30em;    //  480px    |  xs      || height:  800x  ·  C-V height:  690px;  
 $bp02: 45em;    //  720px    |   s      || height: 1280x  ·  C-V height: 1038px;  
-$bp03: 67.5em;  // 1080px    |   m      || height: 1920x  ·  C-V height: 1533px;    Last Smartphone Size
-$bp04: 90em;    // 1440px    |   l      || height:  900x  ·                         PC  
+$bp03: 67.5em;  // 1080px    |   m      || height: 1920x  ·  C-V height: 1533px; Last Smartphone Size
+$bp04: 90em;    // 1440px    |   l      || height:  900x  ·                      PC  
 $bp05: 120em;   // 1920px    |  xl      || height: 1080x  ·  C-V height:  px;    PC
 $bp06: 160em;   // 2560px    | xxl      || height: 1600x  ·  C-V height:  px;    PC
 $bp07: 320em;   // 5120px    |   monster|| height:     x  ·  C-V height:  px;    PC
@@ -101,6 +85,7 @@ $z-layers: (
 $basefont : "Alegreya Sans SC", "Helvetica Neue", sans-serif;
 $altfont : Georgia, Times, "Times New Roman";
 $codefont : "Courier New", monospace;
+$basefontsize :      16;
 $baseheadingfont : inherit;
 
 $baseheadingfontweight : bold;
@@ -110,30 +95,14 @@ $altlineheight : 1.35em;
 
 
 
-
 /*------------------------------------*\
-    $TAMAÑOS
-\*------------------------------------*/
-/**eeddd
- * Definimos las fuentes a utilizar:
- * $basefont para todos los textos inline
- * $altfont para textos alternativos, como citas, intro, etc...
- * $codefont para código
- */
-$basefontsize :      16;
-
-
-
-
-
-/*------------------------------------*\
-    $COLORS        (Colors = UUEE | COLOURS = UK)
+    $COLORS (UUEE) | $COLOURS (UK)
 \*------------------------------------*/
 /**
  * Brand stuff
  */
 // Color Base & Variantes  ////////////////////////////////
-$basecolor    : rgb(43,47,58); // Gris azulado// Hexadecimal: #2b2f3a  hsl(223,225,22)
+$basecolor    : rgb(43,47,58); // Gris azulado// Hex: #2b2f3a  hsl(223,225,22)
 $bclighter    : lighten($basecolor, 20%);
 $bclight      : lighten($basecolor, 10%);
 $bcdark       : darken($basecolor, 10%);
@@ -141,7 +110,7 @@ $bcdarker     : darken($basecolor, 20%);
 
 // Color Corporativo Secundario //////////////////////////
 
-$secondary    : rgb(255,24,8); // Rojo     // Hexadecimal: #ff1812  hsl(2,93,100)
+$secondary    : rgb(255,24,8); // Rojo     // Hex: #ff1812  hsl(2,93,100)
 $sclighter    : lighten($secondary, 20%);
 $sclight      : lighten($secondary, 10%);
 $scdark       : darken($secondary, 10%);
@@ -173,7 +142,7 @@ $textcolor        : $darkergrey;
 $textcolor-strong :	$black;
 
 //Other Colors
-$wine             : rgb(150,17,13); // Rojo Vino// Hexadecimal: #96110d  hsl(2,91,59)
+$wine             : rgb(150,17,13); // Rojo Vino// Hex: #96110d  hsl(2,91,59)
 $greenlime        : rgb(148,254,84);  /*Verde Lima #94fe54 hsl(97,67,99)  CMYK (53,1,73,0)  */
 $cyan             : rgb(30,226,231);  /*Cyan       #1ee2e7 hsl(181,87,91) CMYK (66,2,27,0)  */
 

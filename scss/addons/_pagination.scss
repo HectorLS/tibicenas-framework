@@ -1,4 +1,3 @@
-@if $incluir-paginacion == true{
 
 
 
@@ -48,10 +47,8 @@
             margin:-12px;
         }
             .pagination--first a:before{
-                content:"\00AB" "\00A0";
+                // content:"\00AB" "\00A0";
             }
             .pagination--last a:after{
-                content:"\00A0" "\00BB";
+                // content:"\00A0" "\00BB";
             }
-
-} // endif
