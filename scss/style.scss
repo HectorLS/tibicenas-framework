@@ -13,15 +13,12 @@
 @import "lib/placeholders.scss";
 
 
-/* ===== BASE ===== */
-@import "base/content.scss";
+/* ===== RESET AND TESTING ===== */
 @import "base/reset.scss";
 @import "base/debug.scss";
 
 
-/**
-* Selectores de elemento: un super "normalize":
-**/
+/* ===== POST-RESET ===== */
 @import "elements/figure.scss";
 @import "elements/forms.scss";
 @import "elements/links.scss";
@@ -37,8 +34,13 @@
 @import "addons/img.scss";
 @import "addons/notifications.scss";
 @import "addons/pagination.scss";
-@import "addons/js-events.scss";
 
 
 
+/* ===== YOUR OWN STYLE GO HERE ===== */
 @import "layouts/site.scss";
+
+
+/* ===== JS EFFECTS ===== */
+// Should be last one to take priority over all
+@import "addons/js-events.scss";
