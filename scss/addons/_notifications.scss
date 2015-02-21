@@ -128,11 +128,11 @@
 	}
 
 	.badge--success {
-		background-color : $color-info;
+		background-color : $color-success;
 
 
 		&:hover {
-			background-color : darken($color-info, 20%);
+			background-color : darken($color-success, 20%);
 		}
 	}
 
@@ -146,11 +146,11 @@
 	}
 
 	.badge--inverse {
-		background-color : $color-info;
+		background-color : $color-inverse;
 		color : $white;
 
 		&:hover {
-			background-color : darken($color-info, 20%);
+			background-color : darken($color-inverse, 20%);
 			color : $white;
 		}
 	}
