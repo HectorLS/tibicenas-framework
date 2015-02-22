@@ -1,5 +1,7 @@
 prepros.cfg
 
+/addons/_testing.scss
+
 /css/*
 /img/*
 /fonts/*
