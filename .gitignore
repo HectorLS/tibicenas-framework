@@ -1,6 +1,6 @@
 prepros.cfg
 
-/addons/_testing.scss
+/scss/addons/_testing.scss
 
 /css/*
 /img/*
