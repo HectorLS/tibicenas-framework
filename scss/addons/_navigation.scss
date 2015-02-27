@@ -15,7 +15,7 @@ nav[role=navigation] {
 	height: 3em;
 	top: 0;
 	border-bottom: .3em solid $bcdark;
-	z-index: 10
+	z-index: map-get($z-level, superman);
 }
 
 .nav--top_list{
@@ -28,7 +28,6 @@ nav[role=navigation] {
 	left: -70%;
 	background-color: $basecolor;
 }
-
 
 
 .nav--top_list li {

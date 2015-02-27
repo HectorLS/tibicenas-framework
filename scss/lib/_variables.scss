@@ -30,9 +30,9 @@ $bp07: 320em;   // 5120px    |   monster|| height:     x  ·  C-V height:  px;  
 
 
 $breakpoints: (
-  'small'  : 48em,
-  'medium' : 56.25em,
-  'large'  : 68.75em,
+  s: 48em,
+  m: 56.25em,
+  l: 68.75em,
 ) !default;
 
 
@@ -62,14 +62,19 @@ $animationtime :      .8s;
 
 
 
+//EN A list maps to use z-levels. See the next example:
+//ES: Un list maps para usar con z-levels. Mira el siguiente ejemplo:
 
-$z-layers: (
-  "goku":            9001,
-  "shoryuken":       8000,
-  "default":            1,
-  "below":             -1,
-  "bottomless-pit": -9000
-);
+// z-index: map-get($z-level, superman); 
+
+$z-level: (
+  god:       10000,
+  goku:       5000,
+  superman:   2500,
+  spiderman:  2000,
+  mole:       -1,
+  worm:       -100
+) !default;
 
 
 
@@ -207,21 +212,32 @@ $alertwarningtext 	: darken($color-warning, 20%);
  */
 
  
-$facebook     :   rgb(59,89,182);
-$twitter      :   rgb(64,153,255);
-$googleplus   :   rgb(221,75,57);
-$pinterest    :   rgb(203,32,39);
-$skype        :   rgb(18,165,244);
-$spotify      :   rgb(129,183,26);
-$instagram    :   #4E433C;
-$tumblr       :   #2B4964;
-$vimeo        :   #86B32D;
-$soundcloud   :   #f76600;
-$youtube      :   #FF3333;
-$linkedin     :   #4875B4;
-$flickr       :   #FE0883;
-$foursquare   :   #8FD400;
 
+$social-colors: (
+  bandcamp: #4e9bac,
+  delicious: #248cff,
+  facebook: rgb(59,89,182),
+  ficly: #b51c2c,
+  flickr: #0063db,
+  foursquare: #8FD400,
+  github: #4183c4,
+  googleplus: rgb(221,75,57),    
+  instagram: #517fa4,    
+  kickstarter: #76cc1e,    
+  lanyrd: #152e51,    
+  lastfm: #d51007,    
+  linkedin: #007bb6,    
+  photodrop: #cdb6e3,    
+  pinterest: rgb(203,32,39),    
+  rdio: #0088da,    
+  skype: rgb(18,165,244),
+  spotify: rgb(129,183,26),
+  soundcloud: #f60,    
+  tumblr: #2B4964,
+  twitter: rgb(64,153,255),    
+  vimeo: #aad450,    
+  youtube: #b00
+);
 
 // Badges
 $badgebackground    : $basecolor;

@@ -1,0 +1,32 @@
+@function percent-to-number($val) {
+  @return $val / 100;
+}
+
+@function set-opacity($color) {
+  $lightness: lightness($color); // This return a porcentage
+  $lightness-to-number: percent-to-number($lightness); //Now i have a decimal value
+  $opacity-value: transparentize($color, $lightness-to-number);
+  @return $opacity-value;
+}
+// Example of use
+// SCSS Functions
+//		 .mydiv {
+//   			background-color: set-opacity(#ccc);
+//		 }
+// CSS Code
+// 		.mydiv {
+// 		  	background-color: rgba(204, 204, 204, 0.2);
+//		 }
+
+
+
+
+
+@each $social-name, $bgcolor in $social-colors {
+  .social-link--#{$social-name}:focus,
+  .social-link--#{$social-name}:hover {
+    background-color: $bgcolor;
+  }
+}
+
+
