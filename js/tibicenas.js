@@ -58,17 +58,10 @@ $(document).ready(function() {
 
   $(document).on('click', '#js-dropdown__wrap', function(e) {
     e.preventDefault();
+    var ul = $(this).children("ul");
 
-    if($(this).hasClass("js-submenu--toggle")) {
-      $(this).removeClass("js-submenu--toggle");
-      $(this).children("ul").slideUp("fast");
-    } 
-
-    else {
-      $(this).addClass("js-submenu--toggle");
-      $(this).children("ul").slideDown("fast");
-    }
-
+    $(this).hasClass("js-submenu--toggle") ? ul.slideUp("fast") : ul.slideDown("fast");
+    $(this).toggleClass("js-submenu--toggle");
   });
   
   $(document).on('hover', '#js-submenu--toggle li', function(){
