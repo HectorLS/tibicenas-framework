@@ -33,25 +33,22 @@ html {
 	font-size : 100%;
 	-webkit-overflow-scrolling : touch;
 	-webkit-tap-highlight-color : transparent;
-	-webkit-text-size-adjust : 100%;
-	-ms-text-size-adjust : 100%;
 }
 
 body {
 	width : 100%;
-	@include font-size();
 	font-family : $basefont;
 	line-height : $baselineheight;
 	color : $textcolor;
 }
 
 
-/* NOW START YOUR SITE STYLE HERE, 
-I GIVE YOU THE TOOLS, BUT THE DESIGN IT'S UP TO YOU */
+// 				NOW START YOUR SITE STYLE HERE, 
+// I GIVE YOU THE TOOLS, BUT THE DESIGN IT'S UP TO YOU
 
 
-/* $HEADER  ================================================================== */
+// ===== $HEADER ===== \\
 @import "organisms/header.scss";
 
-/* $FOOTER  ================================================================== */
+// ===== $FOOTER ===== \\
 @import "organisms/footer.scss";

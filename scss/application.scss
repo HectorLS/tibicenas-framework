@@ -1,0 +1,47 @@
+/*------------------------------------*\
+    $STYLE
+\*------------------------------------*/
+
+ // Aquí incluímos todos los módulos (archivos .scss) que se van
+ // a compilar en el CSS definitivo: /css/style.css.
+
+
+// ===== LIBS ===== \\
+@import "lib/variables";
+@import "lib/functions";
+@import "lib/placeholders";
+@import "lib/mixins";
+// @import "lib/flex";
+
+
+// ===== RESET AND TESTING ===== \\
+@import "base/reset";
+// @import "base/debugger";
+
+
+// ===== POST-RESET ===== \\
+// @import "elements/figure";
+// @import "elements/forms";
+// @import "elements/links";
+// @import "elements/tables";
+@import "elements/tipography";
+
+
+// ===== ADD-ONS ===== \\
+// @import "addons/burguers";
+// @import "addons/buttons";
+// @import "addons/fonticon";
+@import "addons/grid";
+// @import "addons/img";
+// @import "addons/notifications";
+// @import "addons/pagination";
+@import "addons/social";
+
+
+// ===== YOUR OWN STYLE GO HERE ===== \\
+@import "layouts/site";
+
+
+// ===== JS EFFECTS ===== \\
+// Should be last one to take priority over all
+@import "addons/js-events";

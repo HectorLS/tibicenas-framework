@@ -8,7 +8,10 @@
 \*------------------------------------*/
 
 
-// HEADINGS ====================================================
+
+
+//            $HEADINGS               \\
+// ___________________________________//
 
 h1,
 h2,
@@ -16,10 +19,11 @@ h3,
 h4,
 h5,
 h6 {
-	margin : 0;
-	font-family : $baseheadingfont;
-	font-weight : $baseheadingfontweight;
-	color : $baseheadingfontcolor;
+  color : $baseheadingfontcolor;
+  font-family : $heading-basefont;
+  font-weight : $baseheadingfontweight;
+  line-height : $heading-line-height; 
+  margin : 0;
 	text-rendering : optimizelegibility;
 		&.altheader {
 			color:$grey;
@@ -27,27 +31,43 @@ h6 {
 		}
 }
 
+
+
+
 h1 small,
 h2 small,
 h3 small {
 	font-weight : normal;
-	display: block;
-	color : $grey;
 }
 
-@each $header, $margin-bot, $font-size, $line-height in (h1, 2, 32, 1.2)
-                                                        (h2, 3, 24, 1.2)
-                                                        (h3, 4, 21, 1.3)
-                                                        (h4, 6, 18, 1.25)
-                                                        (h5, 6, 16, 1)
-                                                        (h6, 6, 14, 1){
-  #{$header}, .#{$header} {
-  	margin-bottom : $baselineheight / $margin-bot;
-  	@include font-size($font-size);
-  	line-height : $line-height;
+@each $heading-type, $margin-bottom, $font-size in  (h1, 2, 48)
+                                                    (h2, 3, 40)
+                                                    (h3, 4, 32)
+                                                    (h4, 6, 24)
+                                                    (h5, 6, 16)
+                                                    (h6, 6, 14) {
+  #{$heading-type}, .heading-#{$heading-type} {
+  	margin-bottom : ($heading-line-height / $margin-bottom) *1em;
+  	 @include x-rem(font-size, $font-size);
   }
 }
-// TYPOGRAPHY ====================================================
+
+
+
+.hgroup > * {
+  margin-bottom: 0;
+}
+
+.hgroup >*:last-child {
+  margin-bottom: 1.2em;
+}
+
+
+
+
+
+//       $PARAGRAPH and $LIST         \\
+// ___________________________________//
 
 p,
 ol,
@@ -58,13 +78,11 @@ address {
 	line-height : $baselineheight;
 }
 
-.intro {
- 	font-weight: bold;
-}
+
+
 
 small {
-	@include font-size(12);
-	color: $grey;
+	@include x-rem(font-size, 12);
 }
 
 ul,
@@ -75,41 +93,8 @@ ol {
 
 li ul,
 li ol {
-	margin : 0;
+  margin : 0;
 }
-
-// blockquote
-
-blockquote  {
-	margin : 0 0 $baselineheight 0;
-	padding-left : $gutterwidth;
-	border-left : 2px solid $bordercolor;
-	font-family : $altfont;
-	font-style : normal;
-	p {
-		@include font-size(18);
-		color:$grey;
-		font-style: italic;
-	}
-}
-
-q {
-	quotes : none;
-	font-style: italic;
-}
-
-blockquote p::before,
-blockquote p::after,
-q:before,
-q:after {
-	content : "";
-}
-
-cite {
-	font-style : normal;
-}
-
-// definition lists
 
 dl,
 dd {
@@ -134,63 +119,45 @@ dt {
 	}
 }
 
-// text-level
 
-abbr[title] {
-	border-bottom : 1px dotted $bordercolor;
-	cursor : help;
+
+//            $BLOCKQUOTE             \\
+// ___________________________________//
+
+blockquote  {
+  margin : 0 0 $baselineheight 0;
+  padding-left : $gutterwidth;
+  border-left : 2px solid $bordercolor;
+  font-family : $altfont;
+  font-style : normal;
+  p {
+    @include x-rem(font-size, 18);
+    color:$grey;
+    font-style: italic;
+  }
 }
 
-b, strong {
-	font-weight : bold;
+q {
+  quotes : none;
+  font-style: italic;
 }
 
-dfn {
-	font-style : italic;
+blockquote p::before,
+blockquote p::after,
+q:before,
+q:after {
+  content : "";
 }
 
-ins {
-	background-color : lighten($basecolor, 75%);
-	color : $textcolor;
-	text-decoration : none;
+cite {
+  font-style : normal;
 }
 
-mark {
-	background-color : yellow;
-	color : $textcolor;
-}
 
-pre,
-code,
-kbd,
-samp {
-	font-family : $codefont;
-	@include font-size(14);
-	line-height : $baselineheight;
-}
 
-pre {
-	white-space : pre;
-	white-space : pre-wrap;
-	word-wrap : break-word;
-}
 
-sub,
-sup {
-	position : relative;
-	@include font-size(12);
-	line-height : 0;
-	vertical-align : $baselineheight;
-}
-
-sup {
-	top : -.5em;
-}
-
-sub {
-	bottom : -.25em;
-}
-
+//            $TEXT-LEVEL             \\
+// ___________________________________//
 
 hr {
   clear : both;
@@ -201,3 +168,59 @@ hr {
   border : 0;
   border-top : 1px solid $bordercolor;
 }
+
+abbr[title] {
+  border-bottom : 1px dotted $bordercolor;
+  cursor : help;
+}
+
+b, strong {
+  font-weight : bold;
+}
+
+dfn {
+  font-style : italic;
+}
+
+ins {
+  background-color : lighten($basecolor, 75%);
+  color : $textcolor;
+  text-decoration : none;
+}
+
+mark {
+  background-color : yellow;
+  color : $textcolor;
+}
+
+pre,
+code,
+kbd,
+samp {
+  font-family : $codefont;
+  @include x-rem(font-size, 14);
+  line-height : $baselineheight;
+}
+
+pre {
+  white-space : pre;
+  white-space : pre-wrap;
+  word-wrap : break-word;
+}
+
+sub,
+sup {
+  position : relative;
+  @include x-rem(font-size, 12);
+  line-height : 0;
+  vertical-align : $baselineheight;
+}
+
+sup {
+  top : -.5em;
+}
+
+sub {
+  bottom : -.25em;
+}
+

@@ -12,131 +12,188 @@
 
 // Example: 
 
-// <ul class="social_list a--left">
-//   <li>
-//     <a class="youriconclass social_link" href="#">    
-//       <span class="social_text spawn-from-left">Facebookkk</span>
-//     </a> 
-//   </li>
+// <!-- Social -->
+//     <section class="social-area">
+//       <h3 class="social-area_title"><%= t(:follow_us) %></h3>
+//       <ul class="social_list a--right">
+//         <li>
+//           <a class="icon-social_facebook social-link--facebook" href="#">    
+//             <span class="social_text spawn-from-left">Facebook</span>
+//           </a> 
+//         </li>
 
-//   <li>
-//     <a class="youriconclass social_link" href="#">
-//       <span class="spawn-from-left">Twitter</span>
-//     </a>
-//   </li>
-//   <li>
-//     <a class="youriconclass social_link" href="#">
-//       <span class="spawn-from-right">Dribbble</span>
-//     </a>
-//   </li>
+//         <li>
+//           <a class="icon-social_twitter social-link--twitter" href="#">
+//             <span class="spawn-from-left">Twitter</span>
+//           </a>
+//         </li>
+//         <li>
+//           <a class="icon-social_pinterest social-link--pinterest" href="#">
+//             <span class="spawn-from-left">Pinterest</span>
+//           </a>
+//         </li>
 
 
-//   <li>
-//     <a class="fa fa-google-plus social_link" href="#">
-//     <span class="spawn-from-right">Google Plus</span>
-//     </a> 
-//   </li>  
-//  </ul>
+//         <li>
+//         <a class="icon-social_gplus social-link--googleplus" href="#">
+//         <span class="spawn-from-left">Google Plus</span>
+//         </a> 
+//         </li>  
+//       </ul>
+//     </section>
 
 // Si no teneis una fuente de iconos podéis usar el CDN de font-awesome en el head del html
 // Y usar las clases "fa fa-socialname" (example in the last li)
 // <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 // La UL puede estar izquierda o derecha, para ello incluir la clase a--left o a--right en la ul
 
-
-.a--left {
-  left: 0;
+.social_list {
+  text-align: center;
+  padding: 0 1em;
 }
 
-.a--right {
-  right: 0;
+.social_list li {
+  display: inline-block;
 }
 
-.social_list .social_link {
+.social_list [class*="social-link--"] {
   display: block;
   height: 40px;
   width: 40px;
   background: $basecolor;
   color: #fff;
   padding: 10px;
-  text-decoration: none;
+  text-decoration: none;;
   text-align: center;
-  transition: background .5s ease .300ms;
-  font: normal normal normal 16px/20px 'FontAwesome';
 }
 
-li:first-child  .social_link:hover { background: #3b5998 }
-li:nth-child(2) .social_link:hover { background: #00acee }
-li:nth-child(3) .social_link:hover { background: #ea4c89 }
-li:nth-child(4) .social_link:hover { background: #dd4b39 }
 
-//Desactivar para square list
-// Chaflán para ul a la izquierda
-.a--left li:first-child  .social_link { border-radius: 0 1em 0 0 }
-.a--left li:last-child   .social_link { border-radius: 0 0 1em 0 }
-//Chaflán para ul a la derecha
-.a--right li:first-child  .social_link { border-radius: 1em 0 0 0 }
-.a--right li:last-child   .social_link { border-radius: 0 0 0 1em }
+[class*="social-link--"] span {
+    display: none;
+}
 
-.social_link span {
-  margin: -1.7em 3em;
-  padding: .5em;
-  width: 7em;
+
+.social-area .social-area_title {
   text-align: center;
-  background: $basecolor;
-  color: $white;
-  visibility: hidden;
-  opacity: 0;
-  transform-origin: 0;
-  transition: all .5s ease .300ms
 }
 
 
-.a--left .social_link span {
-  float: left;
-  border-radius: 0 .4em .4em 0;
-  transform: rotateY(45deg);
-}
 
-.a--right .social_link span {
-  float: right;
-  border-radius: .4em 0 0 .4em;
-  transform: rotateY(-45deg);
-}
+ @include media-query-bp($bp3) {
+      
+  .a--left {
+    left: 0;
+  }
 
+  .a--right {
+    right: 0;
+  }
 
-.social_link span:after {
-  content: '';
-  display: block;
-  width: 0;
-  height: 0;
-  position: absolute;
-  top: 0;
-  border: 1.13em solid transparent;
-}
+  .social-area_title {
+    display: none;
+  }
 
+  .social_list [class*="social-link--"] {
+    transition: background .5s ease .300ms;
+    // font: normal normal normal 16px/20px;
+  }
 
-.a--left .social_link span:after {
-  left: -2.2em;
-  border-right: 1.13em solid $basecolor;
-}
+  .social_list li {
+    display: list-item;
+  }
 
-.a--right .social_link span:after {
-  right: -2.2em;
-  border-left: 1.13em solid $basecolor;
+[class*="social-link--"] span {
+    display: block;
 }
 
 
-.social_link:hover span {
-  visibility: visible;
-  opacity: 1;
-  transform: rotateY(0)
-}
 
-.social_list {
-  padding: 0;
-  position: fixed;
-  top: 30%;.
-  perspective: 1000px;
-  z-index: 10;
+  //Desactivar para square list
+  // Chaflán para ul a la izquierda
+  .a--left li:first-child  [class*="social-link--"] { border-radius: 0 1em 0 0 }
+  .a--left li:last-child   [class*="social-link--"] { border-radius: 0 0 1em 0 }
+  //Chaflán para ul a la derecha
+  .a--right li:first-child  [class*="social-link--"] { border-radius: 1em 0 0 0 }
+  .a--right li:last-child   [class*="social-link--"] { border-radius: 0 0 0 1em }
+
+  [class*="social-link--"] span {
+    margin: -.4em 3em;
+    padding: .3em;
+    width: 8em;
+    height: 2.236em;
+    text-align: center;
+    background: $basecolor;
+    color: $white;
+    visibility: hidden;
+    opacity: 0;
+    transform-origin: 0;
+    transition: all .5s ease .300ms
+  }
+
+
+  .a--left [class*="social-link--"] span {
+    float: left;
+    border-radius: 0 .4em .4em 0;
+    transform: rotateY(45deg);
+  }
+
+  .a--right [class*="social-link--"] span {
+    float: right;
+    border-radius: .4em 0 0 .4em;
+    transform: rotateY(-45deg);
+  }
+
+
+  [class*="social-link--"] span:after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 0;
+    border: 1.13em solid transparent;
+  }
+
+
+  .a--left [class*="social-link--"] span:after {
+    left: -2.2em;
+    border-right: 1.13em solid $basecolor;
+  }
+
+  .a--right [class*="social-link--"] span:after {
+    right: -2.2em;
+    border-left: 1.13em solid $basecolor;
+  }
+
+
+  [class*="social-link--"]:hover span {
+    visibility: visible;
+    opacity: 1;
+    transform: rotateY(0)
+  }
+
+  .social_list {
+    padding: 0;
+    position: fixed;
+    top: 30%;.
+    perspective: 1000px;
+    z-index: 10;
+  }
+
+
+  //*Apply automatically the social colors as background-color.
+  @each $social-name, $bgcolor in $social-colors {
+    // @if not map-has-key($social-colors, $social-name) {
+      @warn "'#{$social-name}' is not a valid social color. Probably the ClassName in the HTML is not written correctly, or the variable for that social color doesn't exist. Add it manually and contact with us to include it in future version. Thanks";
+    // }
+
+    // @else {
+      .social-link--#{$social-name}:focus,
+      .social-link--#{$social-name}:hover {
+        background-color: $bgcolor;
+      }
+    // } 
+  }
+
+
 }

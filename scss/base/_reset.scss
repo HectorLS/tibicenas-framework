@@ -1,11 +1,28 @@
 
+/*====================================*\
+            $RESET
+\*====================================*/
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+// NOTE: IE 8 ignores box-sizing: border-box if min/max-width/height is used.
 
 
+html {
+  font-family: sans-serif; 
+  font-size: 100%;
+  -webkit-text-size-adjust  : 100%; // *1 
+}
+// *1. Prevent iOS text size adjust after orientation change, without disabling user zoom.
 
-
-/*------------------------------------*\
-    $RESET
-\*------------------------------------*/
+body {
+  @include x-rem(font-size, 16px);
+}
 
 html,
 header, nav, footer,
@@ -26,39 +43,71 @@ pre, abbr, address, cite, summary, code, del, dfn, em, ins, kbd, q,samp , sub, s
   border: 0;
   margin: 0;
   padding: 0;
-  font-size: 100%;
-  -moz-text-size-adjust:  100%;
-  -ms-text-size-adjust:   100%;
-  text-size-adjust:     100%;
   text-align: justify;
   direction: ltr;
 }
 
-html, body {
-  height: 100%;
-  width: 100%;
-}
-
-article, 
+// Correct `block` display not defined for any HTML5 element in IE 8/9.
+// Correct `block` display not defined for `details` or `summary` in IE 10/11
+//  and Firefox.
+//  Correct `block` display not defined for `main` in IE 11.
+article,
 aside,
 details,
-figcaption, 
-figure, 
-footer, 
-header, 
-nav, 
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
 section,
 summary {
-  display:block
+  display: block;
 }
 
-*{
-  &,
-  &::before,
-  &::after{
-    @include vendor(box-sizing, border-box);
-    }
+
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;    // *1
+  vertical-align: baseline; // *2
 }
+// *1. Correct `inline-block` display not defined in IE 8/9.
+// *2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+
+
+// Prevent modern browsers from displaying `audio` without controls.
+// Remove excess height in iOS 5 devices.
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+
+// Address `[hidden]` styling not present in IE 8/9/10.
+// Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
+[hidden],
+template {
+  display: none;
+}
+
+
+a {
+  background-color: transparent;  // *1
+  &:hover, &:active {
+    outline: 0;                   // *2
+  }
+}
+// *1. Remove the gray background color from active links in IE 10.
+// *2. Improve readability when focused and also mouse hovered in all browsers.
+
+
+
 
 li {
   list-style-type: none;   // Elimina los puntos ·  en las listas

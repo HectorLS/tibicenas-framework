@@ -1,14 +1,14 @@
-/*------------------------------------*\
-    $VARIABLES
-\*------------------------------------*/
+// ======================= \\
+//      $VARIABLES
+// ======================= //
 
+@import "_variables/colors";
+// ======================= \\
+//      $BREAKPOINTS
+// ======================= //
 
-/*------------------------------------*\
-    $BREAKPOINTS
-\*------------------------------------*/
-/**
- * "Start with the small screen first, then expand until it looks like shit. Time to insert a breakpoint!"
- */
+// "Start with the small screen first, then expand until it looks like shit. Time to insert a breakpoint!"
+
 
 $bp1 : 30em;    //480px
 $bp2 : 37.5em;  //600px
@@ -37,9 +37,9 @@ $breakpoints: (
 
 
 
-/*------------------------------------*\
-    $grid
-\*------------------------------------*/
+// ======================= \\
+//      $GRID
+// ======================= //
 $bp3 : 48em;
 $gap : 5px;
 $grid-size: 5;
@@ -49,10 +49,11 @@ $grid-size: 5;
 /*------------------------------------*\
     $LAYOUT
 \*------------------------------------*/
-/**
- * Definimos elementos constantes del layout
- */
-$baselineheight :     1.5em;
+
+// Definimos elementos constantes del layout
+
+$baselineheight     : 1.5;
+$heading-line-height: 1.2;
 $baseline :           $baselineheight;
 $gutterwidth :        24px;
 $pagemaxwidth :       80%;
@@ -78,34 +79,31 @@ $z-level: (
 
 
 
-/*------------------------------------*\
-    $FONT-FACE
-\*------------------------------------*/
-/**
- * Definimos las fuentes a utilizar:
- * $basefont para todos los textos inline
- * $altfont para textos alternativos, como citas, intro, etc...
- * $codefont para código
- */
-$basefont : "Alegreya Sans SC", "Helvetica Neue", sans-serif;
-$altfont : Georgia, Times, "Times New Roman";
-$codefont : "Courier New", monospace;
-$basefontsize :      16;
-$baseheadingfont : inherit;
+// ===================================== \\
+//      $FONTS
+// ===================================== //
+// 
+//  Definimos las fuentes a utilizar:
+//  $basefont para todos los textos inline
+//  $altfont para textos alternativos, como citas, intro, etc...
+//  
 
+
+@import url(http://fonts.googleapis.com/css?family=Maven+Pro);
+
+
+$basefont : 'Maven Pro', sans-serif;
+$altfont  : 'Maven Pro', sans-serif;
+$codefont : "Courier New", monospace;
+
+$basefontsize :      16px;
+$heading-basefont : $basefont;
 $baseheadingfontweight : bold;
 $baseheadingfontcolor : inherit;
-
 $altlineheight : 1.35em;
 
 
 
-/*------------------------------------*\
-    $COLORS (UUEE) | $COLOURS (UK)
-\*------------------------------------*/
-/**
- * Brand stuff
- */
 // Color Base & Variantes  ////////////////////////////////
 $basecolor    : rgb(43,47,58); // Gris azulado// Hex: #2b2f3a  hsl(223,225,22)
 $bclighter    : lighten($basecolor, 20%);
@@ -126,10 +124,9 @@ $scnight      : darken($secondary, 30%);
 // BORDERS
 $bordercolor  : lighten($secondary, 50%); // Verde Bordes
 // Variantes (Opuesto en el círculo cromático
-/*
 $secondcolor  : spin($basecolor);
 
-*/
+
 // Escala de grises   /////////////////////////////////////
  
 $black 			  : rgb(0,0,0);
@@ -159,15 +156,12 @@ $linkcolorvisited : $basecolor;
 $linkcolorfocus 	: darken($linkcolorvisited, 10);
 
 
-
-
-
 /*------------------------------------*\
     $ALERTAS
 \*------------------------------------*/
-/**
- * Definimos Colores y elementos de popups, mensajes de alerta, etc...
- */
+
+// Definimos Colores y elementos de popups, mensajes de alerta, etc...
+
 $color-alert 	  : rgb(252,228,207);       //Tonalidad Naranja Claro
 $color-error 	  : rgb(218,79,73);         //Tonalidad Roja
 $color-info 	  : rgb(165,221,223);       //Tonalidad Blanca
@@ -206,38 +200,6 @@ $alertsuccesstext 	: darken($color-success, 20%);
 $alertwarningcolor 	: lighten($color-warning, 30%);
 $alertwarningborder : lighten($color-warning, 20%);
 $alertwarningtext 	: darken($color-warning, 20%);
-
-/* Colores sociales -> son los colores corporativos, pero cambiadlos
- * si hace falta. (también podéis añadir más)  ///////////////////////
- */
-
- 
-
-$social-colors: (
-  bandcamp: #4e9bac,
-  delicious: #248cff,
-  facebook: rgb(59,89,182),
-  ficly: #b51c2c,
-  flickr: #0063db,
-  foursquare: #8FD400,
-  github: #4183c4,
-  googleplus: rgb(221,75,57),    
-  instagram: #517fa4,    
-  kickstarter: #76cc1e,    
-  lanyrd: #152e51,    
-  lastfm: #d51007,    
-  linkedin: #007bb6,    
-  photodrop: #cdb6e3,    
-  pinterest: rgb(203,32,39),    
-  rdio: #0088da,    
-  skype: rgb(18,165,244),
-  spotify: rgb(129,183,26),
-  soundcloud: #f60,    
-  tumblr: #2B4964,
-  twitter: rgb(64,153,255),    
-  vimeo: #aad450,    
-  youtube: #b00
-);
 
 // Badges
 $badgebackground    : $basecolor;

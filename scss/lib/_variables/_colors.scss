@@ -1,0 +1,114 @@
+
+
+
+
+// ===================================== \\
+//      $COLORS (UUEE) | $COLOURS (UK)
+// ===================================== //
+
+// HSB function allow use hsb instead of hex, rgb and hsl
+@function hsb($h-hsb, $s-hsb, $b-hsb, $a: 1) {
+  @if $b-hsb == 0 {
+    @return hsla(0, 0, 0, $a)
+  } 
+  @else {
+    $l-hsl: ($b-hsb/2) * (2 - ($s-hsb/100));
+    $s-hsl: ($b-hsb * $s-hsb) / if($l-hsl < 50, $l-hsl * 2, 200 - $l-hsl * 2);
+    @return hsla($h-hsb, $s-hsl, $l-hsl, $a);
+  }
+}
+
+
+//            $SOCIALS                \\
+// ___________________________________//
+
+// $social-colors: (
+//   bandcamp    : rgb(78 ,155,172),
+//   delicious   : rgb(212, 86,100),
+//   facebook    : rgb(59 , 89,182),
+//   ficly       : rgb(181, 28, 44),
+//   flickr      : rgb(0  , 99,219),
+//   foursquare  : rgb(143,212,  0),
+//   github      : rgb(51 , 51, 51),
+//   googleplus  : rgb(221, 75, 57),    
+//   instagram   : rgb(63 ,114,155),    
+//   kickstarter : rgb(118,204, 30),    
+//   lanyrd      : rgb(21 , 46, 81),      
+//   linkedin    : rgb(0  ,123,182),      
+//   pinterest   : rgb(203, 32, 39),       
+//   skype       : rgb(18 ,165,244),
+//   spotify     : rgb(129,183, 26),
+//   soundcloud  : rgb(255,102,  0),    
+//   tumblr      : rgb(43 , 73,100),
+//   twitter     : rgb(64 ,153,255),    
+//   vimeo       : rgb(22 , 34, 33),    
+//   youtube     : rgb(187,  0,  0)
+// );
+
+
+
+
+
+// HSL
+
+// Hue - Think in a color wheel  values 0-360
+//       0 and 360 = red 
+//              60 = yellow
+//             120 = green
+//             180 = cyan
+//             240 = blue
+//             300 = magenta
+  
+// Saturation - 0%-100% 
+      //   0% = desatured (grayscale)
+      // 100% = saturated (full color)
+
+// Lightness - 0%-100% 
+      //   0% = dark (black)
+      //  50% = average lightness
+      // 100% = light(white)
+
+// Alpha - values 0-1
+       //  0 = transparent
+       // .5 = 50% transparent
+       //  1 = opaque (default value)
+
+$social-colors: (
+  bandcamp    : hsb(252, 68%, 67%),
+  delicious   : hsb(212, 86%,100%),
+  facebook    : hsb(221, 61%, 60%),
+  ficly       : hsb(354, 85%, 71%),
+  flickr      : hsb(213,100%, 86%),
+  foursquare  : hsb(80 ,100%, 83%),
+  github      : hsb(0  ,  0%, 20%),
+  googleplus  : hsb(7  , 74%, 87%),    
+  instagram   : hsb(207, 59%, 61%),    
+  kickstarter : hsb(90 , 85%, 80%),    
+  lanyrd      : hsb(215, 74%, 32%),      
+  linkedin    : hsb(199,100%, 71%),       
+  pinterest   : hsb(358, 84%, 80%),      
+  skype       : hsb(201, 93%, 96%),
+  spotify     : hsb(81 , 86%, 72%),
+  soundcloud  : hsb(24 ,100%,100%),    
+  tumblr      : hsb(208, 57%, 39%),
+  twitter     : hsb(212, 75%,100%),    
+  vimeo       : hsb(175, 35%, 13%),    
+  youtube     : hsb(0  ,100%, 73%)
+);
+
+
+//            $PALETTE                \\
+// ___________________________________//
+
+// $palettes: (
+//     aliceblue: (
+//         base  : hsb(208,  6%,100%),
+//         light : hsb(208,  0%,100%),
+//         dark  : hsb(208, 16%,100%)
+//     ),
+//     antiquewhite: (
+//         base  : hsb(34 , 14%, 98%),
+//         light : lighten(hsb(34 , 14%, 98%), 10%),
+//         dark  : darken (hsb(34 , 14%, 98%), 10%)
+//     )
+// );

@@ -31,10 +31,9 @@
 	font-variant: normal;
 	text-transform: none;
 	line-height: 1;
-
+	@extend %select-none;
 	// ES: Mejor renderizado de fuente
 	// EN: Better Font Rendering
-	
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -53,3 +52,19 @@
 			}
 			*/
 
+
+// //NEW WAY (Working on it)		
+// $icons: (
+//   glass  			: "\f000",
+//   music   		: "\f001",
+//   search  		: "\f002",
+//   envelope-o 	: "\f003",
+//   heart 			: "\f004"
+// );
+
+
+// @each $name, $icon in $icons {
+//   .fa-#{$name}:before {
+//     content: $icon;
+//   }
+// }

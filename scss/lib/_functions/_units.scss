@@ -1,0 +1,21 @@
+//            $UNITS                  \\
+// ___________________________________//
+
+
+// *Percent-to-numbers
+@function percent-to-number($val) {
+  @return $val / 100;
+}
+
+// *Calculate em values
+@function em($target, $context: $base__font-size) {
+  @return ($target / $context) * 1em;
+}
+
+//*Returns a number without unit. E.g. 30px -> 30
+ @function strip-unit($value) {
+     @return $value / ($value * 0 + 1);
+ }
+  // @param value {String}
+  // @returns
+  //   <Number>

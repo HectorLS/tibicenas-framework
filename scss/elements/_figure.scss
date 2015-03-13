@@ -13,10 +13,10 @@ figure {
 	}
 
 	figcaption {
-		display : block;
-		font-weight : normal;
-		@include font-size(14);
-		font-style : italic;
 		color : $grey;
+		display : block;
+		@include x-rem(font-size, 14);
+		font-style : italic;
+		font-weight : normal;
 	}
 }
