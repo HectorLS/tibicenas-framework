@@ -43,7 +43,6 @@ pre, abbr, address, cite, summary, code, del, dfn, em, ins, kbd, q,samp , sub, s
   border: 0;
   margin: 0;
   padding: 0;
-  text-align: justify;
   direction: ltr;
 }
 
@@ -68,6 +67,16 @@ summary {
 }
 
 
+p, 
+span, 
+small, 
+strong {
+  text-align: justify;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-align: center;
+}
 
 audio,
 canvas,

@@ -79,7 +79,7 @@
 
 
 
- @include media-query-bp($bp3) {
+ @include mq($from: tablet) {
       
   .a--left {
     left: 0;

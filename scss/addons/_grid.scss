@@ -32,7 +32,7 @@
 
     .item-#{$i} {
       flex-basis: 100%;
-      @include media-query-bp($bp3) {
+      @include mq($from: tablet) {
         flex:0 0 calc(#{$width} - #{$gap});
       }
     }

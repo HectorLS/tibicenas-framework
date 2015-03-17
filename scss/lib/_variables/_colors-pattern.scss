@@ -1,0 +1,40 @@
+//            $Theme                  \\
+// ___________________________________//
+
+$theme: (
+
+  spring: (
+    primary   : hsb(14 , 38%, 64%),
+    secondary : hsb(29 , 30%, 35%),
+    base      : hsb(43 , 36%, 88%),
+    altbase   : hsb(19 , 16%, 72%), 
+    fontlight : hsb(30 ,  7%, 98%),
+    fontdark  : hsb(338, 22%, 20%)
+  ),
+  summer: (
+    primary   : hsb(197, 87%,100%),
+    secondary : hsb(18 ,100%,100%),
+    base      : hsb(56 ,100%,100%),
+    altbase   : hsb(40 ,100%,100%), 
+    fontlight : hsb(180, 33%,100%),
+    fontdark  : hsb(223, 87%, 13%)
+  ),
+  autumn: (
+    primary   : hsb(14 , 38%, 64%),
+    secondary : hsb(29 , 30%, 35%),
+    base      : hsb(43 , 36%, 88%),
+    altbase   : hsb(19 , 16%, 72%), 
+    fontlight : hsb(30 ,  7%, 98%),
+    fontdark  : hsb(338, 22%, 20%)
+  ),
+  winter: (
+    primary   : hsb(14 , 38%, 64%),
+    secondary : hsb(29 , 30%, 35%),
+    base      : hsb(43 , 36%, 88%),
+    altbase   : hsb(19 , 16%, 72%), 
+    fontlight : hsb(30 ,  7%, 98%),
+    fontdark  : hsb(338, 22%, 20%)
+  ),
+);
+
+//FALTA SPRING Y WINTER

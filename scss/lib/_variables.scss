@@ -8,33 +8,32 @@
 // ======================= //
 
 // "Start with the small screen first, then expand until it looks like shit. Time to insert a breakpoint!"
-
-
-$bp1 : 30em;    //480px
-$bp2 : 37.5em;  //600px
-$bp3 : 48em;    //768px
-$bp4 : 56.25em; //900px
-$bp5 : 68.75em; //1100px
-
-
-                                        // Height (Full Screen) y Content-View Height (Without Nav Bar)
-$bp00: 20em;    //  320px    | xxs      || height:  480x  ·  C-V height:  367px;           
-$bp01: 30em;    //  480px    |  xs      || height:  800x  ·  C-V height:  690px;  
-$bp02: 45em;    //  720px    |   s      || height: 1280x  ·  C-V height: 1038px;  
-$bp03: 67.5em;  // 1080px    |   m      || height: 1920x  ·  C-V height: 1533px; Last Smartphone Size
-$bp04: 90em;    // 1440px    |   l      || height:  900x  ·                      PC  
-$bp05: 120em;   // 1920px    |  xl      || height: 1080x  ·  C-V height:  px;    PC
-$bp06: 160em;   // 2560px    | xxl      || height: 1600x  ·  C-V height:  px;    PC
-$bp07: 320em;   // 5120px    |   monster|| height:     x  ·  C-V height:  px;    PC
+                 // Height (Full Screen) y Content-View Height (Without Nav Bar)
+// $bp00:  20em;    //  320px    | xxs      || height:  480x  ·  C-V height:  367px;           
+// $bp01:  30em;    //  480px    |  xs      || height:  800x  ·  C-V height:  690px;  
+// $bp02:  45em;    //  720px    |   s      || height: 1280x  ·  C-V height: 1038px;  
+// $bp03:67.5em;    // 1080px    |   m      || height: 1920x  ·  C-V height: 1533px; Last Smartphone Size
+// $bp04:  90em;    // 1440px    |   l      || height:  900x  ·                      PC  
+// $bp05: 120em;    // 1920px    |  xl      || height: 1080x  ·  C-V height:  px;    PC
+// $bp06: 160em;    // 2560px    | xxl      || height: 1600x  ·  C-V height:  px;    PC
+// $bp07: 320em;    // 5120px    |   monster|| height:     x  ·  C-V height:  px;    PC
 
 
 
-$breakpoints: (
-  s: 48em,
-  m: 56.25em,
-  l: 68.75em,
+// $breakpoints: (
+//    s:     48em,
+//    m:  56.25em,
+//    l:  68.75em,
+//   xl:    120em
+// ) !default;
+
+
+$mq-breakpoints: (
+    mobile :     20em,
+    tablet :  56.25em,
+    desktop:  68.75em,
+    wide   :    120em,
 ) !default;
-
 
 
 // ======================= \\
