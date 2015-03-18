@@ -24,7 +24,7 @@
 }
 
 [class^="icon-"], [class*=" icon-"] {
-	// font-family: 'YourFontGoHere';
+	font-family: 'YourFontGoHere', $basefont;
 	speak: none;
 	font-style: normal;
 	font-weight: normal;
