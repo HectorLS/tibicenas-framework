@@ -7,8 +7,8 @@
     $LINKS
 \*------------------------------------*/
 a {
-	text-decoration : none;
 	color : $linkcolor;
+	text-decoration : none;
 
 	&:visited {
 		color : $linkcolorvisited;
