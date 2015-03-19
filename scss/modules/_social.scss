@@ -188,7 +188,6 @@
     // }
 
     // @else {
-      .social-link--#{$social-name}:focus,
       .social-link--#{$social-name}:hover {
         background-color: $bgcolor;
       }

@@ -1,43 +1,32 @@
 // ===================================== \\
-//              $MODULES
+//      $MIXINS
 // ===================================== //
 
 
-// $Burguers
+
+// $Gradients
 // ================================================
-@import "burguers";
+@import "gradients";
 
-
-// $Buttons
+// $Gradients
 // ================================================
-@import "buttons";
+// @import "mixins/flex";
 
 
-// $Font icon
+// $Media Queries Breakpoints
 // ================================================
-@import "fonticon";
+@import "mq";
 
 
-// $Forms
+// $Rem Unit
 // ================================================
-@import "forms";
+@import "rem";
 
 
-// $Navigation
+// $Sticky footer
 // ================================================
-@import "navigation";
+@import "sticky-footer";
 
-
-// $Pagination
+// $Others
 // ================================================
-@import "pagination";
-
-
-// $Social
-// ================================================
-@import "social";
-
-
-// $Subnavigation
-// ================================================
-// @import "subnavigation";
+@import "others";

@@ -8,10 +8,10 @@
 \*------------------------------------*/
 
 form {
-	margin : 0 0 $baselineheight 0;
+	margin : 0 0 $base__line-height  0;
 
 	fieldset {
-		margin-bottom : $baselineheight;
+		margin-bottom : $base__line-height ;
 		padding : 0;
 		border-width : 0;
 	}
@@ -19,7 +19,7 @@ form {
 	legend {
 		display : block;
 		width : 100%;
-		margin-bottom : $baselineheight * 2;
+		margin-bottom : $base__line-height  * 2;
 		padding : 0;
 		color : $textcolor;
 		border : 0;
@@ -32,12 +32,12 @@ form {
 	}
 
 	p {
-		margin-bottom : $baselineheight / 2;
+		margin-bottom : $base__line-height  / 2;
 	}
 
 	ul {
 		list-style-type : none;
-		margin : 0 0 $baselineheight 0;
+		margin : 0 0 $base__line-height  0;
 		padding : 0;
 	}
 
@@ -61,12 +61,12 @@ input,
 button,
 select,
 textarea {
-	font-family : $basefont;
+	font-family : $base__font;
 }
 
 label {
 	display : block;
-	margin-bottom : $baseline / 8;
+	margin-bottom : $base__line / 8;
 	font-weight : bold;
 	color : $textcolor;
 	cursor : pointer;
@@ -84,7 +84,7 @@ select {
 	display : inline-block;
 	width : 100%;
 	padding : 4px;
-	margin-bottom : $baselineheight / 4;
+	margin-bottom : $base__line-height  / 4;
 	background-color : $inputbackground;
 	border : $inputborderwidth $inputborderstyle $inputborder;
 	color : $textcolor;
@@ -242,7 +242,7 @@ input:-moz-placeholder {
 
 .help-block {
 	display : block;
-	margin-bottom : $baselineheight / 2;
+	margin-bottom : $base__line-height  / 2;
 }
 
 .help-inline {

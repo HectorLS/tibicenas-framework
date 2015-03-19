@@ -19,14 +19,14 @@ h3,
 h4,
 h5,
 h6 {
-  color : $baseheadingfontcolor;
-  font-family : $heading-basefont;
-  font-weight : $baseheadingfontweight;
-  line-height : $heading-line-height; 
-  margin : 0;
+  color          : $base__color--heading;
+  font-family    : $base__font--heading;
+  font-weight    : $base__font-weight--heading;
+  line-height    : $base__line-height--heading; 
+  margin         : 0;
 	text-rendering : optimizelegibility;
 		&.altheader {
-			color:$grey;
+			color         : $grey;
 			text-transform: uppercase;
 		}
 }
@@ -47,7 +47,7 @@ h3 small {
                                                     (h5, 6, 16)
                                                     (h6, 6, 14) {
   #{$heading-type}, .heading-#{$heading-type} {
-  	margin-bottom : ($heading-line-height / $margin-bottom) *1em;
+  	margin-bottom : ($base__line-height--heading / $margin-bottom) *1em;
   	 @include x-rem(font-size, $font-size);
   }
 }
@@ -74,8 +74,8 @@ ol,
 ul,
 dl,
 address {
-	margin-bottom : $baselineheight;
-	line-height : $baselineheight;
+	margin-bottom : $base__line-height;
+	line-height : $base__line-height;
 }
 
 
@@ -87,7 +87,7 @@ small {
 
 ul,
 ol {
-	margin : 0 0 $baselineheight 0;
+	margin : 0 0 $base__line-height 0;
 	padding : 0 0 0 $gutterwidth;
 }
 
@@ -98,7 +98,7 @@ li ol {
 
 dl,
 dd {
-	margin-bottom : $baselineheight;
+	margin-bottom : $base__line-height;
 }
 
 dt {
@@ -125,10 +125,10 @@ dt {
 // ___________________________________//
 
 blockquote  {
-  margin : 0 0 $baselineheight 0;
+  margin : 0 0 $base__line-height 0;
   padding-left : $gutterwidth;
   border-left : 2px solid $bordercolor;
-  font-family : $altfont;
+  font-family : $font--secondary;
   font-style : normal;
   p {
     @include x-rem(font-size, 18);
@@ -162,7 +162,7 @@ cite {
 hr {
   clear : both;
   display : block;
-  margin : $baselineheight * 2 0;
+  margin : $base__line-height * 2 0;
   padding : 0;
   height : 1px;
   border : 0;
@@ -197,9 +197,9 @@ pre,
 code,
 kbd,
 samp {
-  font-family : $codefont;
+  font-family : $font--code;
   @include x-rem(font-size, 14);
-  line-height : $baselineheight;
+  line-height : $base__line-height;
 }
 
 pre {
@@ -213,7 +213,7 @@ sup {
   position : relative;
   @include x-rem(font-size, 12);
   line-height : 0;
-  vertical-align : $baselineheight;
+  vertical-align : $base__line-height;
 }
 
 sup {

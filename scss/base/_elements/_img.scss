@@ -12,7 +12,7 @@
 
 
 	.img--rounded {
-	  border-radius :$radius * 4;
+	  @extend %rounded;
 	}
 
 	.img--polaroid {

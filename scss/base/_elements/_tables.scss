@@ -8,7 +8,7 @@
 table {
 	width : 100%;
 	max-width : 100%;
-	margin-bottom : $baselineheight;
+	margin-bottom : $base__line-height;
 	border-collapse : collapse;
 	border-spacing : 0;
 	background-color : $tablebackground;
@@ -19,7 +19,7 @@ table {
 		vertical-align : top;
 		border-top : $tableborderwidth $tableborderstyle $tableborder;
 		@include x-rem(font-size, 14);
-		line-height : $baselineheight;
+		line-height : $base__line-height;
 		text-align : left;
 	}
 

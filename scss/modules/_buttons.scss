@@ -16,7 +16,7 @@
  */
 .btn {
 	display : inline-block;
-	line-height : $baselineheight * 1.5;
+	line-height : $base__line-height * 1.5;
 	color : $textcolor;
 	text-align : center;
 	vertical-align : middle;
@@ -27,10 +27,8 @@
 	font-weight: bold;
 	cursor : pointer;
 	margin:0;
-	padding-top:   0;
-   	padding-bottom:0;
-   	padding-right:1em;
-   	padding-left: 1em;
+	padding: 0 1em;
+
 	border-radius: $radius;
 
 	/**

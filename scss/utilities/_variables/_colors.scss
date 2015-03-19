@@ -1,7 +1,4 @@
 
-
-
-
 // ===================================== \\
 //      $COLORS (UUEE) | $COLOURS (UK)
 // ===================================== //
@@ -18,8 +15,16 @@
   }
 }
 
+//            $Text Color             \\
+// ___________________________________//
+$textcolor--light : hsb(252, 68%, 67%);
+$textcolor--dark  : hsb(252, 68%, 67%);
 
-//            $SOCIALS                \\
+
+
+
+
+//          $Social Color             \\
 // ___________________________________//
 
 // $social-colors: (
@@ -44,8 +49,6 @@
 //   vimeo       : rgb(22 , 34, 33),    
 //   youtube     : rgb(187,  0,  0)
 // );
-
-
 
 
 
@@ -99,3 +102,165 @@ $social-colors: (
 
 
 
+//            $Theme                  \\
+// ___________________________________//
+
+$theme: (
+
+  spring: (
+    primary   : hsb(14 , 38%, 64%),
+    secondary : hsb(29 , 30%, 35%),
+    base      : hsb(43 , 36%, 88%),
+    altbase   : hsb(19 , 16%, 72%), 
+    fontlight : hsb(30 ,  7%, 98%),
+    fontdark  : hsb(338, 22%, 20%)
+  ),
+  summer: (
+    primary   : hsb(197, 87%,100%),
+    secondary : hsb(18 ,100%,100%),
+    base      : hsb(56 ,100%,100%),
+    altbase   : hsb(40 ,100%,100%), 
+    fontlight : hsb(180, 33%,100%),
+    fontdark  : hsb(223, 87%, 13%)
+  ),
+  autumn: (
+    primary   : hsb(14 , 38%, 64%),
+    secondary : hsb(29 , 30%, 35%),
+    base      : hsb(43 , 36%, 88%),
+    altbase   : hsb(19 , 16%, 72%), 
+    fontlight : hsb(30 ,  7%, 98%),
+    fontdark  : hsb(338, 22%, 20%)
+  ),
+  winter: (
+    primary   : hsb(14 , 38%, 64%),
+    secondary : hsb(29 , 30%, 35%),
+    base      : hsb(43 , 36%, 88%),
+    altbase   : hsb(19 , 16%, 72%), 
+    fontlight : hsb(30 ,  7%, 98%),
+    fontdark  : hsb(338, 22%, 20%)
+  ),
+);
+
+//FALTA SPRING Y WINTER
+
+
+//       $Gradients defined           \\
+// ___________________________________//
+
+$gradient: (
+
+  sunset: (
+    first   : hsb(60 ,100%,100%),
+    second  : hsb(0  ,100%, 100%)
+  ),
+
+
+);
+
+
+
+
+
+//            $Brand                  \\
+// ___________________________________//
+
+
+// Color Base & Variantes  ////////////////////////////////
+$basecolor    : rgb(43,47,58); // Gris azulado// Hex: #2b2f3a  hsl(223,225,22)
+$bclighter    : lighten($basecolor, 20%);
+$bclight      : lighten($basecolor, 10%);
+$bcdark       : darken($basecolor, 10%);
+$bcdarker     : darken($basecolor, 20%);
+
+// Color Corporativo Secundario //////////////////////////
+
+$secondary    : rgb(255,24,8); // Rojo     // Hex: #ff1812  hsl(2,93,100)
+$sclighter    : lighten($secondary, 20%);
+$sclight      : lighten($secondary, 10%);
+$scdark       : darken($secondary, 10%);
+$scdarker     : darken($secondary, 20%);
+$scnight      : darken($secondary, 30%);
+
+
+// BORDERS
+$bordercolor  : lighten($secondary, 50%); // Verde Bordes
+// Variantes (Opuesto en el círculo cromático
+$secondcolor  : spin($basecolor);
+
+
+// Escala de grises   /////////////////////////////////////
+ 
+$black        : rgb(0,0,0);
+$superdark    : lighten($black, 10%);
+$darkergrey   : lighten($black, 15%);
+$darkgrey     : lighten($black, 25%);
+$grey         : lighten($black, 50%);
+$lightgrey    : lighten($black, 75%);
+$lightergrey  : lighten($black, 90%);
+$white        : rgb(255,255,255);
+
+// Web
+$background       : $white;
+$textcolor        : $darkergrey;
+$textcolor-strong : $black;
+
+//Other Colors
+$wine             : rgb(150,17,13); // Rojo Vino// Hex: #96110d  hsl(2,91,59)
+$greenlime        : rgb(148,254,84);  //Verde Lima #94fe54 hsl(97,67,99)  CMYK (53,1,73,0) 
+$cyan             : rgb(30,226,231);  //Cyan       #1ee2e7 hsl(181,87,91) CMYK (66,2,27,0)
+
+
+// Links  /////////////////////////////////////////////////
+$linkcolor        : $white;
+$linkcolorhover   : darken($linkcolor, 10);
+$linkcolorvisited : $basecolor;
+$linkcolorfocus   : darken($linkcolorvisited, 10);
+
+
+//            $Alerts                 \\
+// ___________________________________//
+
+// Definimos Colores y elementos de popups, mensajes de alerta, etc...
+
+$color-alert    : rgb(252,228,207);       //Tonalidad Naranja Claro
+$color-error    : rgb(218,79,73);         //Tonalidad Roja
+$color-info     : rgb(165,221,223);       //Tonalidad Blanca
+$color-inverse  : invert($secondary);     //Color Corporativo Secundario
+$color-success  : rgb(91,183,91);         //Tonalidad Verde
+$color-warning  : rgb(250,167,50);        //Tonalidad Naranja
+
+
+// Texturas de popups
+$alertbordercolor : darken($color-alert, 20%);
+$alertborderwidth : 1px;
+$alertborderstyle : solid;
+$alerttext        : darken($color-alert, 60%);
+
+// Error
+$alerterrorcolor  : lighten($color-error, 30%);
+$alerterrorborder : lighten($color-error, 20%);
+$alerterrortext   : $color-error;
+
+// Info
+$alertinfocolor   : lighten($color-info, 10%);
+$alertinfoborder  : darken($color-info, 10%);
+$alertinfotext    : darken($color-info, 50%);
+
+// Inverso
+$alertinversecolor  : $color-inverse;
+$alertinverseborder : $black;
+$alertinversetext   : $white;
+
+// Success
+$alertsuccesscolor  : lighten($color-success, 30%);
+$alertsuccessborder : lighten($color-success, 20%);
+$alertsuccesstext   : darken($color-success, 20%);
+
+// Advertencia
+$alertwarningcolor  : lighten($color-warning, 30%);
+$alertwarningborder : lighten($color-warning, 20%);
+$alertwarningtext   : darken($color-warning, 20%);
+
+// Badges
+$badgebackground    : $basecolor;
+$badgecolor         : $textcolor;

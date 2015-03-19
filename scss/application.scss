@@ -1,6 +1,6 @@
-/*------------------------------------*\
-    $STYLE
-\*------------------------------------*/
+/*====================================*\
+          $TIBICENAS FRAMEWORK
+\*====================================*/
 
 
 // $Utilities
@@ -8,7 +8,7 @@
 @import "utilities/-index";
 
 
-// $Variables
+// $Base
 // ================================================
 @import "base/-index";
 
@@ -27,36 +27,7 @@
 // ================================================
 @import "states/-index";
 
-// $States
+
+// $Themes
 // ================================================
 @import "themes/-index";
-
-
-
-// // ===== POST-RESET ===== \\
-// // @import "elements/figure";
-// // @import "elements/forms";
-// // @import "elements/links";
-// // @import "elements/tables";
-// @import "elements/tipography";
-
-
-
-// // ===== ADD-ONS ===== \\
-// // @import "addons/burguers";
-// // @import "addons/buttons";
-// // @import "addons/fonticon";
-// @import "addons/grid";
-// // @import "addons/img";
-// // @import "addons/notifications";
-// // @import "addons/pagination";
-// @import "addons/social";
-
-
-// // ===== YOUR OWN STYLE GO HERE ===== \\
-// @import "layouts/site";
-
-
-// // ===== JS EFFECTS ===== \\
-// // Should be last one to take priority over all
-// @import "addons/js-events";

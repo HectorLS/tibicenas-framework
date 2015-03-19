@@ -1,18 +1,21 @@
-
+// ======================= \\
+//      $VARIABLES
+// ======================= //
 
 // $Variables
 // ================================================
-@import "variables";
+@import "_variables/-index";
 
 
 // $Functions
 // ================================================
-@import "functions";
+@import "_functions/-index";
+
 
 
 // $Mixins
 // ================================================
-@import "mixins";
+@import "_mixins/-index";
 
 
 // $Placeholders

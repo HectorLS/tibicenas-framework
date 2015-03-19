@@ -8,7 +8,7 @@
 }
 
 // *Calculate em values
-@function em($value, $base-font-size: $basefontsize) {
+@function em($value, $font-size: $base__font-size) {
     @if unitless($value) {
         @warn "Assuming #{$value} to be in pixels, attempting to convert it into pixels.";
         @return em($value + 0px); // That may fail.
@@ -17,7 +17,7 @@
     @else if unit($value) == em {
         @return $value;
     }
-    @return ($value / $base-font-size) * 1em;
+    @return ($value / $font-size) * 1em;
 }
 
 //*Returns a number without unit. E.g. 30px -> 30

@@ -1,14 +1,3 @@
-// ===================================== \\
-//      $MIXINS
-// ===================================== //
-
-
-
-// ===== $PARTIALS ===== \\
-@import "_mixins/mq";
-@import "_mixins/rem";
-@import "_mixins/gradients";
-
 
 
 // Centrar y dar un ancho máximo igual a $pagemaxwidth.
@@ -194,9 +183,9 @@
             #{$property}:$value;
 }
 
-/* 
- * Función para controlar el index 
- */
+
+//Función para controlar el index 
+ 
  
 @function z($layer) {
   @if not map-has-key($z-layers, $layer) {
