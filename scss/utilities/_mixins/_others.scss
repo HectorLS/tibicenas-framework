@@ -129,14 +129,6 @@
 	background-clip : $clip;
 }
 
-// .box-sizing(VALUE); (border-box, padding-box, content-box)
-@mixin box-sizing($boxsize: border-box) {
-	-webkit-box-sizing : $boxsize;
-	-moz-box-sizing : $boxsize;
-	-ms-box-sizing : $boxsize;
-	box-sizing : $boxsize;
-}
-
 
 // .resize(VALUE) (none, both, horizontal, vertical, inherit)
 
@@ -168,13 +160,25 @@
 	column-rule-width : $columnRuleWidth;
 }
 
+	
+//        			$Vendor               \\
+// ___________________________________//
 
-//
-//Creamos prefijos para todo dios
-//
-//   `@include vendor(border-radius, 4px);`
-//
-//
+	// Prefix for browser compatibility
+	// Example of use
+	  // SCSS Mixin
+	  //     .mydiv {
+	  //        @include vendor(box-sizing, border-box);
+	  //     }
+	  // CSS Code
+		// 		 .mydiv {
+		// 				-webkit-box-sizing: border-box;
+	 	//       		 -moz-box-sizing: border-box;
+	 	//        	  -ms-box-sizing: border-box;
+	 	//        		 -o-box-sizing: border-box;
+		//          		  box-sizing: border-box;
+		//		 }
+
 @mixin vendor($property, $value...){
     -webkit-#{$property}:$value;
        -moz-#{$property}:$value;
@@ -184,13 +188,76 @@
 }
 
 
-//Función para controlar el index 
- 
- 
-@function z($layer) {
-  @if not map-has-key($z-layers, $layer) {
-    @warn "No layer found for `#{$layer}` in $z-layers map. Property omitted.";
-  }
- 
-  @return map-get($z-layers, $layer);
+//        $Background Colors          \\
+// ___________________________________//
+
+//*This mixin allow you to generate
+//*the background color of a maplist in a type element
+
+
+@mixin bg-colors($map-list) {
+	@each $name, $color in $map-list {
+		&--#{$name} {
+			background-color: $color;    
+		}
+	}
 }
+	
+	// Example of use
+		// $notifications is a maplist variable defined in _colors.scss
+	  // SCSS Mixin
+	  //     .btn {
+	  //        @include bg-colors($notifications)
+	  //     }
+	  // CSS Code
+	 	// 		 .btn--default {
+		//   		 background-color: #52bab3; 
+		// 		 }
+		// 		 .btn--success {
+		//   		 background-color: #5ece7f; 
+		// 		 }
+		// 		 .btn--error {
+		//   		 background-color: #e67478; 
+		// 		 }
+		// 		 .btn--warning {
+		//   		 background-color: #ff784f; 
+		// 		 }
+		// 		 .btn--info {
+		//   		 background-color: #9279c3; 
+		// 		 }
+
+
+//        $Pseudo Elements            \\
+// ___________________________________//
+
+@mixin pel($element, $element-w: null, $element-h: null) {
+	@if $element == "before" or $element == "after" {
+	  &:#{$element} {
+
+	    @extend %pseudos;
+	    width 	: $element-w;
+	    height 	: $element-h;
+	    @content;
+	  } 
+	}
+	@else {
+		@warn "'#{$element}' is not a valid pseudo element, should be 'before' or 'after'.";
+	}
+}
+   
+// Example of use
+		// Pseudo Element should be Before or After
+	  // SCSS Mixin
+	  //     .btn {
+	  //        @include pel(before,30px,5px)
+	  //     }
+	  // CSS Code
+	 	// 		 .btn:before {
+		//		 		display: block;
+		//	  		content: ""; 
+		//	  		position: absolute;
+		//   		  width : 30px;
+	  //			  height:  5px; 
+		// 		  }
+
+		

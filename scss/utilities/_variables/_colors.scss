@@ -189,7 +189,13 @@ $secondcolor  : spin($basecolor);
 
 
 // Escala de grises   /////////////////////////////////////
- 
+// $white    : #fff;
+// $black    : #0b0b0b;
+// $grey     : #797e83;
+
+
+
+
 $black        : rgb(0,0,0);
 $superdark    : lighten($black, 10%);
 $darkergrey   : lighten($black, 15%);
@@ -228,6 +234,15 @@ $color-info     : rgb(165,221,223);       //Tonalidad Blanca
 $color-inverse  : invert($secondary);     //Color Corporativo Secundario
 $color-success  : rgb(91,183,91);         //Tonalidad Verde
 $color-warning  : rgb(250,167,50);        //Tonalidad Naranja
+
+
+$notifications : (
+  default: hsb(254, 48%, 70%),
+  success: hsb(138, 54%, 81%),
+  error  : hsb(358, 50%, 90%),
+  warning: hsb(28 , 69%,100%),
+  info   : hsb(194, 73%, 82%)
+);
 
 
 // Texturas de popups

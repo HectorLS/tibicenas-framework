@@ -22,7 +22,6 @@
 // 	margin-right: auto;
 // }
 
-// The ghost, nudged to maintain perfect centering
 %vcenter {
 	&:before {
 		content: '';
@@ -54,14 +53,14 @@
 // Clear floats.
 %clearfix {
 	&:after{
-        content:"";
-        display:table;
-        clear:both;
-    }
+    content:"";
+    display:table;
+    clear:both;
+  }
 }
 
 
-// User-select(VALUE) (all, element, none, text)
+//*User-select(VALUE) (all, element, none, text)
 
 %select-none {
 	-webkit-user-select : none;
@@ -73,7 +72,22 @@
 
 
 //Rounded border
-
 %rounded {
 	border-radius : 8px;
+}
+
+//*Pseudo Element
+%pseudos {
+  display: block;
+  content: ""; 
+  position: absolute;
+}
+
+//        $Background Images          \\
+// ___________________________________//
+
+%bg-img {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
