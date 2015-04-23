@@ -21,17 +21,19 @@
 }
 
 //*You need to have the following
-// The footer must be after the .main-content class 
+// The footer must be after the .page-wrap class 
 // no one tags between then, 
-// just if there are a element with position absolute is allowed.
+// just elements with position absolute is allowed between them.
 
 // <body>
-//   //...
-//   //Maybe here your header, nav whatever
-//   //...
-//   <main class="main-content">
-//     //Main content...
-//   </main>
+//   <div class="page-wrap">
+//     //...
+//     //Maybe here your header, nav whatever
+//     //...
+//     <main class="main-content">
+//       //Main content...
+//     </main>
+//   </div>
 //   <footer role="contentinfo" class="sticky-footer">
 //     //Footer content...
 //   </footer>

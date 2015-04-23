@@ -12,7 +12,7 @@ nav[role=navigation] {
 	background-color: $basecolor;
 	width: 100%;
 	position: fixed;
-	height: 3em;
+	height: $height--nav;
 	top: 0;
 	border-bottom: .3em solid $bcdark;
 	z-index: map-get($z-level, superman);
@@ -38,6 +38,8 @@ nav[role=navigation] {
 	border-right: .1em solid $bcdark;
 	&:hover {
 		background-color: $bclighter;
+		border-bottom: 1px solid red;
+
 		.link--top {
 			color: $bcdark;
 			font-weight: bold;
@@ -52,3 +54,21 @@ nav[role=navigation] {
 	text-decoration: none;
 }
 
+@include mq($from: tablet) {
+
+  .nav--top_list {
+		position: static;
+		text-align: center;
+		width: 100%;
+ 	}
+
+  .nav--top_list li {
+		height: 2.7em;
+		display: inline-block;
+		padding: .6em 2em;
+		border: 0;
+		.link--top {
+			color: $white;
+		}
+  }
+}

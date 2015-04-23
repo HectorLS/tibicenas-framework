@@ -1,0 +1,41 @@
+
+
+
+
+
+/*------------------------------------*\
+    $SECTIONS
+\*------------------------------------*/
+
+main.main-content {
+  margin-top    : $height--nav;
+  padding-left  : 1em;
+  padding-right : 1em;
+}
+
+
+
+
+@include mq($from: tablet) {
+  main.main-content {
+    width: 100%;
+    padding-left  : 3em;
+    padding-right : 3em;
+  }
+}
+
+
+@include mq($from: desktop) {
+  main.main-content {
+    padding-left  : 5em;
+    padding-right : 5em;
+  }
+}
+
+
+@include mq($from: wide) {
+  main.main-content {
+    padding-left  : 9em;
+    padding-right : 9em;
+  }
+}
