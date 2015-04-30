@@ -19,7 +19,7 @@ h3,
 h4,
 h5,
 h6 {
-  color          : $base__color--heading;
+  color          : $textcolor--heading;
   font-family    : $base__font--heading;
   font-weight    : $base__font-weight--heading;
   line-height    : $base__line-height--heading; 
@@ -124,16 +124,23 @@ dt {
 //            $BLOCKQUOTE             \\
 // ___________________________________//
 
+//*Use always a paragraph inside the blockquote tags
+
 blockquote  {
-  margin : 0 0 $base__line-height 0;
+  margin : 0 0 $base__line-height*1px 0;
   padding-left : $gutterwidth;
-  border-left : 2px solid $bordercolor;
+  padding-right : $gutterwidth;
+
+  border-left : 10px solid $basecolor;
   font-family : $font--secondary;
   font-style : normal;
   p {
     @include x-rem(font-size, 18);
     color:$grey;
     font-style: italic;
+  }
+  .quote-info {
+    text-align: right;
   }
 }
 
@@ -166,7 +173,7 @@ hr {
   padding : 0;
   height : 1px;
   border : 0;
-  border-top : 1px solid $bordercolor;
+  border-top : 1px solid $basecolor;
 }
 
 abbr[title] {
@@ -183,14 +190,14 @@ dfn {
 }
 
 ins {
-  background-color : lighten($basecolor, 75%);
-  color : $textcolor;
+  background-color : lighten(theme(default), 75%);
+  color : $textcolor--dark;
   text-decoration : none;
 }
 
 mark {
   background-color : yellow;
-  color : $textcolor;
+  color : $textcolor--dark;
 }
 
 pre,

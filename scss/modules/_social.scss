@@ -79,7 +79,7 @@
 
 
 
- @include mq($from: tablet) {
+@include mq($from: tablet) {
       
   .a--left {
     left: 0;
@@ -102,9 +102,9 @@
     display: list-item;
   }
 
-[class*="social-link--"] span {
-    display: block;
-}
+  [class*="social-link--"] span {
+      display: block;
+  }
 
 
 
@@ -181,18 +181,8 @@
   }
 
 
-  //*Apply automatically the social colors as background-color.
-  @each $social-name, $bgcolor in $social-colors {
-    // @if not map-has-key($social-colors, $social-name) {
-      @warn "'#{$social-name}' is not a valid social color. Probably the ClassName in the HTML is not written correctly, or the variable for that social color doesn't exist. Add it manually and contact with us to include it in future version. Thanks";
-    // }
-
-    // @else {
-      .social-link--#{$social-name}:hover {
-        background-color: $bgcolor;
-      }
-    // } 
+  .social_list .social-link {
+    @include bg-colors--hover($social-colors);
   }
-
 
 }

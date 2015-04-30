@@ -17,7 +17,7 @@
   position: relative;
   padding: 5px;
   width: 50px;
-  background: $basecolor;
+  background: $bgcolor;
   cursor: pointer;
   margin-top: .6%;
   margin-left: .5%;
@@ -26,7 +26,7 @@
     display: block;
     width: 35px;
     height: 3px;
-    background: $white;
+    background: palette(white);
     margin: 5px auto;
     transition: transform .2s, width .2s;
   }

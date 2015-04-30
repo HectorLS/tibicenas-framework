@@ -17,18 +17,3 @@
   //        background-color: rgba(204, 204, 204, 0.2);
   //     }
 
-
-
-
-
-
-//*Call the color palette modifiers
-@function palette($palette, $tone: 'base') {
-    @return map-get(map-get($palettes, $palette), $tone);
-}
-
-  // Example of use
-  // SCSS Functions
-  //    header {
-  //       background-color: palette(red, x-dark)
-  //    }

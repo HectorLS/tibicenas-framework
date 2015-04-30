@@ -9,12 +9,12 @@
 
 
 nav[role=navigation] {
-	background-color: $basecolor;
+	background-color: $nav-bg;
 	width: 100%;
 	position: fixed;
-	height: $height--nav;
+	height: $nav-height;
 	top: 0;
-	border-bottom: .3em solid $bcdark;
+	border-bottom: .3em solid darken(theme(default), 10%);
 	z-index: map-get($z-level, superman);
 }
 
@@ -26,22 +26,22 @@ nav[role=navigation] {
 	position: absolute;
 	top: 3em;
 	left: -70%;
-	background-color: $basecolor;
+	background-color: $nav-list-bg;
 }
 
 
 .nav--top_list li {
 	padding: 2%;
 	text-align: center;
-	border-top: .1em solid $bclight;
-	border-bottom: .2em solid $bcdark;
-	border-right: .1em solid $bcdark;
+	border-top: .1em solid lighten(theme(default), 5%);
+	border-bottom: .2em solid darken(theme(default), 10%);
+	border-right: .1em solid darken(theme(default), 10%);
 	&:hover {
-		background-color: $bclighter;
+		background-color: lighten(theme(default), 15%);
 		border-bottom: 1px solid red;
 
 		.link--top {
-			color: $bcdark;
+			color: darken(theme(default), 10%);
 			font-weight: bold;
 			text-decoration: none;
 		}
@@ -71,4 +71,42 @@ nav[role=navigation] {
 			color: $white;
 		}
   }
+}
+
+
+	/*------------------------------------*\
+	    $NAV SIDE
+	\*------------------------------------*/
+
+.nav--side_list {
+	position: fixed;
+	text-align: left;
+
+}
+
+
+.dropdown {
+	display: inline-block;
+
+	.nav--dropdown {
+		max-height: 0;
+		overflow: hidden;
+		transition: all 500ms ease;
+		a {
+			display: block;
+		}
+	}
+	&:hover {
+		.nav--dropdown {
+			max-height: 999px;
+		}
+	}
+	
+	a {
+		display: inline-block;
+		background-color: palette(blue);
+		color: palette(white);
+		text-decoration: none;
+		padding: 0em 1em;
+	}
 }

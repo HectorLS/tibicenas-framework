@@ -21,13 +21,13 @@ form {
 		width : 100%;
 		margin-bottom : $base__line-height  * 2;
 		padding : 0;
-		color : $textcolor;
+		color : $textcolor--dark;
 		border : 0;
 		border-bottom : $inputborderwidth $inputborderstyle $inputborder;
 		white-space : normal;
 
 		small {
-			color : $lightgrey;
+			color : palette(grey, xx-light);
 		}
 	}
 
@@ -68,7 +68,7 @@ label {
 	display : block;
 	margin-bottom : $base__line / 8;
 	font-weight : bold;
-	color : $textcolor;
+	color : $textcolor--dark;
 	cursor : pointer;
 
 	input,
@@ -87,7 +87,7 @@ select {
 	margin-bottom : $base__line-height  / 4;
 	background-color : $inputbackground;
 	border : $inputborderwidth $inputborderstyle $inputborder;
-	color : $textcolor;
+	color : $textcolor--dark;
 
 	&:hover {
 		border-color : $inputhover;
@@ -237,7 +237,7 @@ input:-moz-placeholder {
 
 .help-block,
 .help-inline {
-	color : $grey;
+	color : palette(grey);
 }
 
 .help-block {
@@ -320,10 +320,10 @@ input:-moz-placeholder {
 */
 
 input:required:focus:invalid {
-  	background-color:lighten($color-alert, 5%);
-  	border:1px solid $color-alert;
+  	background-color : lighten(map-get($notification-colors, error), 5%);
+  	border 					 : 1px solid map-get($notification-colors, error);
 }
 input:required:focus:valid {
-  	background-color:lighten($color-success, 40%);
-  	border:1px solid $color-success;
+  	background-color : lighten(map-get($notification-colors, success), 40%);
+  	border 					 : 1px solid map-get($notification-colors, success);
 }

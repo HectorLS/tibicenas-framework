@@ -1,0 +1,44 @@
+{
+  "name": "tibicenas-framework",
+  "version": "0.0.0",
+  "homepage": "http://tibicenasproject.com/",
+  "authors": [
+    "Hector Leon <hectorleon.designer@gmail.com>"
+  ],
+  "description": "Responsive Front-End Framework using SCSS and JS",
+  "keywords": [
+    "tibicenas",
+    "framework",
+    "front-end",
+    "web",
+    "responsive"
+    "scss",
+    "sass",
+    "css",
+    "mobile-first"
+  ],
+  "main": [
+    "scss/application.scss",
+    "dist/css/application.css",
+    "dist/js/tibicenas.js",
+    "dist/fonts/icomoon.eot",
+    "dist/fonts/icomoon.svg",
+    "dist/fonts/icomoon.ttf",
+    "dist/fonts/icomoon.woff",
+    "dist/fonts/icomoon.woff2"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": ">= 1.9.1"
+  },
+  "_source": "git://github.com/Tibicenas/tibicenas-framework.git",
+  "_originalSource": "Tibicenas",
+  "_direct": true
+}

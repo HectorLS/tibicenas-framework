@@ -16,9 +16,9 @@
 	background-color : $color-alert;
 	border : $alertborderwidth $alertborderstyle $alertbordercolor;
 	font-family : $basefont;
-	@include x-rem(font-size, 14);
-	color : $alerttext;
 	border-radius: $radius;
+	@include x-rem(font-size, 14);
+	@include alerts($notification-colors);
 
 	.alert--heading {
 		color : inherit;
@@ -36,35 +36,6 @@
 	}
 }
 
-	.alert--success {
-		background-color : $alertsuccesscolor;
-		border-color : $alertsuccessborder;
-		color : $alertsuccesstext;
-	}
-
-	.alert--warning {
-		background-color : $alertwarningcolor;
-		border-color : $alertwarningborder;
-		color : $alertwarningtext;
-	}
-
-	.alert--error {
-		background-color : $alerterrorcolor;
-		border-color : $alerterrorborder;
-		color : $alerterrortext;
-	}
-
-	.alert--info {
-		background-color : $alertinfocolor;
-		border-color : $alertinfoborder;
-		color : $alertinfotext;
-	}
-
-	.alert--inverse {
-		background-color : $alertinversecolor;
-		border-color : $alertinverseborder;
-		color : $alertinversetext;
-	}
 
 // alert block
 
@@ -99,6 +70,7 @@
 	color : $badgecolor;
 	background-color : $badgebackground;
 	@include transition(background-color .25s 0 linear);
+	@include alerts($notification-colors);
 
 	&:hover {
 		color : $badgecolor;
@@ -107,51 +79,6 @@
 	}
 }
 
-	.badge--error {
-		background-color : $color-error;
-
-
-		&:hover {
-			background-color : darken($color-error, 20%);
-		}
-	}
-
-	.badge--warning {
-		background-color : $color-warning;
-
-
-		&:hover {
-			background-color : darken($color-warning, 20%);
-		}
-	}
-
-	.badge--success {
-		background-color : $color-success;
-
-
-		&:hover {
-			background-color : darken($color-success, 20%);
-		}
-	}
-
-	.badge--info {
-		background-color : $color-info;
-		color : darken($color-info, 50%);
-
-		&:hover {
-			background-color : darken($color-info, 20%);
-		}
-	}
-
-	.badge--inverse {
-		background-color : $color-inverse;
-		color : $white;
-
-		&:hover {
-			background-color : darken($color-inverse, 20%);
-			color : $white;
-		}
-	}
 
 // Para más gradientes: https://github.com/twitter/bootstrap/blob/master/less/mixins.less
 

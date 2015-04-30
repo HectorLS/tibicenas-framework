@@ -1,68 +1,57 @@
 
 
+// ===================================== \\
+//      $BUTTONS
+// ===================================== //
 
-
-/*------------------------------------*\
-    $BUTTONS
-\*------------------------------------*/
-/*
- * Definimos los botones y sus variantes
- 	 Similar to bootstrap style
- */
-
-
- /**
- * .btn es la clase principal para definir un botón
- */
 .btn {
-	display : inline-block;
-	line-height : $base__line-height * 1.5;
-	color : $textcolor;
-	text-align : center;
-	vertical-align : middle;
-	font-size: 100%;
-	white-space:nowrap;
-	background-color : $buttonbackground;
-	border : none;
-	font-weight: bold;
-	cursor : pointer;
-	margin:0;
-	padding: 0 1em;
+	display       : inline-block;
+  color         : $textcolor--light;
+  cursor        : pointer;
+  border        : 0;
+  border-radius : $radius;
+  font-size     : 100%;
+  font-weight   : bold;
+	line-height   : $base__line-height * 1.5;
+  margin        : 0;
+  outline       : none;
+  overflow      : hidden;
+  padding       : 0 1.2em;
+  position      : relative;
+  text-align    : center;
+  vertical-align: middle;
+  white-space   :nowrap;
 
-	border-radius: $radius;
+	@include bg-colors($notification-colors);
+	@include bg-colors--hover($notification-colors);
+  @include border-bottom($notification-colors);
 
-	/**
- 	* Nadie quiere un botón con texto subrayado cuando
- 	* hacemos hover.
- 	*/
+  .btn__text {
+    color    : $textcolor--light;
+    position : relative;
+    z-index  : map-get($z-level, bird);
 
-	&:hover {
-		text-decoration : none;
-	}
-	&:active,
-    &:focus{
-        outline:none;
+  }
+  .btn__bg {
+    position   : absolute;
+    top        : -100%;
+    left       : 0;
+    width      : 100%;
+    height     : 200%;
+    transition : all 500ms ease;
+  }
+
+  &:hover {
+    .btn__bg {
+      top: 0;
     }
-    &:visited {
-	color : $textcolor;
-	}
+  }
+
 }
 
 /*------------------------------------*\
     $BUTTONS-TYPES
 \*------------------------------------*/
-/**
- * Variantes de los botones: color para dar sensaciones.
- *
- */
-
-
-/**
-* Inputs con estilo de botones
-*/
-input[type="submit"].btn:hover {
-	border-color : $buttonbordercolor;
-}
 
 
 /**
@@ -70,88 +59,8 @@ ES: Botón  - Desactivado
 EN: Button - Disabled
 */
 .btn--disabled {
-    @include opacity(.5);
+  @include opacity(.5);
 	cursor : default;
-}
-
-/**
-ES: Botón  - Error
-EN: Button - Error
-*/
-.btn--error {
-	background-color: $color-error;
-	color : darken($color-error, 40%);
-	&:hover {
-		color : lighten($color-error, 40%);
-	}
-	&:visited {
-		color : darken($color-error, 40%);
-	}
-}
-
-/**
-ES: Botón  - Información
-EN: Button - Info
-*/
-.btn--info {
-	background-color: $color-info;
-	color : darken($color-info, 40%);
-	&:hover {
-		color : lighten($color-info, 40%);
-	}
-	&:visited {
-		color : darken($color-info, 40%);
-	}
-}
-
-
-
-/**
-ES: Botón  - Principal
-EN: Button - Primary
-*/
-
-.btn--primary {
-	background-color: $basecolor;
-	color: $white;
-	&:hover {
-		color : lighten($basecolor, 40%);
-	}
-	&:visited {
-		color : darken($basecolor, 40%);
-	}
-}
-
-/**
-ES: Botón  - ok
-EN: Button - success
-*/
-
-.btn--success {
-	background-color: $color-success;
-	color : darken($color-success, 40%);
-	&:hover {
-		color : lighten($color-success, 40%);
-	}
-	&:visited {
-		color : darken($color-success, 40%);
-	}
-}
-
-
-
-/**
-ES: Botón  - Advertencia
-EN: Button - Warning
-*/
-.btn--warning {
-	background-color: $color-warning;
-	color : darken($color-warning, 40%);
-	&:hover {
-		color : lighten($color-warning, 40%); }
-	&:visited {
-		color : darken($color-warning, 40%);
-	}
 }
 
 .btn--inactive,
@@ -164,69 +73,65 @@ EN: Button - Warning
 
 
 
-/*------------------------------------*\
-    $BUTTONS-SIZE
-\*------------------------------------*/
-/**
- * Variantes de los botones por tamaño.
- *
- */
+//          $Button__size             \\
+// ___________________________________//
 
-.btn--mini{
-    padding-right:0.5em;
-    padding-left: 0.5em;
-    line-height:1.5;
+
+.btn--xs{
+  padding-right:0.5em;
+  padding-left: 0.5em;
+  line-height:1.5;
 }
 
-.btn--small{
-    padding-right:1.5em;
-    padding-left: 1.5em;
-    line-height:2;
+.btn--s{
+  padding-right:1.5em;
+  padding-left: 1.5em;
+  line-height:2;
 }
 
-.btn--large{
-    padding-right:3em;
-    padding-left: 3em;
-    line-height:3;
+.btn--l{
+  padding-right:3em;
+  padding-left: 3em;
+  line-height:3;
 }
 
 
 
 
-/*------------------------------------*\
-    $BUTTONS-GROUPS
-\*------------------------------------*/
-/**
- * Con esta clase podemos agrupar los botones
- * en grupos horizontales.
- *
- */
-.btn--group {
+//          $Button__groups           \\
+// ___________________________________//
+
+.btn__group {
 	position : relative;
-	*margin-left : .3em;
+	margin-left : .3em;
 }
 
-.btn--group .btn {
+.btn__group .btn {
 	position : relative;
 	border-radius: 0;
 	float : left;
 	margin-left : -1px;
 }
 
-.btn--group .btn:first-child {
+.btn__group .btn:first-child {
 	margin-left : 0;
-	@include border-radius(0, 0, $radius, $radius);
+	border-radius: 0 0 $radius $radius;
 }
 
-.btn--group .btn:last-child {
-	@include border-radius($radius, $radius, 0, 0);
+.btn__group .btn:last-child {
+	border-radius: $radius $radius 0 0;
 }
 
-.btn--group .btn.large:first-child {
+.btn__group .btn.large:first-child {
 	margin-left : 0;
-	@include border-radius($radius, 0, $radius, 0);
+	border-radius: $radius 0 $radius 0;
 }
 
-.btn--group .btn.large:last-child {
-	@include border-radius(0, $radius, 0, $radius);
+.btn__group .btn.large:last-child {
+	border-radius: 0 $radius 0 $radius;
+}
+
+
+.realistic.btn {
+  
 }
