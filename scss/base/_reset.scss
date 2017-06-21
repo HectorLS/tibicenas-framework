@@ -10,21 +10,34 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
+
 // NOTE: IE 8 ignores box-sizing: border-box if min/max-width/height is used.
 html,
 body {
-  height: 100%;
+  min-height: 100%;
 }
 
 html {
-  font-family: sans-serif; 
+  font-family: sans-serif;
   font-size: 100%;
-  -webkit-text-size-adjust  : 100%; // *1 
+  -webkit-text-size-adjust  : 100%; // *1
+  -webkit-font-smoothing    : antialiased;
+  -moz-osx-font-smoothing   : grayscale;
+  -webkit-overflow-scrolling : touch;
+  -webkit-tap-highlight-color : transparent;
 }
+
 // *1. Prevent iOS text size adjust after orientation change, without disabling user zoom.
 
 body {
   @include x-rem(font-size, 16px);
+  font-family: $font--primary, sans-serif;
+  line-height : $base__line-height;
+  width : 100%;
+}
+
+code {
+  font-family: monospace;
 }
 
 html,
@@ -70,9 +83,9 @@ summary {
 }
 
 
-p, 
-span, 
-small, 
+p,
+span,
+small,
 strong {
   text-align: justify;
 }
@@ -103,8 +116,7 @@ audio:not([controls]) {
 
 // Address `[hidden]` styling not present in IE 8/9/10.
 // Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
-[hidden],
-template {
+[hidden] {
   display: none;
 }
 
@@ -122,24 +134,13 @@ a {
 
 
 li {
-  list-style-type: none;   // Elimina los puntos ·  en las listas
+  list-style-type: none;
 }
 
-
-
-// ES: Imágenes responsive ////////////////////////////////////////////////
-// EN: Responsive images   ////////////////////////////////////////////////
+// EN: Responsive images
 img {
   max-width: 100%;
   height: auto;
   vertical-align : middle;
-  -ms-interpolation-mode : bicubic;   //Suaviza el escalado de imágenes en IE
-}
-
-// ES: Arregla los problemas con las imágenes responsive en IE  ///////////
-// EN: Fix IE problems with responsive images                   ///////////
-.ie img {
-width: inherit;  /* Make images fill their parent's space. Solves IE8. */
-max-width: 100%; /* Add !important if needed. */
-height: auto;    /* Add !important if needed. */
+  -ms-interpolation-mode : bicubic;   //Smooth images scaling for IE
 }

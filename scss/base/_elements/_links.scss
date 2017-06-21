@@ -7,21 +7,21 @@
     $LINKS
 \*------------------------------------*/
 a {
-	color : $linkcolor;
+	color : $link-color;
 	text-decoration : none;
 
 	&:visited {
-		color : $linkcolorvisited;
+		color : $link-color--visited;
 	}
 
 	&:hover {
 		text-decoration : underline;
-		color : $linkcolorhover;
+		color : $link-color--hover;
 	}
 
 	&:focus {
 		outline : thin dotted;
-		color : $linkcolorfocus;
+		color : $link-color--focus;
 	}
 
 	&:hover,

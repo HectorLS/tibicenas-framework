@@ -1,457 +1,53 @@
-
-// ===================================== \\
-//      $COLORS (UUEE) | $COLOURS (UK)
-// ===================================== //
-
-// HSB function allow use hsb instead of hex, rgb and hsl
-@function hsb($h-hsb, $s-hsb, $b-hsb, $a: 1) {
-  @if $b-hsb == 0 {
-    @return hsla(0, 0, 0, $a)
-  } 
-  @else {
-    $l-hsl: ($b-hsb/2) * (2 - ($s-hsb/100));
-    $s-hsl: ($b-hsb * $s-hsb) / if($l-hsl < 50, $l-hsl * 2, 200 - $l-hsl * 2);
-    @return hsla($h-hsb, $s-hsl, $l-hsl, $a);
-  }
-}
-
-// HSL
-
-// Hue - Think in a color wheel  values 0-360
-//       0 and 360 = red 
-//              60 = yellow
-//             120 = green
-//             180 = cyan
-//             240 = blue
-//             300 = magenta
-  
-// Saturation - 0%-100% 
-      //   0% = desatured (grayscale)
-      // 100% = saturated (full color)
-
-// Lightness - 0%-100% 
-      //   0% = dark (black)
-      //  50% = average lightness
-      // 100% = light(white)
-
-// Alpha - values 0-1
-       //  0 = transparent
-       // .5 = 50% transparent
-       //  1 = opaque (default value)
-
-
-
-
-//              $Brand                \\
-// ___________________________________//
-
-$brand: (
-  base      : hsb(224, 26%, 23%),
-  primary   : hsb(179, 96%, 72%),
-  secondary : hsb(223, 53%, 93%),
-);
-
-
-
 //            $Notification           \\
 // ___________________________________//
 
-$notification-colors : (
-  default : hsb(254, 48%, 70%),
-  success : hsb(138, 54%, 81%),
-  error   : hsb(358, 76%, 88%),
-  warning : hsb(28 , 69%,100%),
-  info    : hsb(194, 73%, 82%)
+
+$blue    : #0087c9;
+$green   : #00bb8e;
+$yellow  : #fbca28;
+$orange  : #fb9528;
+$red     : #fe5d79;
+$red-dark: #a94442;
+$white   : #ffffff;
+$black   : #000000;
+$grey-l  : #4d4d4d;
+$grey-m  : #b3b3b3;
+$grey-s  : #f2f2f2;
+$grey-xs : #f7f7f7;
+
+$bg-menu    : #42474e;
+
+$icons-color-default       : #b3b3b3;
+$icons-color-default-hover : #4d4d4d;
+
+$text-color: rgb(20,20,20);
+
+$states: (
+  info    : $blue,
+  success : $green,
+  warning : $orange,
+  error   : $red
 );
 
+$text-color : #333333;
+$link-color : $grey-s;
+$link-color--hover: $yellow;
+$link-color--focus: $yellow;
+$link-color--visited: $yellow;
 
 
-//              $Themes                \\
-// ___________________________________//
-
-//FALTA SPRING Y WINTER
-$themes: (
-  default: (
-    primary   : hsb(179, 96%, 72%),
-    secondary : hsb(223, 53%, 93%),
-    base      : hsb(224, 26%, 23%),    
-    altbase   : hsb(181, 55%, 40%), 
-    fontlight : hsb(30 ,  7%, 98%),
-    fontdark  : hsb(338, 22%, 20%)
-  ),
-  spring: (
-    primary   : hsb(14 , 38%, 64%),
-    secondary : hsb(29 , 30%, 35%),
-    base      : hsb(43 , 36%, 88%),
-    altbase   : hsb(19 , 16%, 72%), 
-    fontlight : hsb(30 ,  7%, 98%),
-    fontdark  : hsb(338, 22%, 20%)
-  ),
-  summer: (
-    primary   : hsb(197, 87%,100%),
-    secondary : hsb(18 ,100%,100%),
-    base      : hsb(56 ,100%,100%),
-    altbase   : hsb(40 ,100%,100%), 
-    fontlight : hsb(180, 33%,100%),
-    fontdark  : hsb(223, 87%, 13%)
-  ),
-  autumn: (
-    primary   : hsb(14 , 38%, 64%),
-    secondary : hsb(29 , 30%, 35%),
-    base      : hsb(43 , 36%, 88%),
-    altbase   : hsb(19 , 16%, 72%), 
-    fontlight : hsb(30 ,  7%, 98%),
-    fontdark  : hsb(338, 22%, 20%)
-  ),
-  winter: (
-    primary   : hsb(14 , 38%, 64%),
-    secondary : hsb(29 , 30%, 35%),
-    base      : hsb(43 , 36%, 88%),
-    altbase   : hsb(19 , 16%, 72%), 
-    fontlight : hsb(30 ,  7%, 98%),
-    fontdark  : hsb(338, 22%, 20%)
-  ),
-);
+$focused: teal;
+$error--focused   : $red-dark;
+$color--read-only : #D2D2D2;
 
 
 
-//          $Social Color             \\
-// ___________________________________//
+// TERMINAL COLORS
 
-$social-colors: (
-  bandcamp    : hsb(252, 68%, 67%),
-  delicious   : hsb(212, 86%,100%),
-  facebook    : hsb(221, 61%, 60%),
-  ficly       : hsb(354, 85%, 71%),
-  flickr      : hsb(213,100%, 86%),
-  foursquare  : hsb(80 ,100%, 83%),
-  github      : hsb(0  ,  0%, 20%),
-  googleplus  : hsb(7  , 74%, 87%),    
-  instagram   : hsb(207, 59%, 61%),    
-  kickstarter : hsb(90 , 85%, 80%),    
-  lanyrd      : hsb(215, 74%, 32%),      
-  linkedin    : hsb(199,100%, 71%),       
-  pinterest   : hsb(358, 84%, 80%),      
-  skype       : hsb(201, 93%, 96%),
-  spotify     : hsb(81 , 86%, 72%),
-  soundcloud  : hsb(24 ,100%,100%),    
-  tumblr      : hsb(208, 57%, 39%),
-  twitter     : hsb(212, 75%,100%),    
-  vimeo       : hsb(175, 35%, 13%),    
-  youtube     : hsb(0  ,100%, 73%)
-);
+$git-color: rgb(249, 87, 30);
 
-
-
-
-//       $Gradients defined           \\
-// ___________________________________//
-
-$gradient : (
-  sunset: (
-    first   : hsb(60 ,100%,100%),
-    second  : hsb(0  ,100%, 100%)
-  ),
-);
-
-//            $Palette                \\
-// ___________________________________//
-
-// == Grey Scale
-$white        : hsb(0  , .1%,100%);
-$grey         : hsb(0  ,  0%, 50%);
-$black        : hsb(0  ,  0%,  0%);
-// == RGB
-$red          : hsb(0  ,100%,100%);
-$blue         : hsb(240,100%,100%);
-$green        : hsb(120,100%, 50%);
-// == CMY
-$cyan         : hsb(180,100%,100%);
-$magenta      : hsb(300,100%,100%);
-$yellow       : hsb(60 ,100%,100%);
-// == Others
-$aquamarine   : hsb(160, 50%,100%);
-$azure        : hsb(180,  6%,100%);
-$beige        : hsb(60,  10%, 96%);
-$brown        : hsb(0  , 75%, 65%);
-$coral        : hsb(16 , 69%,100%);
-$crimson      : hsb(348, 91%, 86%);
-$gold         : hsb(51 ,100%,100%);
-$khaki        : hsb(54 , 42%, 94%);
-$lime         : hsb(120,100%,100%);
-$navy         : hsb(240,100%, 50%);
-$olive        : hsb( 60,100%, 50%);
-$orange       : hsb(39 ,100%,100%);
-$orchid       : hsb(302, 49%, 85%);
-$pink         : hsb(350, 25%,100%);
-$purple       : hsb(300,100%, 50%);
-$salmon       : hsb(  6, 54%, 98%);
-$turquoise    : hsb(174, 71%, 88%);
-$wine         : hsb(  2, 91%, 59%);
-
-
-
-$palettes: (
-  white: (
-    base     : $white,
-    dark     : darken( $white,  5%),
-    x-dark   : darken( $white, 15%),
-    xx-dark  : darken( $white, 20%)
-  ),
-  grey: (
-    xx-light : lighten($grey, 20%),
-    x-light  : lighten($grey, 15%),
-    light    : lighten($grey,  5%),
-    base     : $grey,
-    dark     : darken( $grey,  5%),
-    x-dark   : darken( $grey, 15%),
-    xx-dark  : darken( $grey, 20%)
-  ),
-  black: (
-    xx-light : lighten($black, 20%),
-    x-light  : lighten($black, 15%),
-    light    : lighten($black,  5%),
-    base     : $black
-  ),
-  red: (
-    xx-light : lighten($red, 20%),
-    x-light  : lighten($red, 15%),
-    light    : lighten($red,  5%),
-    base     : $red,
-    dark     : darken( $red,  5%),
-    x-dark   : darken( $red, 15%),
-    xx-dark  : darken( $red, 20%)
-  ),
-  blue: (
-    xx-light : lighten($blue, 20%),
-    x-light  : lighten($blue, 15%),
-    light    : lighten($blue,  5%),
-    base     : $blue,
-    dark     : darken( $blue,  5%),
-    x-dark   : darken( $blue, 15%),
-    xx-dark  : darken( $blue, 20%)
-  ),
-  green: (
-    xx-light : lighten($green, 20%),
-    x-light  : lighten($green, 15%),
-    light    : lighten($green,  5%),
-    base     : $green,
-    dark     : darken( $green,  5%),
-    x-dark   : darken( $green, 15%),
-    xx-dark  : darken( $green, 20%)
-  ),
-  cyan: (
-    xx-light : lighten($cyan, 20%),
-    x-light  : lighten($cyan, 15%),
-    light    : lighten($cyan,  5%),
-    base     : $cyan,
-    dark     : darken( $cyan,  5%),
-    x-dark   : darken( $cyan, 15%),
-    xx-dark  : darken( $cyan, 20%)
-  ),
-  magenta: (
-    xx-light : lighten($magenta, 20%),
-    x-light  : lighten($magenta, 15%),
-    light    : lighten($magenta,  5%),
-    base     : $magenta,
-    dark     : darken( $magenta,  5%),
-    x-dark   : darken( $magenta, 15%),
-    xx-dark  : darken( $magenta, 20%)
-  ),
-  yellow: (
-    xx-light : lighten($yellow, 20%),
-    x-light  : lighten($yellow, 15%),
-    light    : lighten($yellow,  5%),
-    base     : $yellow,
-    dark     : darken( $yellow,  5%),
-    x-dark   : darken( $yellow, 15%),
-    xx-dark  : darken( $yellow, 20%)
-  ),
-  aquamarine: (
-    xx-light : lighten($aquamarine, 20%),
-    x-light  : lighten($aquamarine, 15%),
-    light    : lighten($aquamarine,  5%),
-    base     : $aquamarine,
-    dark     : darken( $aquamarine,  5%),
-    x-dark   : darken( $aquamarine, 15%),
-    xx-dark  : darken( $aquamarine, 20%)
-  ),
-  azure: (
-    xx-light : lighten($azure, 20%),
-    x-light  : lighten($azure, 15%),
-    light    : lighten($azure,  5%),
-    base     : $azure,
-    dark     : darken( $azure,  5%),
-    x-dark   : darken( $azure, 15%),
-    xx-dark  : darken( $azure, 20%)
-  ),
-  beige: (
-    xx-light : lighten($beige, 20%),
-    x-light  : lighten($beige, 15%),
-    light    : lighten($beige,  5%),
-    base     : $beige,
-    dark     : darken( $beige,  5%),
-    x-dark   : darken( $beige, 15%),
-    xx-dark  : darken( $beige, 20%)
-  ),
-  brown: (
-    xx-light : lighten($brown, 20%),
-    x-light  : lighten($brown, 15%),
-    light    : lighten($brown,  5%),
-    base     : $brown,
-    dark     : darken( $brown,  5%),
-    x-dark   : darken( $brown, 15%),
-    xx-dark  : darken( $brown, 20%)
-  ),
-  coral: (
-    xx-light : lighten($coral, 20%),
-    x-light  : lighten($coral, 15%),
-    light    : lighten($coral,  5%),
-    base     : $coral,
-    dark     : darken( $coral,  5%),
-    x-dark   : darken( $coral, 15%),
-    xx-dark  : darken( $coral, 20%)
-  ),
-  crimson: (
-    xx-light : lighten($crimson, 20%),
-    x-light  : lighten($crimson, 15%),
-    light    : lighten($crimson,  5%),
-    base     : $crimson,
-    dark     : darken( $crimson,  5%),
-    x-dark   : darken( $crimson, 15%),
-    xx-dark  : darken( $crimson, 20%)
-  ),
-  gold: (
-    xx-light : lighten($gold, 20%),
-    x-light  : lighten($gold, 15%),
-    light    : lighten($gold,  5%),
-    base     : $gold,
-    dark     : darken( $gold,  5%),
-    x-dark   : darken( $gold, 15%),
-    xx-dark  : darken( $gold, 20%)
-  ),
-  khaki: (
-    xx-light : lighten($khaki, 20%),
-    x-light  : lighten($khaki, 15%),
-    light    : lighten($khaki,  5%),
-    base     : $khaki,
-    dark     : darken( $khaki,  5%),
-    x-dark   : darken( $khaki, 15%),
-    xx-dark  : darken( $khaki, 20%)
-  ),
-  lime: (
-    xx-light : lighten($lime, 20%),
-    x-light  : lighten($lime, 15%),
-    light    : lighten($lime,  5%),
-    base     : $lime,
-    dark     : darken( $lime,  5%),
-    x-dark   : darken( $lime, 15%),
-    xx-dark  : darken( $lime, 20%)
-  ),
-  navy: (
-    xx-light : lighten($navy, 20%),
-    x-light  : lighten($navy, 15%),
-    light    : lighten($navy,  5%),
-    base     : $navy,
-    dark     : darken( $navy,  5%),
-    x-dark   : darken( $navy, 15%),
-    xx-dark  : darken( $navy, 20%)
-  ),
-  olive: (
-    xx-light : lighten($olive, 20%),
-    x-light  : lighten($olive, 15%),
-    light    : lighten($olive,  5%),
-    base     : $olive,
-    dark     : darken( $olive,  5%),
-    x-dark   : darken( $olive, 15%),
-    xx-dark  : darken( $olive, 20%)
-  ),
-  orange: (
-    xx-light : lighten($orange, 20%),
-    x-light  : lighten($orange, 15%),
-    light    : lighten($orange,  5%),
-    base     : $orange,
-    dark     : darken( $orange,  5%),
-    x-dark   : darken( $orange, 15%),
-    xx-dark  : darken( $orange, 20%)
-  ),
-  orchid: (
-    xx-light : lighten($orchid, 20%),
-    x-light  : lighten($orchid, 15%),
-    light    : lighten($orchid,  5%),
-    base     : $orchid,
-    dark     : darken( $orchid,  5%),
-    x-dark   : darken( $orchid, 15%),
-    xx-dark  : darken( $orchid, 20%)
-  ),
-  pink: (
-    xx-light : lighten($pink, 20%),
-    x-light  : lighten($pink, 15%),
-    light    : lighten($pink,  5%),
-    base     : $pink,
-    dark     : darken( $pink,  5%),
-    x-dark   : darken( $pink, 15%),
-    xx-dark  : darken( $pink, 20%)
-  ),
-  purple: (
-    xx-light : lighten($purple, 20%),
-    x-light  : lighten($purple, 15%),
-    light    : lighten($purple,  5%),
-    base     : $purple,
-    dark     : darken( $purple,  5%),
-    x-dark   : darken( $purple, 15%),
-    xx-dark  : darken( $purple, 20%)
-  ),
-  salmon: (
-    xx-light : lighten($salmon, 20%),
-    x-light  : lighten($salmon, 15%),
-    light    : lighten($salmon,  5%),
-    base     : $salmon,
-    dark     : darken( $salmon,  5%),
-    x-dark   : darken( $salmon, 15%),
-    xx-dark  : darken( $salmon, 20%)
-  ),
-  turquoise: (
-    xx-light : lighten($turquoise, 20%),
-    x-light  : lighten($turquoise, 15%),
-    light    : lighten($turquoise,  5%),
-    base     : $turquoise,
-    dark     : darken( $turquoise,  5%),
-    x-dark   : darken( $turquoise, 15%),
-    xx-dark  : darken( $turquoise, 20%)
-  ),
-  wine: (
-    xx-light : lighten($wine, 20%),
-    x-light  : lighten($wine, 15%),
-    light    : lighten($wine,  5%),
-    base     : $wine,
-    dark     : darken( $wine,  5%),
-    x-dark   : darken( $wine, 15%),
-    xx-dark  : darken( $wine, 20%)
-  )
-);
-
-
-//*Call the color palette modifiers
-@function palette($palette, $tone: 'base') {
-    @return map-get(map-get($palettes, $palette), $tone);
-}
-
-  // Example of use
-  // SCSS Functions
-  //    header {
-  //       background-color: palette(red, x-dark)
-  //    }
-
-
-
-  //*Call the color theme modifiers
-@function theme($palette, $tone: 'base') {
-    @return map-get(map-get($themes, $palette), $tone);
-}
-
-  // Example of use
-  // SCSS Functions
-  //    header {
-  //       background-color: theme(summer, base)
-  //    }
+$code--terminal-bg : #4a579e;
+$code--color       : $white;
+$code--comment     : $grey-m;
+$code--keyword     : #dca1ed;
+$code--value       : #48ef4a;

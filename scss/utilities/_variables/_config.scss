@@ -3,8 +3,6 @@
 // ======================= //
 
 
-
-  
 //           $Breakpoints             \\
 // ___________________________________//
 
@@ -19,16 +17,6 @@ $mq-breakpoints: (
 ) !default;
 
 
-
-//             $Grid                  \\
-// ___________________________________//
-
-$gap : 5px;
-$grid-size: 5;
-
-
-
-
 //             $Fonts                 \\
 // ___________________________________//
 
@@ -37,7 +25,7 @@ $grid-size: 5;
 $google-font__url: 'http://fonts.googleapis.com/css?family=Maven+Pro';
 @if variable-exists(google-font__url) {
   @import url($google-font__url);
-} 
+}
 @else {
     @warn "You don't have a google font loaded"
 }
@@ -49,10 +37,8 @@ $font--primary   : $google-font__name, sans-serif;
 $font--secondary : $google-font__name, sans-serif;
 $font--code      : "Courier New", monospace;
 
-//*Text Color
-$textcolor--light : theme(default, fontlight);
-$textcolor--dark  : theme(default, fontdark);
-$textcolor--heading   : $textcolor--light;
+$font-heading    : $font--secondary;
+
 
 //*Base values
 $base__line                 : 24px;
@@ -64,118 +50,3 @@ $base__line-height--heading : ($base__line/$base__font-size--heading);
 $base__font                 : $font--primary;
 $base__font--heading        : $font--primary;
 $base__font-weight--heading : bold;
-
-
-//*Alternatives values
-$alt__font                  : $font--secondary;
-$alt__line-height           : 1.35em;
-
-$gutterwidth                : 24px;
-$pagemaxwidth               : 80%;
-
-
-//            $Elements               \\
-// ___________________________________//
-
-//*Radious value base for some elements like buttons
-$radius: 2px;
-
-//*Height of the main html footer
-$height--footer: 100px;
-
-
-
-
-//EN A list maps to use z-levels. See the next example:
-//ES: Un list maps para usar con z-levels. Mira el siguiente ejemplo:
-// z-index: map-get($z-level, superman); 
-$z-level: (
-  god       : 10000,
-  goku      :  5000,
-  superman  :  2500,
-  spiderman :  2000,
-  bird      :     1,
-  mole      :    -1,
-  worm      :  -100,
-) !default;
-
-
-$bgcolor     : palette(white, x-dark);
-$basecolor    : theme(default);
-
-//REVISAR
-
-//            $Borders                \\
-// ___________________________________//
-$bordercolor  : darken(theme(default, secondary), 20%); // Verde Bordes
-
-
-//            $Links                  \\
-// ___________________________________//
-
-$linkcolor        : $white;
-$linkcolorhover   : darken($linkcolor, 10);
-$linkcolorvisited : theme(default, base);
-$linkcolorfocus   : darken($linkcolorvisited, 10);
-$alertborderwidth : 1px;
-$alertborderstyle : solid;
-
-// Badges
-$badgebackground    : theme(default, base);
-
-
-
-
-
-
-//             $Buttons               \\
-// ___________________________________//
-
-
-$buttonbackground        : theme(default, base);
-$buttonbordercolor       : darken($buttonbackground, 10%);
-$buttonbottombordercolor : darken($buttonbordercolor, 10%);
-$buttoncolor             : $black;
-$buttonborderwidth       : 1px;
-$buttonborderstyle       : solid;
-
-//             $Tables                \\
-// ___________________________________//
-
-
-$tablebackground    : transparent;
-$tablestripe        : lighten(theme(default, base), 60%);
-$tablehover         : lighten(theme(default, base), 50%);
-$tableborder        : lighten(theme(default, base), 40%);
-$tableborderwidth   : 1px;
-$tableborderstyle   : solid;
-
-//              $Forms                \\
-// ___________________________________//
-
-
-$inputbackground    : $white;
-$inputborder        : palette(grey, xx-light);
-$inputborderwidth   : 1px;
-$inputborderstyle   : solid;
-$inputhover         : lighten($black, 50%);
-$inputfocus         : theme(default, base), 40%;
-$placeholdercolor   : palette(grey, xx-light);
-
-
-//             $Navigation            \\
-// ___________________________________//
-
-$nav-width        :  44px;
-$nav-height       :  3em;
-$nav-color        :  $textcolor--light;
-$nav-bg           :  $basecolor;
-$nav-borders      :  darken($nav-bg, 10%);
-$nav-list-bg      :  $basecolor;
-$nav-icon-size    :  20px;
-
-
-
-
-
-

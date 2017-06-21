@@ -13,7 +13,7 @@ figure {
 	}
 
 	figcaption {
-		color : $grey;
+		color : $grey-m;
 		display : block;
 		@include x-rem(font-size, 14);
 		font-style : italic;

@@ -1,10 +1,10 @@
-@mixin sticky-footer {
-  
+@mixin sticky-footer($footer-height: 100px) {
+
   .page-wrap {
     //<html>,<body> must have height: 100%;
     //If you didn't change the internal code should be in the _reset.scss
     min-height: 100%;
-    margin-bottom: ($height--footer * -1);
+    margin-bottom: ($footer-height * -1);
   }
 
   .page-wrap:after {
@@ -12,17 +12,15 @@
     display: block;
   }
 
-  
-  footer.sticky-footer,
+  [role=contentinfo].sticky-footer,
   .page-wrap:after {
-    height: $height--footer; 
+    height: $footer-height
   }
-
 }
 
-//*You need to have the following
-// The footer must be after the .page-wrap class 
-// no one tags between then, 
+//*
+// The footer must be after the .page-wrap class
+// no one tags between then,
 // just elements with position absolute is allowed between them.
 
 // <body>

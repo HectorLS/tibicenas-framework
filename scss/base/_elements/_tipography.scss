@@ -1,8 +1,6 @@
 
 
 
-
-
 /*------------------------------------*\
     $TIPOGRAPHY
 \*------------------------------------*/
@@ -19,106 +17,75 @@ h3,
 h4,
 h5,
 h6 {
-  color          : $textcolor--heading;
-  font-family    : $base__font--heading;
-  font-weight    : $base__font-weight--heading;
-  line-height    : $base__line-height--heading; 
-  margin         : 0;
-	text-rendering : optimizelegibility;
-		&.altheader {
-			color         : $grey;
-			text-transform: uppercase;
-		}
+  font-weight    : 400;
+  font-family    : $font-heading;
+  text-rendering : optimizelegibility;
 }
 
-
-
-
-h1 small,
-h2 small,
-h3 small {
-	font-weight : normal;
-}
-
-@each $heading-type, $margin-bottom, $font-size in  (h1, 2, 48)
-                                                    (h2, 3, 40)
-                                                    (h3, 4, 32)
-                                                    (h4, 6, 24)
-                                                    (h5, 6, 16)
-                                                    (h6, 6, 14) {
+@each $heading-type, $font-size in  (h1, 32)
+                                    (h2, 24)
+                                    (h3, 20)
+                                    (h4, 16)
+                                    (h5, 14)
+                                    (h6, 12) {
   #{$heading-type}, .heading-#{$heading-type} {
-  	margin-bottom : ($base__line-height--heading / $margin-bottom) *1em;
-  	 @include x-rem(font-size, $font-size);
+
+    $line-height: ($base__line/ $font-size);
+    margin-bottom: strip-unit($line-height) * 1em;
+    @include x-rem(font-size, $font-size);
+
+    @if $font-size > $base__line {
+
+      $line-height-x2: $line-height * 2;
+      line-height: $base__line * 2;
+      line-height: strip-unit($line-height-x2) * 1em;
+
+    }
+    @else {
+
+      line-height: $base__line;
+      line-height: strip-unit($line-height) * 1em;
+
+    }
   }
 }
-
-
-
-.hgroup > * {
-  margin-bottom: 0;
-}
-
-.hgroup >*:last-child {
-  margin-bottom: 1.2em;
-}
-
-
-
 
 
 //       $PARAGRAPH and $LIST         \\
 // ___________________________________//
 
-p,
-ol,
-ul,
-dl,
-address {
-	margin-bottom : $base__line-height;
-	line-height : $base__line-height;
+
+p {
+  @include x-rem(font-size, $base__font-size);
+  line-height   : $base__line;
+  line-height   : $base__line-height;
+  margin-bottom : $base__line-height;
+  font-weight   : 300;
 }
 
 
+a, p {
+  color: $text-color;
+}
 
 
 small {
 	@include x-rem(font-size, 12);
 }
 
+
+
+ol,
 ul,
-ol {
-	margin : 0 0 $base__line-height 0;
-	padding : 0 0 0 $gutterwidth;
-}
-
-li ul,
-li ol {
-  margin : 0;
-}
-
 dl,
-dd {
+dd,
+address {
 	margin-bottom : $base__line-height;
 }
 
 dt {
 	font-weight : bold;
 }
-
-.dl-horizontal {
-
-	dt {
-		float : left;
-		clear : left;
-		width : 20.25%;
-		text-align : right;
-	}
-
-	dd {
-		margin-left : 22.78%;
-	}
-}
-
 
 
 //            $BLOCKQUOTE             \\
@@ -128,15 +95,15 @@ dt {
 
 blockquote  {
   margin : 0 0 $base__line-height*1px 0;
-  padding-left : $gutterwidth;
-  padding-right : $gutterwidth;
+  padding-left : em(15px);
+  padding-right: em(15px);
 
-  border-left : 10px solid $basecolor;
+  border-left : 10px solid $text-color;
   font-family : $font--secondary;
   font-style : normal;
   p {
     @include x-rem(font-size, 18);
-    color:$grey;
+    color:$grey-m;
     font-style: italic;
   }
   .quote-info {
@@ -162,7 +129,6 @@ cite {
 
 
 
-
 //            $TEXT-LEVEL             \\
 // ___________________________________//
 
@@ -173,11 +139,11 @@ hr {
   padding : 0;
   height : 1px;
   border : 0;
-  border-top : 1px solid $basecolor;
+  border-top : 1px solid $text-color;
 }
 
 abbr[title] {
-  border-bottom : 1px dotted $bordercolor;
+  border-bottom : 1px dotted $grey-m;
   cursor : help;
 }
 
@@ -190,14 +156,14 @@ dfn {
 }
 
 ins {
-  background-color : lighten(theme(default), 75%);
-  color : $textcolor--dark;
+  background-color : lighten($text-color, 75%);
+  color : darken($text-color, 20%);
   text-decoration : none;
 }
 
 mark {
   background-color : yellow;
-  color : $textcolor--dark;
+  color : darken($text-color, 20%);
 }
 
 pre,
