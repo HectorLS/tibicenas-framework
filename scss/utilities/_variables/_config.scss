@@ -3,41 +3,29 @@
 // ======================= //
 
 
-//           $Breakpoints             \\
-// ___________________________________//
-
-//*Start with the small screen first and expand until it looks like shit.
-//*Then is the time to insert a breakpoint!
-
-$mq-breakpoints: (
-    mobile :     20em,
-    tablet :  56.25em,
-    desktop:  68.75em,
-    wide   :    120em,
-) !default;
-
-
 //             $Fonts                 \\
 // ___________________________________//
 
-//*Import if Google Fonts URL is defined
 
+// Import if Google Fonts URL is defined
 $google-font__url: 'http://fonts.googleapis.com/css?family=Maven+Pro';
 @if variable-exists(google-font__url) {
   @import url($google-font__url);
+
+  // Assign the fonts for our framework
+  $google-font__name   : 'Maven Pro';
+  $font--primary       : $google-font__name, sans-serif;
+  $font--secondary     : $google-font__name, sans-serif;
+  $font--code          : "Courier New", monospace;
+  $font-heading        : $font--secondary;
+  $base__font          : $font--primary;
+  $base__font--heading : $font--primary;
 }
 @else {
-    @warn "You don't have a google font loaded"
+    @warn "You don't have a google font loaded";
 }
 
-$google-font__name: 'Maven Pro';
 
-//*Assign the fonts for our framework
-$font--primary   : $google-font__name, sans-serif;
-$font--secondary : $google-font__name, sans-serif;
-$font--code      : "Courier New", monospace;
-
-$font-heading    : $font--secondary;
 
 
 //*Base values
@@ -46,7 +34,20 @@ $base__font-size            : 16px;
 $base__font-size--heading   : 20px;
 $base__line-height          : ($base__line/$base__font-size);
 $base__line-height--heading : ($base__line/$base__font-size--heading);
-
-$base__font                 : $font--primary;
-$base__font--heading        : $font--primary;
 $base__font-weight--heading : bold;
+
+
+
+//           $Breakpoints             \\
+// ___________________________________//
+
+//*Start with the small screen first and expand until it looks like shit.
+//*Then is the time to insert a breakpoint!
+
+$mq-breakpoints: (
+    mobile  : em(320px),
+    phablet : em(500px),
+    tablet  : em(768px),
+    desktop : em(980px),
+    wide    : em(1300px)
+) !default;
