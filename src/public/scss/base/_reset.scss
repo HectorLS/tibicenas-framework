@@ -1,0 +1,145 @@
+/*------------------------------------*\
+              $RESET
+\*------------------------------------*/
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+// NOTE: IE 8 ignores box-sizing: border-box if min/max-width/height is used.
+html,
+body {
+  min-height: 100%;
+}
+
+html {
+  font-family: sans-serif;
+  font-size: 100%;
+  -webkit-text-size-adjust  : 100%; // *1
+  -webkit-font-smoothing    : antialiased;
+  -moz-osx-font-smoothing   : grayscale;
+  -webkit-overflow-scrolling : touch;
+  -webkit-tap-highlight-color : transparent;
+}
+
+// *1. Prevent iOS text size adjust after orientation change, without disabling user zoom.
+
+body {
+  @include x-rem(font-size, 16px);
+  font-family: $font--primary;
+  line-height : $base__line-height;
+  width : 100%;
+}
+
+code {
+  font-family: monospace;
+}
+
+html,
+header, nav, footer,
+body, section, aside, article, div,
+main, menu,
+img, caption, figure, figcaption, video, audio, progress,
+span, small, strong
+h1, h2, h3, h4, h5, h6,
+p,
+ol, ul, li,
+dl, dt, dd,
+blockquote,
+form, fieldset, legend, label,
+table, caption, tbody, tfoot, thead, tr, th, td,
+pre, abbr, address, cite, summary, code, del, dfn, em, ins, kbd, q,samp , sub, sup, var, time, mark {
+
+  background: transparent;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  direction: ltr;
+}
+
+// Correct `block` display not defined for any HTML5 element in IE 8/9.
+// Correct `block` display not defined for `details` or `summary` in IE 10/11
+//  and Firefox.
+//  Correct `block` display not defined for `main` in IE 11.
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+
+p,
+span,
+small,
+strong {
+  text-align: justify;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-align: center;
+}
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;    // *1
+  vertical-align: baseline; // *2
+}
+// *1. Correct `inline-block` display not defined in IE 8/9.
+// *2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+
+
+// Prevent modern browsers from displaying `audio` without controls.
+// Remove excess height in iOS 5 devices.
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+
+// Address `[hidden]` styling not present in IE 8/9/10.
+// Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
+[hidden] {
+  display: none;
+}
+
+
+a {
+  background-color: transparent;  // *1
+  &:hover, &:active {
+    outline: 0;                   // *2
+  }
+}
+// *1. Remove the gray background color from active links in IE 10.
+// *2. Improve readability when focused and also mouse hovered in all browsers.
+
+
+
+
+li {
+  list-style-type: none;
+}
+
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align : middle;
+  -ms-interpolation-mode : bicubic;   //Smooth images scaling for IE
+}

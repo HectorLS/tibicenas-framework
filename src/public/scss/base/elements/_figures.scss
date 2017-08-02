@@ -1,0 +1,22 @@
+
+
+
+
+/*------------------------------------*\
+    $FIGURE
+\*------------------------------------*/
+figure {
+	margin-bottom : $base__line-height;
+
+	img {
+		margin-bottom : $base__line-height / 4;
+	}
+
+	figcaption {
+		color       : lighten($text-color, 30%);
+		display     : block;
+		font-style  : italic;
+		font-weight : normal;
+    @include x-rem(font-size, 14);
+	}
+}

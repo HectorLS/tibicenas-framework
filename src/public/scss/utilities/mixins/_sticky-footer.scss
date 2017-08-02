@@ -1,0 +1,38 @@
+@mixin sticky-footer($footer-height: 100px) {
+
+  .page-wrapper {
+    //<html>,<body> must have height: 100%;
+    //If you didn't change the internal code should be in the _reset.scss
+    min-height: 100%;
+    margin-bottom: ($footer-height * -1);
+  }
+
+  .page-wrapper:after {
+    content: "";
+    display: block;
+  }
+
+  [role=contentinfo].sticky-footer,
+  .page-wrapper:after {
+    height: $footer-height
+  }
+}
+
+//*
+// The footer must be after the .page-wrapper class
+// no one tags between then,
+// just elements with position absolute is allowed between them.
+
+// <body>
+//   <div class="page-wrapper">
+//     //...
+//     //Maybe here your header, nav whatever
+//     //...
+//     <main class="main-content">
+//       //Main content...
+//     </main>
+//   </div>
+//   <footer role="contentinfo" class="sticky-footer">
+//     //Footer content...
+//   </footer>
+// </body>

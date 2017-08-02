@@ -1,0 +1,24 @@
+
+@mixin btn-states($state-name) {
+
+  &.btn--#{$state-name} {
+    background-color : map-get($states, $state-name);
+    border           : 1px solid transparent;
+    color            : $white;
+
+    &:hover {
+      background-color : lighten(map-get($states, $state-name), 8%);
+      border           : 1px solid darken(map-get($states, $state-name), 10%);
+      color            : $white;
+    }
+  }
+}
+
+
+
+// .btn {
+//   @include button-states('info');
+//   @include button-states('success');
+//   @include button-states('warning');
+//   @include button-states('error');
+// }

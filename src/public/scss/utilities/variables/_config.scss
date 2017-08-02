@@ -1,0 +1,48 @@
+// ======================= \\
+//      $CONFIG
+// ======================= //
+
+
+
+//           $Breakpoints             \\
+// ___________________________________//
+
+//*Start with the small screen first and expand until it looks like shit.
+//*Then is the time to insert a breakpoint!
+
+$mq-breakpoints: (
+  mobile  : em(320px),
+  phablet : em(500px),
+  tablet  : em(768px),
+  desktop : em(980px),
+  wide    : em(1300px)
+) !default;
+
+
+
+//             $Fonts                 \\
+// ___________________________________//
+
+$google-font__url: 'http://fonts.googleapis.com/css?family=Maven+Pro';
+@import url($google-font__url);
+
+// Assign the fonts for our framework
+$google-font__name   : 'Maven Pro';
+
+$font--primary       : $google-font__name, sans-serif;
+$font--secondary     : $google-font__name, sans-serif;
+$font--heading       : $font--primary;
+
+$font--code          : "Courier New", monospace;
+
+$base__font          : $font--primary;
+$base__font--heading : $font--primary;
+
+
+//*Base values
+$base__line                 : 24px;
+$base__font-size            : 16px;
+$base__font-size--heading   : 20px;
+$base__line-height          : ($base__line/$base__font-size);
+$base__line-height--heading : ($base__line/$base__font-size--heading);
+$base__font-weight--heading : bold;

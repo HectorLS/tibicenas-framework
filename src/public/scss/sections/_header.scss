@@ -1,0 +1,33 @@
+
+[role='banner'] {
+  margin: auto;
+  width: 100vw;
+
+  h2,
+  p {
+    color: $white;
+  }
+
+  p,
+  .title-wrapper,
+  #logo {
+    display: block;
+    margin: auto;
+  }
+
+  #logo {
+    margin-bottom: 3em;
+    margin-top: 2em;
+  }
+
+  p {
+    max-width: 290px;
+    text-align: center;
+  }
+
+  .title-wrapper {
+    background-color: rgba($black, .9);
+    max-width: 330px;
+    padding: 1em 2em;
+  }
+}

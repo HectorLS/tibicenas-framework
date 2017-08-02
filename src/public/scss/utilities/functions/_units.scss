@@ -1,0 +1,44 @@
+
+//            $UNITS                  \\
+// ___________________________________//
+
+
+// Percent-to-numbers //
+// ------------------ //
+@function percent-to-number($val) {
+  @return $val / 100;
+}
+
+
+// Returns a number without unit //
+// ----------------------------- //
+
+// E.g. 30px -> 30
+
+@function strip-unit($value) {
+   @return $value / ($value * 0 + 1);
+}
+  // @param value {String}
+  // @returns
+  //   <Number>
+
+
+// Calculate em values //
+// ------------------- //
+
+@function em($value, $font-size: $base__font-size) {
+  @if strip-unit($value) == 0 {
+    @return strip-unit($value);
+  }
+
+  @else if unitless($value) {
+      @warn "Assuming #{$value} to be in pixels, attempting to convert it into pixels.";
+      @return em($value + 0px); // That may fail.
+  }
+
+  // If the value is already in em, then do nothing and return the same value :)
+  @else if unit($value) == em {
+      @return $value;
+  }
+  @return ($value / $font-size) * 1em;
+}

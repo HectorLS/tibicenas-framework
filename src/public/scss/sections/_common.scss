@@ -1,0 +1,8 @@
+$bg: '../assets/img/bg.jpg';
+
+body {
+  background          : url($bg);
+  background-position : center;
+  background-size     : cover;
+  color               : $text-color;
+}
