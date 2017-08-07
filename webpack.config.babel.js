@@ -1,9 +1,9 @@
-const autoprefixer      = require('autoprefixer'),
-      DashboardPlugin   = require('webpack-dashboard/plugin'),
-      ExtractTextPlugin = require('extract-text-webpack-plugin'),
-      HtmlPlugin        = require('html-webpack-plugin'),
-      path              = require('path'),
-      webpack           = require('webpack');
+import autoprefixer      from 'autoprefixer';
+import DashboardPlugin   from 'webpack-dashboard/plugin';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import HtmlPlugin        from 'html-webpack-plugin';
+import path              from 'path';
+import webpack           from 'webpack';
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -11,7 +11,7 @@ const isProd = process.env.NODE_ENV === 'production';
 
 //////////////////////// FILEPATH ///////////////////////
 /////////////////////////////////////////////////////////
-const imagesFolder = 'public/assets/img/'
+const imagesFolder = 'public/assets/img/',
       buildFolder  = 'dist',
       sourceFolder = 'src',
       PATHS = {
@@ -38,7 +38,7 @@ const ExtractTextPluginOptions = {
   disable: !isProd,
   allChunks: true,
   ignoreOrder: false
-}
+};
 
 const devServerOptions = {
   contentBase: PATHS.build,
@@ -96,14 +96,14 @@ const javascript = {
   test: /\.(js|jsx)$/,
   use: 'babel-loader',
   exclude: /node_modules/
-}
+};
 
 const images = {
   test: /\.(jpe?g|svg|png|gif)$/i,
   use: [
     `file-loader?name=${imagesFolder}[name].[ext]`
   ]
-}
+};
 
 const html = {
   test: /\.(html)$/,
@@ -113,7 +113,7 @@ const html = {
       attrs: ['img:src', 'link:href']
     }
   }
-}
+};
 
 
 
@@ -135,6 +135,6 @@ const webpackConfig = {
   },
   devServer: devServerOptions,
   plugins: pluginsList
-}
+};
 
-module.exports = webpackConfig;
+export default webpackConfig;
