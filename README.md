@@ -1,5 +1,5 @@
 # Tibicenas Framework
-
+![React](https://cdn.worldvectorlogo.com/logos/react.svg) <!-- .element height="50px" -->
 ## React + Sass with Webpack
 [![Tibicenas version][tibicenas-badge]][shields-url]
 [![nodejs dependencies][david-dm-badge]][david-dm-url]
