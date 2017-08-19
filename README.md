@@ -1,10 +1,11 @@
 # Tibicenas Framework
 [![react][react-logo] | width=48][react-url]
+[![react](https://cdn.worldvectorlogo.com/logos/react.svg | width=48)]
 
 ## React + Sass with Webpack
 [![Tibicenas version][tibicenas-badge]][shields-url]
 [![nodejs dependencies][david-dm-badge]][david-dm-url]
-
+[![nodejs devDependencies][david-dm-badge--dev]][david-dm-url]
 ## Updating Readme Doc, major update is coming!
 
 ### User Yarn or NPM
@@ -37,12 +38,12 @@ $ yarn remove <package-name>
 $ npm uninstall <package-name>
 ```
 
-
-[tibicenas-badge]: https://img.shields.io/badge/tibicenas-v1.2.1.-blue.svg
+[tibicenas-badge]: https://img.shields.io/badge/tibicenas-v1.0.0-blue.svg
 [shields-url]: https://shields.io/
 
 [react-logo]: https://cdn.worldvectorlogo.com/logos/react.svg
 [react-url]: https://facebook.github.io/react/
 
 [david-dm-badge]: https://david-dm.org/hectorLS/tibicenas-framework.svg
+[david-dm-badge--dev]: https://david-dm.org/hectorLS/tibicenas-framework/dev-status.svg
 [david-dm-url]: https://david-dm.org/
