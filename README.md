@@ -1,6 +1,4 @@
 # Tibicenas Framework
-[![react][react-logo] | width=48][react-url]
-[![react](https://cdn.worldvectorlogo.com/logos/react.svg | width=48)]
 
 ## React + Sass with Webpack
 [![Tibicenas version][tibicenas-badge]][shields-url]
