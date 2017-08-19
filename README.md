@@ -1,5 +1,5 @@
 # :floppy_disk: Tibicenas Framework
-![nodejs dependencies](https://cdn.worldvectorlogo.com/logos/react.svg){:height="200px"}
+![nodejs dependencies](https://cdn.worldvectorlogo.com/logos/react.svg){:height="90px" width="90px"}
 
 ## React + Sass with Webpack
 [![Tibicenas version][tibicenas-badge]][url-shields]
