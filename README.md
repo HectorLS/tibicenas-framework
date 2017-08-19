@@ -1,7 +1,8 @@
 # Tibicenas Framework
-![React](https://cdn.worldvectorlogo.com/logos/react.svg) <!-- .element height="50px" -->
+## :floppy_disk:
+
 ## React + Sass with Webpack
-[![Tibicenas version][tibicenas-badge]][shields-url]
+[![Tibicenas version][tibicenas-badge]][url-shields]
 [![nodejs dependencies][david-dm-badge]][david-dm-url]
 [![nodejs devDependencies][david-dm-badge--dev]][david-dm-url]
 ## Updating Readme Doc, major update is coming!
@@ -37,10 +38,16 @@ $ npm uninstall <package-name>
 ```
 
 [tibicenas-badge]: https://img.shields.io/badge/tibicenas-v1.0.0-blue.svg
-[shields-url]: https://shields.io/
+[url-shields]: https://shields.io/
 
-[react-logo]: https://cdn.worldvectorlogo.com/logos/react.svg
-[react-url]: https://facebook.github.io/react/
+[logo-webpack]: https://cdn.worldvectorlogo.com/logos/webpack.svg
+[logo-express]: https://cdn.worldvectorlogo.com/logos/express-109.svg
+[logo-sass]: https://cdn.worldvectorlogo.com/logos/sass-1.svg
+[logo-react]: https://cdn.worldvectorlogo.com/logos/react.svg
+[logo-react-router]: https://cdn.worldvectorlogo.com/logos/react-router.svg
+[logo-redux]: https://cdn.worldvectorlogo.com/logos/redux.svg
+
+[url-react]: https://facebook.github.io/react/
 
 [david-dm-badge]: https://david-dm.org/hectorLS/tibicenas-framework.svg
 [david-dm-badge--dev]: https://david-dm.org/hectorLS/tibicenas-framework/dev-status.svg
