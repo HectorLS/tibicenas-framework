@@ -1,5 +1,5 @@
-# Tibicenas Framework
-## :floppy_disk:
+# :floppy_disk: Tibicenas Framework
+[![nodejs dependencies][logo-react]{:height="200px"}][url-react]
 
 ## React + Sass with Webpack
 [![Tibicenas version][tibicenas-badge]][url-shields]
