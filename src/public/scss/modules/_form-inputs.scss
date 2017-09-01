@@ -1,4 +1,21 @@
 
+
+// The input element is the one that gonna have the classes:
+// has-no-error, has-error, has-warning, is-disabled, is-readonly
+// the {} in the sample means that these content must be added dynamically using javascript
+
+// SAMPLE
+
+// <label class='input-label'>
+//   <input type='text' class='{dynamic class}' name='name' placeholder='placeholder' disabled>
+//   <hr>
+//   <span class='title'>input label name</span>
+//   <p class='msg'>{dynamic message}</p>
+// </label>
+
+
+
+
 .input-label {
   background-color: $white;
   display: block;
@@ -38,7 +55,7 @@
     transition: all 500ms ease;
   }
 
-  [type="text"] {
+  [type='text'] {
     border: 0;
     border-bottom-color: rgba(map-get($inputs, default), 1);
     border-bottom-style: solid;
