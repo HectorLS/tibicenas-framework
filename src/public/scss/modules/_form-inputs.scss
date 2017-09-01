@@ -1,0 +1,146 @@
+
+.input-label {
+  background-color: $white;
+  display: block;
+  max-width: 400px;
+  padding: em($base__font-size);
+  position: relative;
+
+  .title {
+    font-size: 14px;
+    left: $base__font-size;
+    margin-bottom: $base__font-size;
+    position: absolute;
+    text-align: left;
+    top: $base__font-size;
+    transition: all 400ms ease;
+  }
+
+  hr {
+    background-color: transparent;
+    border: 0;
+    height: 2px;
+    margin: auto;
+    opacity: 0;
+    transition:
+      opacity 300ms ease,
+      background-color 400ms ease,
+      width 500ms ease;
+    width: 0;
+    z-index: 2;
+  }
+
+
+  .msg {
+    font-size: 10px;
+    font-style: italic;
+    opacity: 0;
+    transition: all 500ms ease;
+  }
+
+  [type="text"] {
+    border: 0;
+    border-bottom-color: rgba(map-get($inputs, default), 1);
+    border-bottom-style: solid;
+    border-bottom-width: $input-border-bottom-size;
+    cursor: pointer;
+    font-size: $base__font-size;
+    outline: 0;
+    padding: $base__font-size*2 $base__font-size $base__font-size/2 $base__font-size;
+    padding-left: 0;
+    text-decoration: none;
+    transition: border-bottom-color 400ms ease-in-out;
+    width: 100%;
+
+    &:focus {
+      border-bottom-color: transparent;
+
+      + hr {
+        background-color: map-get($inputs, focus);
+        opacity: 1;
+        width: 100%;
+      }
+
+      ~ .title {
+        font-size: $base__font-size;
+        font-weight: 600;
+      }
+
+    }
+
+    &.has-no-error {
+      border-bottom-color: rgba(map-get($inputs, has-no-error), 1);
+
+      &:focus {
+        border-bottom-color: transparent;
+      }
+
+      ~ .title {
+        color: map-get($inputs, has-no-error);
+      }
+    }
+
+    &.has-error,
+    &.has-warning {
+
+      ~ .msg {
+        opacity: 1;
+      }
+
+      ~ .title {
+        font-size: $base__font-size;
+        font-weight: 600;
+      }
+
+
+      &:focus {
+        border-bottom-color: transparent;
+
+        ~ .msg {
+          opacity: 0;
+        }
+      }
+
+    }
+
+    &.has-error {
+      border-bottom-color: rgba(map-get($inputs, has-error), 1);
+
+      ~ .msg {
+        color: map-get($inputs, has-error);
+      }
+
+      ~ .title {
+        color: map-get($inputs, has-error);
+      }
+    }
+
+    &.has-warning {
+      border-bottom-color: rgba(map-get($inputs, has-warning), 1);
+
+      ~ .msg {
+        color: map-get($inputs, has-warning);
+      }
+
+      ~ .title {
+        color: map-get($inputs, has-warning);
+      }
+    }
+
+    &.readonly,
+    &[disabled] {
+      @include placeholder-color(map-get($inputs, is-disabled));
+      border-bottom-color: rgba(map-get($inputs, is-disabled), 1);
+      cursor: not-allowed;
+
+      ~ .msg {
+        color: map-get($inputs, is-disabled);
+        opacity: 0;
+      }
+
+      ~ .title {
+        color: map-get($inputs, is-disabled);
+      }
+    }
+  }
+}

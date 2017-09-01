@@ -4,9 +4,7 @@
 //        $CSS STANDAR COLORS         \\
 // ___________________________________//
 $css-colors: (
-  black                :	#000,
  	silver	             : #c0c0c0,
- 	gray	               : #808080,
  	white	               : #fff,
  	maroon	             : #800000,
  	red	                 : #f00,
@@ -27,6 +25,7 @@ $css-colors: (
  	azure	               : #f0ffff,
  	beige	               : #f5f5dc,
  	bisque	             : #ffe4c4,
+  black                :	#000,
  	blanchedalmond	     : #ffe4c4,
  	blueviolet	         : #8a2be2,
  	brown	               : #a52a2a,
@@ -41,7 +40,6 @@ $css-colors: (
  	darkblue	           : #00008b,
  	darkcyan	           : #008b8b,
  	darkgoldenrod	       : #b8860b,
- 	darkgray	           : #a9a9a9,
  	darkgreen	           : #006400,
  	darkgrey	           : #a9a9a9,
  	darkkhaki	           : #bdb76b,
@@ -53,13 +51,11 @@ $css-colors: (
  	darksalmon	         : #e9967a,
  	darkseagreen	       : #8fbc8f,
  	darkslateblue      	 : #483d8b,
- 	darkslategray	       : #2f4f4f,
  	darkslategrey	       : #2f4f4f,
  	darkturquoise	       : #00ced1,
  	darkviolet	         : #9400d3,
  	deeppink	           : #ff1493,
  	deepskyblue	         : #00bfff,
- 	dimgray	             : #696969,
  	dimgrey	             : #696969,
  	dodgerblue	         : #1e90ff,
  	firebrick	           : #b22222,
@@ -85,14 +81,12 @@ $css-colors: (
  	lightcoral	         : #f08080,
  	lightcyan	           : #e0ffff,
  	lightgoldenrodyellow : #fafad2,
- 	lightgray	           : #d3d3d3,
  	lightgreen	         : #90ee90,
  	lightgrey       	   : #d3d3d3,
  	lightpink	           : #ffb6c1,
  	lightsalmon	         : #ffa07a,
  	lightseagreen	       : #20b2aa,
  	lightskyblue	       : #87cefa,
- 	lightslategray	     : #789,
  	lightslategrey	     : #789,
  	lightsteelblue	     : #b0c4de,
  	lightyellow	         : #ffffe0,
@@ -136,7 +130,6 @@ $css-colors: (
 	sienna	             : #a0522d,
 	skyblue	             : #87ceeb,
 	slateblue	           : #6a5acd,
-	slategray	           : #708090,
 	slategrey	           : #708090,
 	snow	               : #fffafa,
 	springgreen	         : #00ff7f,
@@ -184,12 +177,25 @@ $color--read-only : #d2d2d2;
 // ___________________________________//
 
 $states: (
-  info    : $blue,
-  success : $green,
-  warning : $orange,
-  error   : $red
+  info     : $blue,
+  success  : $green,
+  warning  : $orange,
+  error    : $red,
+  disabled : $grey-m,
+  default  : $grey-l
 ) !default;
 
+
+
+$inputs: (
+  focus: $black,
+  has-no-error: map-get($states, success),
+  has-error: map-get($states, error),
+  has-warning: map-get($states, warning),
+  is-disabled: map-get($states, disabled),
+  is-readonly: map-get($states, disabled),
+  default: map-get($states, default)
+) !default;
 
 
 //            $Links                  \\
