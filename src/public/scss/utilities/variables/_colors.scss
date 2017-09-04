@@ -175,7 +175,6 @@ $color--read-only : #d2d2d2;
 
 //            $Notification           \\
 // ___________________________________//
-
 $states: (
   info     : $blue,
   success  : $green,
@@ -186,21 +185,21 @@ $states: (
 ) !default;
 
 
-
+//            $Inputs                 \\
+// ___________________________________//
 $inputs: (
-  focus: $black,
-  has-no-error: map-get($states, success),
-  has-error: map-get($states, error),
-  has-warning: map-get($states, warning),
-  is-disabled: map-get($states, disabled),
-  is-readonly: map-get($states, disabled),
-  default: map-get($states, default)
+  focus        : $black,
+  has-no-error : map-get($states, success),
+  has-error    : map-get($states, error),
+  has-warning  : map-get($states, warning),
+  is-disabled  : map-get($states, disabled),
+  is-readonly  : map-get($states, disabled),
+  default      : map-get($states, default)
 ) !default;
 
 
 //            $Links                  \\
 // ___________________________________//
-
 $links: (
   default : $grey-s,
   hover   : $yellow,

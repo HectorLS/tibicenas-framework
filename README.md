@@ -16,8 +16,7 @@ $ git clone git@github.com:YOUR-USERNAME/YOUR-FORKED-REPO.git
 2.Add remote from original repository in your forked repository:
 ```bash
 $ cd into-your-repos-folder/cloned/fork-repo
-$ git remote add upstream
-$ git://github.com/ORIGINAL-DEV-USERNAME/REPO-YOU-FORKED-FROM.git
+$ git remote add upstream git://github.com/ORIGINAL-USER/REPO-YOU-FORKED-FROM.git
 $ git fetch upstream
 ```
 
