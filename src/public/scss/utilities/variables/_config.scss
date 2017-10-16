@@ -12,10 +12,10 @@
 
 $mq-breakpoints: (
   mobile  : em(320px),
-  phablet : em(500px),
+  phablet : em(480px),
   tablet  : em(768px),
-  desktop : em(980px),
-  wide    : em(1300px)
+  desktop : em(992px),
+  wide    : em(1200px)
 ) !default;
 
 

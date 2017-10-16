@@ -7,6 +7,6 @@ import App from './components/App';
 
 
 ReactDOM.render(
-  <App slogan='Focus on the design' />,
+  <App slogan='Focus on the development' />,
   document.getElementById('root')
 );
