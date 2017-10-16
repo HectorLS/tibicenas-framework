@@ -1,0 +1,10 @@
+.btn {
+  border : 0;
+  outline: 0;
+  padding: 1em 2em;
+  @include btn-states('disabled');
+  @include btn-states('error');
+  @include btn-states('info');
+  @include btn-states('success');
+  @include btn-states('warning');
+}
