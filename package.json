@@ -34,11 +34,13 @@
   },
   "dependencies": {
     "bowser": "^1.8.0",
+    "headroom.js": "^0.9.4",
     "lazysizes": "^4.0.0",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-router-dom": "^4.2.2",
+    "sass-mq": "^3.3.2",
     "smooth-scrollbar": "^8.1.4"
   }
 }

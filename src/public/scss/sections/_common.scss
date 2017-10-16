@@ -1,8 +1,20 @@
-$bg: '../assets/img/bg.jpg';
+// $bg: '../assets/img/bg.jpg';
 
 body {
-  background          : url($bg);
+//  background          : url($bg);
   background-position : center;
   background-size     : cover;
   color               : $text-color;
+  background-color: royalBlue;
+}
+
+
+#scrollbar-wrapper {
+  overflow: auto;
+}
+
+
+[role='main'] {
+  border: 2px solid #f00;
+  min-height: 600px;
 }

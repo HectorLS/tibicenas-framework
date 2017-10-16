@@ -15,10 +15,11 @@ const imagesFolder = 'public/assets/img/',
       buildFolder  = 'dist',
       sourceFolder = 'src',
       PATHS = {
-        build     : path.resolve(__dirname, buildFolder),
-        src       : path.resolve(__dirname, sourceFolder),
-        appJS     : path.resolve(__dirname, `${sourceFolder}/app.js`),
-        indexHTML : path.resolve(__dirname, `${sourceFolder}/index.html`)
+        build        : path.resolve(__dirname, buildFolder),
+        src          : path.resolve(__dirname, sourceFolder),
+        node_modules : path.resolve(__dirname, 'node_modules'),
+        appJS        : path.resolve(__dirname, `${sourceFolder}/app.js`),
+        indexHTML    : path.resolve(__dirname, `${sourceFolder}/index.html`)
       };
 
 
@@ -80,10 +81,19 @@ const postcss = {
   }
 };
 
-const stylesDev  = ['style-loader', 'css-loader?sourceMap', postcss, 'sass-loader?sourceMap'];
+const scss = {
+  loader: 'sass-loader',
+  options: {
+    sourceMap: 'inline',
+    includePaths: [PATHS.node_modules]
+  }
+}
+
+const stylesDev  = ['style-loader', 'css-loader?sourceMap', postcss, scss];
+
 const stylesProd = ExtractTextPlugin.extract({
   fallback: 'style-loader',
-  use: ['css-loader', postcss, 'sass-loader'],
+  use: ['css-loader', postcss, scss],
   publicPath: buildFolder
 });
 

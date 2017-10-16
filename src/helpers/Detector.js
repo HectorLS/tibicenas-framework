@@ -6,6 +6,8 @@ class Detector {
     this.device;
     this.browser;
     this.os;
+
+    this.init();
   }
 
 
@@ -49,12 +51,14 @@ class Detector {
   }
 
 
-  getInfo() {
+  init() {
     this.detectBrowser();
     this.detectDevice();
     this.detectOS();
 
     console.log(`*******\nBrowser: ${this.browser}\nDevice: ${this.device}\nOS: ${this.os}\n*******`);
+
+    alert(`*******\nBrowser: ${this.browser}\nDevice: ${this.device}\nOS: ${this.os}\n*******`);
   }
 }
 
