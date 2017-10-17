@@ -14,7 +14,6 @@ class Navbar {
         notBottom : 'navbar--not-bottom'   // when not at bottom of scroll area
       }
     };
-
     mobileOrTablet ? this.init(true) : this.init(false);
   }
 
@@ -23,6 +22,19 @@ class Navbar {
       this.headroom = new Headroom(this.element, this.options);
       this.headroom.init();
     }
+  }
+
+  collapseMenu() {
+
+  }
+
+  expandMenu() {
+
+  }
+
+  compact(state) {
+    console.log('Check if compact the navbar:::' + state);
+    state ? this.element.classList.add('navbar--top') : this.element.classList.remove('navbar--top');
   }
 }
 

@@ -18,19 +18,22 @@ class Scroller {
   init() {
     this.scrollbar = Scrollbar.init(this.element, this.options);
     document.querySelector('body').setAttribute('scroller', true);
-    this.scrollbar.addListener(this.addListener());
+    // this.addListener();
   }
 
   update() {
     this.scrollbar.update();
   }
 
-  addListener() {
-    console.log('Listener ---> Scrolling action detected !!')
+  addListener(navbar) {
+    this.scrollbar.addListener((data) => {
+      data.offset.y === 0 ? navbar.compact(true) : navbar.compact(false);
+    });
   }
 
   scrollTo() {}
   setPosition(){}
+
   lockScroll() {}
   unlockScroll() {}
 }

@@ -3,10 +3,11 @@
   background-color: gold;
   color: black;
   height: 80px;
-  width: 100%;
-  transition: all 300ms ease-out;
   position: fixed;
+  transition: all 300ms ease-out;
   top: 0;
+  width: 100%;
+  z-index: 50;
 
   &.navbar--top {
     background-color: red;
