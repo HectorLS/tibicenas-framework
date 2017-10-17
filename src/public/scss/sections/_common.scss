@@ -8,13 +8,23 @@ body {
   background-color: royalBlue;
 }
 
-
-#scrollbar-wrapper {
-  overflow: auto;
-}
-
-
 [role='main'] {
   border: 2px solid #f00;
   min-height: 600px;
+}
+
+html, body {
+  min-height: 100%;
+}
+
+.page-wrapper {
+  position: relative;
+  min-height: 100vh;
+}
+
+[scroller='true'] {
+  #scrollbar-wrapper {
+    height: 100vh;
+    width: 100vw;
+  }
 }

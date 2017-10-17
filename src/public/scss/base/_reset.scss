@@ -4,9 +4,19 @@
 
 html {
   box-sizing: border-box;
+  font-family: sans-serif;
+  font-size: 100%;
+  -moz-osx-font-smoothing     : grayscale;
+  -webkit-font-smoothing      : antialiased;
+  -webkit-overflow-scrolling  : touch;
+  -webkit-tap-highlight-color : transparent;
+  text-size-adjust            : 100%; // *1
 }
+// *1. Prevent iOS text size adjust after orientation change, without disabling user zoom.
 
-*, *:before, *:after {
+*,
+*::after,
+*::before {
   box-sizing: inherit;
 }
 
@@ -16,22 +26,10 @@ body {
   min-height: 100%;
 }
 
-html {
-  font-family: sans-serif;
-  font-size: 100%;
-  -webkit-text-size-adjust  : 100%; // *1
-  -webkit-font-smoothing    : antialiased;
-  -moz-osx-font-smoothing   : grayscale;
-  -webkit-overflow-scrolling : touch;
-  -webkit-tap-highlight-color : transparent;
-}
-
-// *1. Prevent iOS text size adjust after orientation change, without disabling user zoom.
-
 body {
   @include x-rem(font-size, 16px);
   font-family: $font--primary;
-  line-height : $base__line-height;
+  line-height: $base__line-height;
   width : 100%;
 }
 
@@ -39,32 +37,30 @@ code {
   font-family: monospace;
 }
 
-html,
-header, nav, footer,
-body, section, aside, article, div,
-main, menu,
+html, body,
+nav, header, main, footer,
+section, aside, article, div,
 img, caption, figure, figcaption, video, audio, progress,
-span, small, strong
 h1, h2, h3, h4, h5, h6,
-p,
+p, span, small, strong
 ol, ul, li,
 dl, dt, dd,
 blockquote,
 form, fieldset, legend, label,
-table, caption, tbody, tfoot, thead, tr, th, td,
-pre, abbr, address, cite, summary, code, del, dfn, em, ins, kbd, q,samp , sub, sup, var, time, mark {
-
+table, tbody, tfoot, thead, tr, th, td,
+pre, abbr, address, cite, summary, code, 
+del, dfn, em, ins, kbd, q,samp , sub, sup, var, time, mark {
   background: transparent;
   border: 0;
+  direction: ltr;
   margin: 0;
   padding: 0;
-  direction: ltr;
 }
 
-// Correct `block` display not defined for any HTML5 element in IE 8/9.
-// Correct `block` display not defined for `details` or `summary` in IE 10/11
-//  and Firefox.
-//  Correct `block` display not defined for `main` in IE 11.
+// Correct `block` display not defined for:
+  //  any HTML5 element in IE 8/9.
+  //  <details> or <summary> in IE 10/11 and Firefox.
+  //  <main> in IE 11.
 article,
 aside,
 details,
@@ -80,7 +76,6 @@ section,
 summary {
   display: block;
 }
-
 
 p,
 span,
@@ -106,7 +101,6 @@ video {
 
 // Prevent modern browsers from displaying `audio` without controls.
 // Remove excess height in iOS 5 devices.
-
 audio:not([controls]) {
   display: none;
   height: 0;
@@ -122,24 +116,21 @@ audio:not([controls]) {
 
 a {
   background-color: transparent;  // *1
-  &:hover, &:active {
+  &:active,
+  &:hover {
     outline: 0;                   // *2
   }
 }
 // *1. Remove the gray background color from active links in IE 10.
 // *2. Improve readability when focused and also mouse hovered in all browsers.
 
-
-
-
 li {
   list-style-type: none;
 }
 
-
 img {
-  max-width: 100%;
   height: auto;
+  -ms-interpolation-mode: bicubic;   //Smooth images scaling for IE
+  max-width: 100%;
   vertical-align : middle;
-  -ms-interpolation-mode : bicubic;   //Smooth images scaling for IE
 }
