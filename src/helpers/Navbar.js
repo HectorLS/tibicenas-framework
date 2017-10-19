@@ -2,8 +2,9 @@ import Headroom from 'headroom.js';
 
 class Navbar {
   constructor(mobileOrTablet) {
-    this.element = document.querySelector('.navbar');
-    this.options = {
+    this.element  = document.getElementsByClassName('navbar')[0];
+    this.menuIcon = document.getElementById('menu-icon');
+    this.options  = {
       classes : {
         initial   : 'navbar--initialized', // when element is initialised
         pinned    : 'navbar--pinned',      // when scrolling up
@@ -17,6 +18,7 @@ class Navbar {
     mobileOrTablet ? this.init(true) : this.init(false);
   }
 
+
   init(withHeadroom) {
     if(withHeadroom) {
       this.headroom = new Headroom(this.element, this.options);
@@ -24,18 +26,22 @@ class Navbar {
     }
   }
 
-  collapseMenu() {
 
+  addListenerToMenuIcon(scroller) {
+    this.menuIcon.addEventListener('click', () => {
+      console.log(scroller.element.classlist);
+      scroller.element.classList.toggle('locked');
+    });
   }
 
-  expandMenu() {
-
-  }
 
   compact(state) {
-    console.log('Check if compact the navbar:::' + state);
     state ? this.element.classList.add('navbar--top') : this.element.classList.remove('navbar--top');
   }
+
+
+  collapseMenu() {}
+  expandMenu() {}
 }
 
 export default Navbar;

@@ -6,33 +6,33 @@ import Navbar      from './helpers/Navbar';
 import LazyLoading from './helpers/LazyLoading';
 
 
-class DY {
+class Project {
   constructor() {
     this.detector  = new Detector();
 
     if(this.detector.device !== ('mobile' || 'tablet')) {
-      // alert('DESKTOP: Activating smooth-scrollbar');
-      this.scroller = new Scroller(false);
-      this.navbar   = new Navbar(false);
-      console.log(this.navbar);
+
+      this.scroller    = new Scroller(false);
+      this.navbar      = new Navbar(false);
+      this.lazyLoading = new LazyLoading(false);
+
     } else {
-      // alert('No smooth-scrollbar on mobile or tablet !');
-      this.navbar = new Navbar(true);
+
+      this.navbar      = new Navbar(true);
+      this.lazyLoading = new LazyLoading(true);
+
     }
   }
 }
 
 
-document.addEventListener("DOMContentLoaded", function() {
-  var dy = new DY();
+document.addEventListener('DOMContentLoaded', function() {
+  var app = new Project();
 
-  if(dy.detector.device === 'desktop') {
-    dy.scroller.update();
-    dy.scroller.addListener(dy.navbar);
-    // if (dy.scroller.position.offset.y === 0) {
-      // dy.navbar.compact(true);
-    // } else {
-      // dy.navbar.compact(false);
-    // }
+  if(app.detector.device === 'desktop') {
+    app.scroller.update();
+    app.scroller.addListener(app.navbar);
   }
+
+  app.navbar.addListenerToMenuIcon(app.scroller);
 });

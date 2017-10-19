@@ -2,7 +2,7 @@ import bowser from 'bowser';
 
 class Detector {
   constructor() {
-    this.html = document.querySelector('html');
+    this.html = document.getElementsByTagName('html')[0];
     this.device;
     this.browser;
     this.os;

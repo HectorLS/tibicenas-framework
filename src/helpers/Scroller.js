@@ -3,7 +3,7 @@ import Scrollbar from 'smooth-scrollbar';
 
 class Scroller {
   constructor(mobileOrTablet) {
-    this.element = document.querySelector('#scrollbar-wrapper');
+    this.element = document.getElementById('scrollbar-wrapper');
     this.options = {
       damping: 0.25,
       thumbMinSize: 5,
@@ -17,8 +17,7 @@ class Scroller {
 
   init() {
     this.scrollbar = Scrollbar.init(this.element, this.options);
-    document.querySelector('body').setAttribute('scroller', true);
-    // this.addListener();
+    document.getElementsByTagName('body')[0].setAttribute('scroller', true);
   }
 
   update() {
@@ -34,8 +33,12 @@ class Scroller {
   scrollTo() {}
   setPosition(){}
 
-  lockScroll() {}
-  unlockScroll() {}
+  lockScroll() {
+    this.element.classList.add('locked');
+  }
+  unlockScroll() {
+    this.element.classList.remove('locked');
+  }
 }
 
 
