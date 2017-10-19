@@ -1,26 +1,26 @@
 import css from './public/scss/app.scss';
 
-import Detector    from './helpers/Detector';
-import Scroller    from './helpers/Scroller';
-import Navbar      from './helpers/Navbar';
-import LazyLoading from './helpers/LazyLoading';
+import Detector            from './helpers/Detector';
+import Scroller            from './helpers/Scroller';
+import Navbar              from './helpers/Navbar';
+import LazyLoading         from './helpers/LazyLoading';
+import ImagesBlockObserver from './helpers/ImagesBlockObserver';
 
 
 class Project {
   constructor() {
-    this.detector  = new Detector();
+    this.detector            = new Detector();
+    this.imagesBlockObserver = new ImagesBlockObserver();
+
 
     if(this.detector.device !== ('mobile' || 'tablet')) {
-
       this.scroller    = new Scroller(false);
       this.navbar      = new Navbar(false);
       this.lazyLoading = new LazyLoading(false);
-
-    } else {
-
+    }
+    else {
       this.navbar      = new Navbar(true);
       this.lazyLoading = new LazyLoading(true);
-
     }
   }
 }
@@ -35,4 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   app.navbar.addListenerToMenuIcon(app.scroller);
+  var imgContainer = document.getElementsByClassName('main-content')[0];
+  app.imagesBlockObserver.createObserver(imgContainer);
 });

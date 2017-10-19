@@ -1,0 +1,17 @@
+img {
+  transition: all 400ms ease-out;
+
+  &.lazyload,
+  &.lazyloading {
+    opacity: 0;
+  }
+
+  &.lazyloaded {
+    opacity: 1;
+  }
+
+  &.no {
+    display: none;
+  }
+
+}
