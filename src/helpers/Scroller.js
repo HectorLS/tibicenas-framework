@@ -1,6 +1,5 @@
 import Scrollbar from 'smooth-scrollbar';
 
-
 class Scroller {
   constructor(mobileOrTablet) {
     this.element = document.getElementById('scrollbar-wrapper');
@@ -11,18 +10,20 @@ class Scroller {
       alwaysShowTracks: false,
       continuousScrolling: true
     };
-
     mobileOrTablet ? '' : this.init();
   }
+
 
   init() {
     this.scrollbar = Scrollbar.init(this.element, this.options);
     document.getElementsByTagName('body')[0].setAttribute('scroller', true);
   }
 
+
   update() {
     this.scrollbar.update();
   }
+
 
   addListener(navbar) {
     this.scrollbar.addListener((data) => {
@@ -30,15 +31,16 @@ class Scroller {
     });
   }
 
-  scrollTo() {}
-  setPosition(){}
-
   lockScroll() {
     this.element.classList.add('locked');
   }
   unlockScroll() {
     this.element.classList.remove('locked');
   }
+
+
+  scrollTo() {}
+  setPosition(){}
 }
 
 

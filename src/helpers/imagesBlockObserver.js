@@ -1,4 +1,3 @@
-
 class ImagesBlockObserver {
   constructor() {
     this.defaultOptions = {
@@ -15,21 +14,17 @@ class ImagesBlockObserver {
 
   createObserver(imagesContainer) {
     const rawImagesList      = this.getAllTheImagesInTheContainer(imagesContainer);
-    console.log('rawImagesList', rawImagesList);
     const filteredImagesList = this.removeNotDisplayedImages(rawImagesList);
-    console.log('filteredImagesList', filteredImagesList);
 
     this.observer = new MutationObserver((mutations, observerInstance) => {
-
-      console.log('mutations', mutations);
-      console.log('observerInstance', observerInstance);
-
-      var i, mutation;
-      for(i = 0; i < mutations.length; i++) {
-        mutation = mutations[i];
-        this.stopObservation(mutation, observerInstance);
-      }
-    }); //.bind(null, filteredImagesList));
+      // var i, mutation;
+      // for(i = 0; i < mutations.length; i++) {
+      //   mutation = mutations[i];
+      //   console.log('inside loop');
+      //   this.stopObservation(mutation, observerInstance);
+      // }
+      this.stopObservation(mutations[0], observerInstance);
+    });
 
     var i, image;
     for(i = 0; i < filteredImagesList.length; i++) {
@@ -65,7 +60,6 @@ class ImagesBlockObserver {
 
 
   stopObservation(image, observerInstance) {
-    console.log('imgLOADED -> STOP observation');
     if ( image.target.classList.contains('lazyloaded') ) {
       observerInstance.disconnect();
     }

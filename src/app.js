@@ -5,6 +5,8 @@ import Scroller            from './helpers/Scroller';
 import Navbar              from './helpers/Navbar';
 import LazyLoading         from './helpers/LazyLoading';
 import ImagesBlockObserver from './helpers/ImagesBlockObserver';
+import Fsm                 from './helpers/Fsm';
+import Pjax                from './helpers/Pjax';
 
 
 class Project {
@@ -38,3 +40,9 @@ document.addEventListener('DOMContentLoaded', function() {
   var imgContainer = document.getElementsByClassName('main-content')[0];
   app.imagesBlockObserver.createObserver(imgContainer);
 });
+
+
+// LISTENER PARA SI NO CARGA UNA IMAGEN Y SUSTITUIRLA POR OTRA FALLBACK !!!!
+// document.addEventListener('error', function(e) {
+//   if(e.target.nodeName == 'IMG') { e.target.src = 'fallback-img.jpg';}
+// }, true);

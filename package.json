@@ -34,8 +34,11 @@
     "webpack-dev-server": "^2.9.2"
   },
   "dependencies": {
+    "arrive": "^2.4.1",
+    "barba.js": "^1.0.0",
     "bowser": "^1.8.0",
     "headroom.js": "^0.9.4",
+    "javascript-state-machine": "^3.0.1",
     "lazysizes": "^4.0.0",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
