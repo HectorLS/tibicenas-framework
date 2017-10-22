@@ -1,20 +1,70 @@
 
 .navbar {
-  background-color: gold;
-  color: black;
-  height: 50px;
+  background-color: map-get($app, bg-navbar);
+  height: map-get($navbar, height-compacted);
   position: fixed;
-  transition: all 300ms ease-out;
   top: 0;
+  transition: all 300ms ease-out;
   width: 100%;
   z-index: 50;
 
-  &.navbar--top {
-    background-color: red;
-    height: 80px;
+  ul {
+    display: inline-block;
+
+    &:first-child {
+      width: 85%;
+    }
+
+    &:last-child {
+      width: 15%;
+    }
+
+    li {
+      display: inline-block;
+      height: 100%;
+    }
   }
 
-  li {
-    display: inline-block;
+  .navbar-list {
+    height: map-get($navbar, height-compacted);
+
+    li {
+      padding: 0 .5em;
+    }
   }
+
+  .navbar-sublist {
+    text-align: right;
+  }
+
+  a {
+    color: map-get($app, text-light);
+    display: inline-block;
+    height : 100%;
+    line-height: map-get($navbar, height-compacted);
+    padding: 0 1em;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  &.navbar--top {
+    height: map-get($navbar, height);
+
+    .navbar-list {
+      height: map-get($navbar, height);
+    }
+
+    a {
+      line-height: map-get($navbar, height);
+    }
+  }
+}
+
+.testing-fullcentered {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 1px;
+  background-color: red;
 }

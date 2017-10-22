@@ -1,0 +1,123 @@
+
+
+@mixin burger--arrow($reverse) {
+  &.is-active {
+    .burger-inner {
+      &::before {
+        transform: translate3d(map-get($burger, layer-width) * -.2, 0, 0) rotate(-45deg) scale(.7, 1);
+      }
+
+      &::after {
+        transform: translate3d(map-get($burger, layer-width) * -.2, 0, 0) rotate(45deg) scale(.7, 1);
+      }
+    }
+  }
+}
+
+
+
+@mixin burger--arrow--turn($reverse) {
+  &.is-active {
+    .burger-inner {
+      transform: rotate(-180deg);
+
+      &::before {
+        transform: translate3d(8px, 0, 0) rotate(45deg) scale(.7, 1);
+      }
+
+      &::after {
+        transform: translate3d(8px, 0, 0) rotate(-45deg) scale(.7, 1);
+      }
+    }
+  }
+}
+
+
+
+@mixin burger--elastic($reverse) {
+
+  @if $reverse {
+    $degree: -135deg;
+    $degree-after: -270deg;
+  } @else {
+    $degree: 135deg;
+    $degree-after: 270deg;
+  }
+
+  .burger-inner {
+    top: map-get($burger, layer-height) / 2;
+    transition-duration: 275ms;
+    transition-timing-function: cubic-bezier(.68, -.55, .265, 1.55);
+
+    &::before {
+      top: map-get($burger, layer-height) + map-get($burger, layer-spacing);
+      transition: opacity 125ms 275ms ease;
+    }
+
+    &::after {
+      top: (map-get($burger, layer-height) * 2) + (map-get($burger, layer-spacing) * 2);
+      transition: transform 275ms cubic-bezier(.68, -.55, .265, 1.55);
+    }
+  }
+
+  &.is-active {
+    .burger-inner {
+      $y-offset: map-get($burger, layer-spacing) + map-get($burger, layer-height);
+
+      transform: translate3d(0, $y-offset, 0) rotate(135deg);
+      transition-delay: 75ms;
+
+      &::before {
+        opacity: 0;
+        transition-delay: 0s;
+      }
+
+      &::after {
+        transform: translate3d(0, $y-offset * -2, 0) rotate(-270deg);
+        transition-delay: 75ms;
+      }
+    }
+  }
+}
+
+
+
+@mixin burger--spin($reverse) {
+  .burger-inner {
+    transition-duration: 220ms;
+    transition-timing-function: cubic-bezier(.55, .055, .675, .19);
+
+    &::before {
+      transition: top 100ms 250ms ease-in,
+                  opacity 100ms ease-in;
+    }
+
+    &::after {
+      transition: bottom 100ms 250ms ease-in,
+                  transform 220ms cubic-bezier(.55, .055, .675, .19);
+    }
+  }
+
+  &.is-active {
+    .burger-inner {
+      transform: rotate(225deg);
+      transition-delay: 120ms;
+      transition-timing-function: cubic-bezier(.215, .61, .355, 1);
+
+      &::before {
+        opacity: 0;
+        top: 0;
+        transition: top 100ms ease-out,
+                    opacity 100s 120ms ease-out;
+      }
+
+      &::after {
+        bottom: 0;
+        transform: rotate(-90deg);
+        transition: bottom 100ms ease-out,
+                    transform 220ms 120ms cubic-bezier(.215, .61, .355, 1);
+      }
+    }
+  }
+
+}

@@ -13,7 +13,7 @@ figure {
 	}
 
 	figcaption {
-		color       : lighten($text-color, 30%);
+		color       : lighten(map-get($app, text-color), 30%);
 		display     : block;
 		font-style  : italic;
 		font-weight : normal;

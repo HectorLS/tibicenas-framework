@@ -29,7 +29,7 @@ class Navbar {
 
   addListenerToMenuIcon(scroller) {
     this.menuIcon.addEventListener('click', () => {
-      console.log(scroller.element.classlist);
+      this.menuIcon.classList.toggle('is-active');
       scroller.element.classList.toggle('locked');
     });
   }

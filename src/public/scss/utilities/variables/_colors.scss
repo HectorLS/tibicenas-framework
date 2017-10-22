@@ -1,6 +1,4 @@
 
-
-
 //        $CSS STANDAR COLORS         \\
 // ___________________________________//
 $css-colors: (
@@ -145,20 +143,21 @@ $css-colors: (
 	yellowgreen	         : #9acd32,
 );
 
+$white : #fff;
+$black : #000;
 
 
-// check this block
-$yellow  : #fbca28;
-$white   : #fff;
-$black   : #000;
+//            $Customs                \\
+// ___________________________________//
+$app: (
+  bg: #fff,
+  bg-navbar: map-get($css-colors, royalblue),
+  text-color: #141414,
+  text-light: #fff
+) !default;
 
-$bg-menu    : #42474e;
-$text-color: rgb(20, 20, 20);
 
-
-
-
-//            $States          \\
+//            $States                 \\
 // ___________________________________//
 $states: (
   default  : #4d4d4d,
@@ -194,16 +193,14 @@ $icons: (
 ) !default;
 
 
-
 //            $Links                  \\
 // ___________________________________//
 $links: (
-  default : map-get($states, default),
+  default : map-get($app,    text-color),
   hover   : map-get($states, hover),
   focus   : map-get($states, focus),
   visited : map-get($states, visited)
 ) !default;
-
 
 
 //            $TERMINAL               \\
@@ -217,7 +214,6 @@ $terminal: (
   keyword : #dca1ed,
   value   : #48ef4a
 ) !default;
-
 
 
 //            $SOCIAL                 \\

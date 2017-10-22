@@ -5,7 +5,7 @@ import Scroller            from './helpers/Scroller';
 import Navbar              from './helpers/Navbar';
 import LazyLoading         from './helpers/LazyLoading';
 import ImagesBlockObserver from './helpers/ImagesBlockObserver';
-import Fsm                 from './helpers/Fsm';
+import Fsm                 from './helpers/FiniteStatesMachine';
 import Pjax                from './helpers/Pjax';
 
 

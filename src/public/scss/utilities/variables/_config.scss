@@ -2,7 +2,7 @@
 //      $CONFIG
 // ======================= //
 
-
+@charset "UTF-8";
 
 //           $Breakpoints             \\
 // ___________________________________//
@@ -27,16 +27,16 @@ $google-font__url: 'http://fonts.googleapis.com/css?family=Maven+Pro';
 @import url($google-font__url);
 
 // Assign the fonts for our framework
-$google-font__name   : 'Maven Pro';
+$google-font__name   : 'Maven Pro' !default;
+
+$font--code          : "Courier New", monospace;
 
 $font--primary       : $google-font__name, sans-serif;
 $font--secondary     : $google-font__name, sans-serif;
 $font--heading       : $font--primary;
-
-$font--code          : "Courier New", monospace;
-
 $base__font          : $font--primary;
 $base__font--heading : $font--primary;
+
 
 
 //*Base values
@@ -48,6 +48,51 @@ $base__line-height--heading : ($base__line/$base__font-size--heading);
 $base__font-weight--heading : bold;
 
 
-//*Inputs
 
+//           $Font Families              \\
+// ______________________________________//
+$font-family: (
+  primary   : '"#{$google-font__name}", sans-serif',
+  secondary : '"#{$google-font__name}", sans-serif',
+  heading   : '"#{$google-font__name}", sans-serif',
+  code      : '"Courier New", monospace',
+) !default;
+
+
+
+//           $Navbar                     \\
+// ______________________________________//
+$navbar: (
+  height: 65px,
+  height-compacted: 45px,
+  width : 100%
+) !default;
+
+
+
+//           $Menu Burger                \\
+// ______________________________________//
+$burger: (
+  padding       : 15px,
+  layer-width   : 40px,
+  layer-height  : 4px,
+  layer-spacing : 6px,
+  layer-color   : #fff,
+  hover-opacity : .7,
+  layer-border-radius : 4px,
+  hover-transition-duration        : 150ms,
+  hover-transition-timing-function : linear
+) !default;
+
+// To use CSS filters as the hover effect instead of opacity,
+// set $burger-hover-use-filter as true and
+// change the value of $burger-hover-filter accordingly.
+$burger-hover-use-filter: false !default;
+$burger-hover-filter    : opacity(50%) !default;
+
+// Types (Remove or comment out what you don’t need)
+// ==================================================
+
+
+//*Inputs
 $input-border-bottom-size: 2px

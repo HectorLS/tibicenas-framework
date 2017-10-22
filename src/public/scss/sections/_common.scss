@@ -1,15 +1,9 @@
-// $bg: '../assets/img/bg.jpg';
+//  $bg: '../assets/img/bg.jpg';
+//  background          : url($bg);
 
 body {
-//  background          : url($bg);
-  background-color    : royalBlue;
-  background-position : center;
-  background-size     : cover;
-  color               : $text-color;
-}
-
-[role='main'] {
-  min-height: 600px;
+  background-color : map-get($app, bg);
+  color            : map-get($app, text-color);
 }
 
 html,
@@ -38,4 +32,28 @@ body {
       pointer-events: none;
     }
   }
+}
+
+
+[role='main'] {
+  min-height: 600px;
+}
+
+// HEIGHT BASE ON THE NAVBAR HEIGHT
+#scrollbar-wrapper {
+  padding-top: map-get($navbar, height-compacted);
+  transition: all 300ms ease-out;
+  will-change: padding-top;
+}
+
+.navbar.navbar--top {
+  + #scrollbar-wrapper {
+    padding-top: map-get($navbar, height);
+  }
+}
+
+
+
+.section {
+  padding: .5em 1em;
 }

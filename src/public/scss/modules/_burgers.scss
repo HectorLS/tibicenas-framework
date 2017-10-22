@@ -1,0 +1,71 @@
+
+.burger {
+  background-color: transparent;
+  border: 0;
+  color: inherit;
+  cursor : pointer;
+  display: inline-block;
+  font: inherit;
+  height: 100%;
+  margin: 0;
+  outline: 0;
+  overflow: visible;
+  padding: 0 map-get($burger, padding);
+  text-transform: none;
+  transition-duration: map-get($burger, hover-transition-duration);
+  transition-property: opacity, filter;
+  transition-timing-function: map-get($burger, hover-transition-timing-function);
+  @include burger--arrow(false);
+  // @include burger--arrow--turn(false);
+  // @include burger--elastic(false);
+  // @include burger--spin(false);
+
+  &:hover {
+    @if $burger-hover-use-filter == true {
+      filter: $burger-hover-filter;
+    } @else {
+      opacity: map-get($burger, hover-opacity);
+    }
+  }
+}
+
+.burger-box {
+  display: inline-block;
+  height: map-get($burger, layer-height) * 3 + map-get($burger, layer-spacing) * 2;
+  position: relative;
+  vertical-align: middle;
+  width: map-get($burger, layer-width);
+}
+
+.burger-inner {
+  display: block;
+  margin-top: map-get($burger, layer-height) / -2;
+  top: 50%;
+
+  &,
+  &::before,
+  &::after {
+    background-color: map-get($burger, layer-color);
+    border-radius: map-get($burger, layer-border-radius);
+    height: map-get($burger, layer-height);
+    position: absolute;
+    transition-duration: 150ms;
+    transition-property: transform;
+    transition-timing-function: ease;
+    width: map-get($burger, layer-width);
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+  }
+
+  &::before {
+    top: (map-get($burger, layer-spacing) + map-get($burger, layer-height)) * -1;
+  }
+
+  &::after {
+    bottom: (map-get($burger, layer-spacing) + map-get($burger, layer-height)) * -1;
+  }
+}

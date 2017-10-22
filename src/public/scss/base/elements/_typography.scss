@@ -1,12 +1,7 @@
 
-
-
 /*------------------------------------*\
     $TIPOGRAPHY
 \*------------------------------------*/
-
-
-
 
 //            $HEADINGS               \\
 // ___________________________________//
@@ -17,9 +12,9 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight    : 400;
   font-family    : $font--heading;
   text-rendering : optimizelegibility;
+  font-weight    : 400;
 }
 
 @each $heading-type, $font-size in  (h1, 32)
@@ -31,42 +26,32 @@ h6 {
   #{$heading-type}, .heading-#{$heading-type} {
 
     $line-height : ($base__line/ $font-size);
-    margin-bottom: strip-unit($line-height) * 1em;
     @include x-rem(font-size, $font-size);
+    margin-bottom: strip-unit($line-height) * 1em;
 
     @if $font-size > $base__line {
-
       $line-height-x2: $line-height * 2;
       line-height: $base__line * 2;
       line-height: strip-unit($line-height-x2) * 1em;
-
-    }
-    @else {
-
+    } @else {
       line-height: $base__line;
       line-height: strip-unit($line-height) * 1em;
-
     }
   }
 }
 
 
-//       $PARAGRAPH and $LIST         \\
+//       $PARAGRAPHS and $LIST        \\
 // ___________________________________//
 
 
 p {
+  @include x-rem(font-size, $base__font-size);
+  color: map-get($app, text-color);
   font-weight   : 300;
   line-height   : $base__line-height;
   margin-bottom : $base__line-height;
-  @include x-rem(font-size, $base__font-size);
 }
-
-
-a, p {
-  color: $text-color;
-}
-
 
 small {
 	@include x-rem(font-size, 12);
@@ -79,21 +64,19 @@ ul,
 dl,
 dd,
 address {
-	margin-bottom : $base__line-height;
+  margin-bottom : $base__line-height * 10px;
 }
 
 dt {
-	font-weight : bold;
+  font-weight : bold;
 }
 
 
 //            $BLOCKQUOTE             \\
 // ___________________________________//
-
 //*Use always a paragraph inside the blockquote tags
-
 blockquote  {
-  border-left   : 10px solid $text-color;
+  border-left   : 10px solid map-get($app, text-color);
   font-family   : $font--secondary;
   font-style    : normal;
   margin        : 0 0 $base__line-height*1px 0;
@@ -101,10 +84,11 @@ blockquote  {
   padding-right : em(15px);
 
   p {
-    color      :lighten($text-color, 15%);
-    font-style : italic;
     @include x-rem(font-size, 18);
+    color      : lighten(map-get($app, text-color), 15%);
+    font-style : italic;
   }
+
   .quote-info {
     text-align: right;
   }
@@ -112,8 +96,8 @@ blockquote  {
 
 
 q {
-  quotes     : none;
   font-style : italic;
+  quotes     : none;
 }
 
 blockquote p::before,
@@ -133,21 +117,22 @@ cite {
 // ___________________________________//
 
 hr {
+  border     : 0;
+  border-top : 1px solid map-get($app, text-color);
   clear      : both;
   display    : block;
+  height     : 1px;
   margin     : $base__line-height * 2 0;
   padding    : 0;
-  height     : 1px;
-  border     : 0;
-  border-top : 1px solid $text-color;
 }
 
 abbr[title] {
   cursor        : help;
-  border-bottom : 1px dotted lighten($text-color, 15%);
+  border-bottom : 1px dotted lighten(map-get($app, text-color), 15%);
 }
 
-b, strong {
+b,
+strong {
   font-weight : bold;
 }
 
@@ -156,23 +141,23 @@ dfn {
 }
 
 ins {
-  background-color : lighten($text-color, 75%);
-  color            : darken($text-color, 20%);
+  background-color : lighten(map-get($app, text-color), 75%);
+  color            : darken(map-get($app, text-color), 20%);
   text-decoration  : none;
 }
 
 mark {
-  background-color : $yellow;
-  color            : darken($text-color, 20%);
+  background-color : map-get($css-colors, yellow);
+  color            : darken(map-get($app, text-color), 20%);
 }
 
 pre,
 code,
 kbd,
 samp {
+  @include x-rem(font-size, 14);
   font-family : $font--code;
   line-height : $base__line-height;
-  @include x-rem(font-size, 14);
 }
 
 pre {
@@ -182,10 +167,10 @@ pre {
 
 sub,
 sup {
+  @include x-rem(font-size, 12);
   line-height    : 0;
   position       : relative;
   vertical-align : $base__line-height;
-  @include x-rem(font-size, 12);
 }
 
 sup {
