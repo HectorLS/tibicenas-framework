@@ -2,7 +2,7 @@
 //      $CONFIG
 // ======================= //
 
-@charset "UTF-8";
+@charset 'UTF-8';
 
 //           $Breakpoints             \\
 // ___________________________________//
@@ -11,12 +11,23 @@
 //*Then is the time to insert a breakpoint!
 
 $mq-breakpoints: (
-  mobile  : em(320px),
-  phablet : em(480px),
-  tablet  : em(768px),
-  desktop : em(992px),
-  wide    : em(1200px)
-) !default;
+  mobile  : 320px,
+  phablet : 480px,
+  tablet  : 768px,
+  desktop : 992px,
+  wide    : 1200px,
+  4k      : 1500px
+);
+
+
+//           $Susy                    \\
+// ___________________________________//
+$susy: (
+  'columns': susy-repeat(12),
+  'gutters': .25,
+  'spread': 'wide',
+  'container-spread': 'wide',
+);
 
 
 
@@ -52,9 +63,9 @@ $base__font-weight--heading : bold;
 //           $Font Families              \\
 // ______________________________________//
 $font-family: (
-  primary   : '"#{$google-font__name}", sans-serif',
-  secondary : '"#{$google-font__name}", sans-serif',
-  heading   : '"#{$google-font__name}", sans-serif',
+  primary   : '#{$google-font__name}, sans-serif',
+  secondary : '#{$google-font__name}, sans-serif',
+  heading   : '#{$google-font__name}, sans-serif',
   code      : '"Courier New", monospace',
 ) !default;
 
@@ -74,12 +85,12 @@ $navbar: (
 // ______________________________________//
 $burger: (
   padding       : 15px,
-  layer-width   : 40px,
-  layer-height  : 4px,
+  layer-width   : 35px,
+  layer-height  : 2px,
   layer-spacing : 6px,
   layer-color   : #fff,
-  hover-opacity : .7,
   layer-border-radius : 4px,
+  hover-opacity : .7,
   hover-transition-duration        : 150ms,
   hover-transition-timing-function : linear
 ) !default;
@@ -90,8 +101,6 @@ $burger: (
 $burger-hover-use-filter: false !default;
 $burger-hover-filter    : opacity(50%) !default;
 
-// Types (Remove or comment out what you don’t need)
-// ==================================================
 
 
 //*Inputs

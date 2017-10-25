@@ -32,8 +32,8 @@
   }
 
   @else if unitless($value) {
-      @warn "Assuming #{$value} to be in pixels, attempting to convert it into pixels.";
-      @return em($value + 0px); // That may fail.
+    @warn "Assuming #{$value} to be in pixels, attempting to convert it into pixels.";
+    @return em($value + 0px); // That may fail.
   }
 
   // If the value is already in em, then do nothing and return the same value :)

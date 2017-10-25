@@ -21,4 +21,8 @@
   &::-webkit-input-placeholder {
     color: $color;
   }
+
+  &::placeholder {
+    color: $color;
+  }
 }

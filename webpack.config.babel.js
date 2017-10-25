@@ -26,8 +26,9 @@ const imagesFolder = 'public/assets/img/',
 
 //////////////////////// PLUGINS ////////////////////////
 /////////////////////////////////////////////////////////
-const HtmlPluginOptions = {
+const IndexHtmlOptions = {
   template: PATHS.indexHTML,
+  filename: 'index.html',
   minify: {
     collapseWhitespace: true
   },
@@ -54,14 +55,14 @@ const devServerOptions = {
 const pluginsDev = [
   new DashboardPlugin(),
   autoprefixer,
-  new HtmlPlugin(HtmlPluginOptions),
+  new HtmlPlugin(IndexHtmlOptions),
   new ExtractTextPlugin(ExtractTextPluginOptions),
   new webpack.HotModuleReplacementPlugin()
 ];
 
 const pluginsProd = [
   require('autoprefixer'),
-  new HtmlPlugin(HtmlPluginOptions),
+  new HtmlPlugin(IndexHtmlOptions),
   new ExtractTextPlugin(ExtractTextPluginOptions)
 ];
 

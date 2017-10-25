@@ -29,6 +29,7 @@
     "sass-loader": "^6.0.6",
     "sass-mq": "^3.3.2",
     "style-loader": "^0.18.2",
+    "susy": "^3.0.1",
     "webpack": "^3.8.0",
     "webpack-dashboard": "^1.0.0",
     "webpack-dev-server": "^2.9.2"

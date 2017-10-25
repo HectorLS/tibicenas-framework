@@ -1,0 +1,29 @@
+
+.section--susy-columns {
+  display         : flex;
+  flex-direction  : row;
+  flex-wrap       : wrap;
+  justify-content : center;
+  align-items     : stretch;
+  align-content   : stretch; // Align flex-items on multilines containers
+
+  .col {
+    order: 0;
+    flex: 0 1 auto;
+    align-self: auto;
+    background-color: rgba(map-get($css-colors, tomato), .4);
+    border: 1px solid rgba(30,30,30, .8);
+    min-height: 80px;
+    padding: 1em;
+    margin-bottom: .5em;
+    width: susy-span(12);
+
+    @include mq($from: phablet) {
+      width: susy-span(6);
+    }
+
+    @include mq($from: desktop) {
+      width: susy-span(3);
+    }
+  }
+}

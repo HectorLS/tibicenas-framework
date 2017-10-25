@@ -15,10 +15,16 @@
   transition-duration: map-get($burger, hover-transition-duration);
   transition-property: opacity, filter;
   transition-timing-function: map-get($burger, hover-transition-timing-function);
-  @include burger--arrow(false);
+  // @include burger--arrow(false);
   // @include burger--arrow--turn(false);
+  // @include burger--collapse(false);
   // @include burger--elastic(false);
+  // @include burger--emphatic(false);
+  // @include burger--minus(false);
+  @include burger--slider(false);
   // @include burger--spin(false);
+  // @include burger--stand(false);
+  // @include burger--vortex(false);
 
   &:hover {
     @if $burger-hover-use-filter == true {

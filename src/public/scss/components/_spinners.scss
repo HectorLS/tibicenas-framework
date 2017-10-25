@@ -1,0 +1,109 @@
+@function delay($interval, $count, $index) {
+  @return ($index * $interval) - ($interval * $count);
+}
+
+$spinner: (
+  fill-color  : #fff,
+  ball-size   : 50px,
+  margins     : 2px,
+  line-height : 35px,
+  line-width  : 4px
+) !default;
+
+
+@mixin global-animation() {
+  animation-fill-mode: both;
+}
+
+@mixin ball() {
+  background-color: map-get($spinner, fill-color);
+  width: map-get($spinner, ball-size);
+  height: map-get($spinner, ball-size);
+  border-radius: 100%;
+  margin: map-get($spinner, margins);
+  animation-fill-mode: both;
+}
+
+
+
+@mixin lines() {
+  background-color: map-get($spinner, fill-color);
+  width: map-get($spinner, line-width);
+  height: map-get($spinner, line-height);
+  margin: map-get($spinner, margins);
+  border-radius: 2px;
+}
+
+// BALL SCALE !!!
+@keyframes ball-scale {
+  0% {
+    transform: scale(0.0);
+  }
+  100% {
+    transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+
+@mixin spinner--ball--scale(){
+  > div:first-child {
+    @include ball();
+    display: inline-block;
+    animation: ball-scale 1000ms 0ms ease-in-out infinite;
+  }
+}
+
+
+
+
+
+
+
+////////////
+
+@keyframes ball-scale-multiple {
+  0% {
+    transform: scale(0.0);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+@mixin spinner--ball--scale--multiple ($n: 3, $start: 2) {
+  position: relative;
+  transform: translateY((map-get($spinner, ball-size)) * -1 / 2);
+
+  > div {
+    @for $i from $start through $n {
+      &:nth-child(#{$i}) {
+        animation-delay: delay(.2s, $i - 1);
+      }
+    }
+    @include ball();
+    animation : ball-scale-multiple 1s 0s linear infinite;
+    position: absolute;
+    left      : -30px;
+    top       : 0;
+    opacity   : 0;
+    margin    : 0;
+  }
+}
+
+
+
+
+
+
+.spinner-wrapper {
+  .spinner {
+    // @include spinner--ball--scale();
+    @include spinner--ball--scale--multiple();
+  }
+}
