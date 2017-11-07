@@ -3,6 +3,7 @@ import css from './public/scss/app.scss';
 import Detector            from './helpers/Detector';
 import Scroller            from './helpers/Scroller';
 import Navbar              from './helpers/Navbar';
+import Skeleton            from './components/Skeleton';
 import LazyLoading         from './helpers/LazyLoading';
 import ImagesBlockObserver from './helpers/ImagesBlockObserver';
 import Fsm                 from './helpers/FiniteStatesMachine';
@@ -19,10 +20,13 @@ class Project {
       this.scroller    = new Scroller(false);
       this.navbar      = new Navbar(false);
       this.lazyLoading = new LazyLoading(false);
+      this.fsm         = new Fsm(false);
+      this.skeleton    = new Skeleton(this.fsm)
     }
     else {
       this.navbar      = new Navbar(true);
       this.lazyLoading = new LazyLoading(true);
+      // this.fsm         = new Fsm(true);
     }
   }
 }

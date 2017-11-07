@@ -32,7 +32,22 @@ const IndexHtmlOptions = {
   minify: {
     collapseWhitespace: true
   },
-  hash: true
+  hash: true,
+  inject: 'head',
+  'files': {
+    'css': [ '[name].bundle.css' ],
+    'js': [ '[name].bundle.js'],
+    'chunks': {
+      'head': {
+        'entry': '',
+        'css': [ '[name].bundle.css' ]
+      },
+      'main': {
+        'entry': '[name].bundle.js',
+        'css': []
+      },
+    }
+  }
 };
 
 const ExtractTextPluginOptions = {

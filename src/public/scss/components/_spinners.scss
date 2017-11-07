@@ -2,46 +2,53 @@
   @return ($index * $interval) - ($interval * $count);
 }
 
+@function iteration() {
+
+}
+
 $spinner: (
   fill-color  : #fff,
-  ball-size   : 50px,
+  ball-size   : 25px,
   margins     : 2px,
-  line-height : 35px,
+  line-height : 25px,
   line-width  : 4px
 ) !default;
 
 
-@mixin global-animation() {
+@mixin ball(
+  $bg-color: map-get($spinner, fill-color),
+  $margins: map-get($spinner, margins),
+  $radius: 100%,
+  $height: map-get($spinner, ball-size),
+  $width: map-get($spinner, ball-size)
+  ) {
   animation-fill-mode: both;
+  background-color : $bg-color;
+  border-radius: $radius;
+  height : $height;
+  margin : $margins;
+  width  : $width;
 }
 
-@mixin ball() {
-  background-color: map-get($spinner, fill-color);
-  width: map-get($spinner, ball-size);
-  height: map-get($spinner, ball-size);
-  border-radius: 100%;
-  margin: map-get($spinner, margins);
-  animation-fill-mode: both;
-}
 
-
-
-@mixin lines() {
+@mixin line() {
   background-color: map-get($spinner, fill-color);
   width: map-get($spinner, line-width);
   height: map-get($spinner, line-height);
   margin: map-get($spinner, margins);
   border-radius: 2px;
+  animation-fill-mode: both;
 }
 
-// BALL SCALE !!!
+
 @keyframes ball-scale {
   0% {
-    transform: scale(0.0);
+    transform: scale(0);
   }
+
   100% {
-    transform: scale(1.0);
     opacity: 0;
+    transform: scale(1);
   }
 }
 
@@ -49,32 +56,28 @@ $spinner: (
 @mixin spinner--ball--scale(){
   > div:first-child {
     @include ball();
-    display: inline-block;
     animation: ball-scale 1000ms 0ms ease-in-out infinite;
+    display: inline-block;
   }
 }
 
-
-
-
-
-
-
-////////////
 
 @keyframes ball-scale-multiple {
   0% {
-    transform: scale(0.0);
     opacity: 0;
+    transform: scale(0);
   }
+
   5% {
     opacity: 1;
   }
+
   100% {
-    transform: scale(1.0);
     opacity: 0;
+    transform: scale(1);
   }
 }
+
 
 @mixin spinner--ball--scale--multiple ($n: 3, $start: 2) {
   position: relative;
@@ -88,22 +91,221 @@ $spinner: (
     }
     @include ball();
     animation : ball-scale-multiple 1s 0s linear infinite;
-    position: absolute;
     left      : -30px;
-    top       : 0;
-    opacity   : 0;
     margin    : 0;
+    opacity   : 0;
+    position  : absolute;
+    top       : 0;
   }
 }
 
 
+@keyframes ball-scale-ripple {
+  0% {
+    opacity: 1;
+    transform: scale(.1);
+  }
+
+  70% {
+    opacity: .7;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: .0;
+  }
+}
 
 
+@mixin spinner--ball--scale--ripple() {
+  > div:first-child {
+    @include ball(transparent);
+    animation: ball-scale-ripple 1000ms 0s infinite cubic-bezier(.21, .53, .56, .8);
+    border: 2px solid map-get($spinner, fill-color);
+  }
+}
+
+
+@keyframes ball-scale-ripple-multiple {
+  0% {
+    opacity: 1;
+    transform: scale(.1);
+  }
+
+  70% {
+    opacity: .7;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+
+@mixin spinner--ball--scale--ripple--multiple ($n:3, $start:0) {
+  position: relative;
+  transform: translateY((map-get($spinner, ball-size)) * -1 / 2);
+
+  > div {
+    @for $i from $start through $n {
+      &:nth-child(#{$i}) {
+        animation-delay: delay(.2s, $n, $i - 1);
+      }
+    }
+
+    @include ball(transparent);
+    animation: ball-scale-ripple-multiple 1.25s 0s infinite cubic-bezier(.21, .53, .56, .8);
+    border: 2px solid map-get($spinner, fill-color);
+    left: -26px;
+    margin: 0;
+    position: absolute;
+    top: -2px;
+  }
+}
+
+
+@keyframes ball-spin-fade-loader {
+  50% {
+    opacity: .3;
+    transform: scale(.4);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@mixin spinner--dots--wheel--fade($radius: (map-get($spinner, ball-size) * 1.7), $n:8, $start:1) {
+  left     : -10px;
+  position : relative;
+  top      : -10px;
+
+  > div {
+    @for $i from $start through $n {
+      &:nth-child(#{$i}) {
+        $iter: 360 / $n;
+        $quarter: ($radius / 2) + ($radius / 5.5);
+
+        @if $i == 1 {
+          top: $radius;
+          left: 0;
+        } @else if $i == 2 {
+          top: $quarter;
+          left: $quarter;
+        } @else if $i == 3 {
+          top: 0;
+          left: $radius;
+        } @else if $i == 4 {
+          top: -$quarter;
+          left: $quarter;
+        } @else if $i == 5 {
+          top: -$radius;
+          left: 0;
+        } @else if $i == 6 {
+          top: -$quarter;
+          left: -$quarter;
+        } @else if $i == 7 {
+          top: 0;
+          left: -$radius;
+        } @else if $i == 8 {
+          top: $quarter;
+          left: -$quarter;
+        }
+
+        animation: ball-spin-fade-loader 1s delay(.12s, $n, $i - 1) infinite linear;
+      }
+    }
+    @include ball();
+    position: absolute;
+  }
+}
+
+
+@keyframes line-spin-fade-loader {
+  50% {
+    opacity: .3;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@mixin spinner--line--wheel--fade($radius: (map-get($spinner, line-height) / .8), $n:8, $start:1) {
+  left     : -4px;
+  position : relative;
+  top      : -10px;
+
+  > div {
+    @for $i from $start through $n {
+      &:nth-child(#{$i}) {
+        $iter: 360 / $n;
+        $quarter: ($radius / 2) + ($radius / 5.5);
+
+        @if $i == 1 {
+          top: $radius;
+          left: 0;
+        } @else if $i == 2 {
+          top: $quarter;
+          left: $quarter;
+          transform: rotate(-45deg);
+        } @else if $i == 3 {
+          top: 0;
+          left: $radius;
+          transform: rotate(90deg);
+        } @else if $i == 4 {
+          top: -$quarter;
+          left: $quarter;
+          transform: rotate(45deg);
+        } @else if $i == 5 {
+          top: -$radius;
+          left: 0;
+        } @else if $i == 6 {
+          top: -$quarter;
+          left: -$quarter;
+          transform: rotate(-45deg);
+        } @else if $i == 7 {
+          top: 0;
+          left: -$radius;
+          transform: rotate(90deg);
+        } @else if $i == 8 {
+          top: $quarter;
+          left: -$quarter;
+          transform: rotate(45deg);
+        }
+
+        animation: line-spin-fade-loader 1.2s delay(0.12s, $n, $i) infinite ease-in-out;
+      }
+    }
+    @include line();
+    position: absolute;
+  }
+}
 
 
 .spinner-wrapper {
   .spinner {
     // @include spinner--ball--scale();
-    @include spinner--ball--scale--multiple();
+    // @include spinner--ball--scale--multiple();
+    // @include spinner--ball--scale--ripple();
+    // @include spinner--ball--scale--ripple--multiple();
+    // @include spinner--dots--wheel--fade();
+    @include spinner--line--wheel--fade();
   }
 }
+
+
+// <div class='spinner-wrapper'>
+//   <div class='spinner'>
+//     <div></div>
+//     <div></div>
+//     <div></div>
+//     <div></div>
+//     <div></div>
+//     <div></div>
+//     <div></div>
+//     <div></div>
+//   </div>
+// </div>
