@@ -11,7 +11,8 @@ const isProd = process.env.NODE_ENV === 'production';
 
 //////////////////////// FILEPATH ///////////////////////
 /////////////////////////////////////////////////////////
-const imagesFolder = 'public/assets/img/',
+const fontsFolder  = 'public/assets/fonts/',
+      imagesFolder = 'public/assets/img/',
       buildFolder  = 'dist',
       sourceFolder = 'src',
       PATHS = {
@@ -130,6 +131,13 @@ const images = {
     `file-loader?name=${imagesFolder}[name].[ext]`
   ]
 };
+
+const fonts = {
+  test: /\.(eot|ttf|woff|woff2)$/,
+  use: [
+    `file-loader?name=${fontsFolder}[name].[ext]`
+  ]
+}
 
 const html = {
   test: /\.(html)$/,
