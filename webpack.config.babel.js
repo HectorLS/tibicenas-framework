@@ -150,6 +150,19 @@ const html = {
 };
 
 
+// https://webpack.js.org/configuration/externals/
+const externals = {
+  Arrive              : 'arrive',
+  Barba               : 'barba.js',
+  bowser              : 'bowser',
+  FiniteStatesMachine : 'javascript-state-machine',
+  Headroom            : 'headroom.js',
+  jQuery              : 'jQuery',
+  lazysizes           : 'lazysizes',
+  React               : 'react',
+  Scrollbar           : 'smooth-scrollbar'
+}
+
 
 //////////////////////// WEBPACK ////////////////////////
 /////////////////////////////////////////////////////////
@@ -161,6 +174,7 @@ const webpackConfig = {
     path: PATHS.build,
     filename: '[name].bundle.js'
   },
+  // externals: externals,
   module: {
     rules: [javascript, styles, images, html]
   },
