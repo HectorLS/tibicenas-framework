@@ -41,6 +41,36 @@ h6 {
 }
 
 
+// REFACTOR THIS
+
+$mod_1: 1.067;
+$mod_2: 1.333;
+
+$h1-min: pow($mod_1, 4) * 1rem;
+$h1-max: pow($mod_2, 4) * 1rem;
+
+$h2-min: pow($mod_1, 3) * 1rem;
+$h2-max: pow($mod_2, 3) * 1rem;
+
+$h3-min: pow($mod_1, 2) * 1rem;
+$h3-max: pow($mod_2, 2) * 1rem;
+
+$h4-min: $mod_1 * 1rem;
+$h4-max: $mod_1 * 1rem;
+
+$h5-min: 1rem;
+$h5-max: 1rem;
+
+$h6-min: (1rem / $mod_1);
+$h6-max: (1rem / $mod_2);
+
+
+h1 {
+  @include fluid-font-size(font-size, 37.5rem, 80rem, $h1-min, $h1-max);
+}
+// END FLUID H1
+
+
 //       $PARAGRAPHS and $LIST        \\
 // ___________________________________//
 

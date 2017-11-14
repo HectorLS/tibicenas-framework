@@ -26,7 +26,7 @@
 // Calculate em values //
 // ------------------- //
 
-@function em($value, $font-size: $base__font-size) {
+@function em($value, $main-font-size: 16px) {
   @if strip-unit($value) == 0 {
     @return strip-unit($value);
   }
@@ -41,4 +41,39 @@
       @return $value;
   }
   @return ($value / $font-size) * 1em;
+}
+
+
+
+
+@function rem ($value, $main-font-size: 16px) {
+
+// Empty list for all values in px
+$px-values: ();
+$rem-values: ();
+
+// Iterate over entries
+@each $value in $values {
+  // If the value is zero or of a type that doesn’t need conversion, return the value untouched
+  @if index(auto inherit initial none 0, $value) or type-of($value) != "number" {
+    $px-values: append($px-values, $value);
+    $rem-values: append($rem-values, $value);
+
+  // Otherwise convert it properly
+  } @else {
+    $unit: unit($value);
+
+    @if $unit == 'px' {
+      $px-values: append($px-values, strip-unit($value) * 1px );
+      $rem-values: append($rem-values, (strip-unit($value) / strip-unit($main-font-size) * 1rem));
+    } @else {
+      $px-values: append($px-values, ($value * 1px) );
+      $rem-values: append($rem-values, ($value / strip-unit($main-font-size)) * 1rem);
+    }
+
+  }
+}
+
+// Return the property and its list of converted values
+@return $rem-values;
 }
