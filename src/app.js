@@ -35,6 +35,7 @@ class Project {
 
 document.addEventListener('DOMContentLoaded', function() {
   var app = new Project();
+  var componentButton = new Button('x-btn', false);
 
   document.getElementById('test').addEventListener('click', () => {
     var btn = new Button('.prueba', false);

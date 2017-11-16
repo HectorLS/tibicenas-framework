@@ -12,23 +12,23 @@ class Detector {
 
 
   detectBrowser() {
-    if      (bowser.chrome)  { this.html.setAttribute('browser', 'chrome');  this.browser = 'chrome';  }
-    else if (bowser.safari)  { this.html.setAttribute('browser', 'safari');  this.browser = 'safari';  }
-    else if (bowser.firefox) { this.html.setAttribute('browser', 'firefox'); this.browser = 'firefox'; }
-    else if (bowser.silk)    { this.html.setAttribute('browser', 'silk');    this.browser = 'silk';    }
-    else if (bowser.opera)   { this.html.setAttribute('browser', 'opera');   this.browser = 'opera';   }
-    else if (bowser.msedge)  { this.html.setAttribute('browser', 'msEdge');  this.browser = 'msEdge';  }
+    if      (bowser.chrome)  { this.html.setAttribute('data-browser', 'chrome');  this.browser = 'chrome';  }
+    else if (bowser.safari)  { this.html.setAttribute('data-browser', 'safari');  this.browser = 'safari';  }
+    else if (bowser.firefox) { this.html.setAttribute('data-browser', 'firefox'); this.browser = 'firefox'; }
+    else if (bowser.silk)    { this.html.setAttribute('data-browser', 'silk');    this.browser = 'silk';    }
+    else if (bowser.opera)   { this.html.setAttribute('data-browser', 'opera');   this.browser = 'opera';   }
+    else if (bowser.msedge)  { this.html.setAttribute('data-browser', 'msEdge');  this.browser = 'msEdge';  }
     else if (bowser.msie) {
-      bowser.version < 11 ? this.html.setAttribute('browser', 'msi--old') : this.html.setAttribute('browser', 'msi');
+      bowser.version < 11 ? this.html.setAttribute('data-browser', 'msi--old') : this.html.setAttribute('browser', 'msi');
       this.browser = 'msi';
     }
   }
 
 
   detectDevice() {
-    if      (bowser.mobile && !bowser.msie) { this.html.setAttribute('device', 'mobile'); this.device = 'mobile'; }
-    else if (bowser.tablet && !bowser.msie) { this.html.setAttribute('device', 'tablet'); this.device = 'tablet'; }
-    else { this.html.setAttribute('device', 'desktop'); this.device = 'desktop'; }
+    if      (bowser.mobile && !bowser.msie) { this.html.setAttribute('data-device', 'mobile'); this.device = 'mobile'; }
+    else if (bowser.tablet && !bowser.msie) { this.html.setAttribute('data-device', 'tablet'); this.device = 'tablet'; }
+    else { this.html.setAttribute('data-device', 'desktop'); this.device = 'desktop'; }
   }
 
 
@@ -36,16 +36,16 @@ class Detector {
     switch(this.device) {
       case 'mobile' :
       case 'tablet' :
-        if      (bowser.ios)          { this.html.setAttribute('os', 'ios');           this.os = 'ios'; }
-        else if (bowser.android)      { this.html.setAttribute('os', 'android');       this.os = 'android'; }
-        else if (bowser.blackberry)   { this.html.setAttribute('os', 'blackberry');    this.os = 'blackberry'; }
-        else if (bowser.windowsphone) { this.html.setAttribute('os', 'windowsphone');  this.os = 'windowsPhone'; }
+        if      (bowser.ios)          { this.html.setAttribute('data-os', 'ios');           this.os = 'ios'; }
+        else if (bowser.android)      { this.html.setAttribute('data-os', 'android');       this.os = 'android'; }
+        else if (bowser.blackberry)   { this.html.setAttribute('data-os', 'blackberry');    this.os = 'blackberry'; }
+        else if (bowser.windowsphone) { this.html.setAttribute('data-os', 'windowsphone');  this.os = 'windowsPhone'; }
         break;
       default :
       case 'desktop' :
-        if      (bowser.mac)     { this.html.setAttribute('os', 'mac');     this.os = 'mac'; }
-        else if (bowser.windows) { this.html.setAttribute('os', 'windows'); this.os = 'windows'; }
-        else if (bowser.linux)   { this.html.setAttribute('os', 'linux');   this.os = 'linux'; }
+        if      (bowser.mac)     { this.html.setAttribute('data-os', 'mac');     this.os = 'mac'; }
+        else if (bowser.windows) { this.html.setAttribute('data-os', 'windows'); this.os = 'windows'; }
+        else if (bowser.linux)   { this.html.setAttribute('data-os', 'linux');   this.os = 'linux'; }
         break;
     }
   }
