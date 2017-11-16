@@ -40,7 +40,7 @@
   @else if unit($value) == em {
       @return $value;
   }
-  @return ($value / $font-size) * 1em;
+  @return ($value / $main-font-size) * 1em;
 }
 
 

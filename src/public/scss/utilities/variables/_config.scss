@@ -11,12 +11,13 @@
 //*Then is the time to insert a breakpoint!
 
 $mq-breakpoints: (
-  mobile  : 320px,
-  phablet : 480px,
-  tablet  : 768px,
-  desktop : 992px,
-  wide    : 1200px,
-  4k      : 1500px
+  mobile       : 320px,
+  phablet      : 480px,
+  tablet       : 768px,
+  desktop-xs   : 992px,
+  desktop-md   : 1200px,
+  desktop-lg   : 1440px,
+  large-screen : 1900px
 );
 
 

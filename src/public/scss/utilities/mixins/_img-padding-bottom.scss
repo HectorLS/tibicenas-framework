@@ -1,0 +1,14 @@
+
+// This mixing is for case when we dont gonna have a wrapper of 100% width and we need to recalculate de padding bottom base on the container with
+
+@mixin img-padding-bottom($image-aspect-ratio, $number-of-columns, $border-size: 0) {
+
+  // Si tuviese border tengo que añadir un Calc del porcentaje menos los píxeles del borde
+  $value: ($image-aspect-ratio / (100% / (susy-span($number-of-columns)))) * 1%;
+
+  @if ($border-size > 0) {
+    padding-bottom: calc(#{$value} - #{$border-size * 1.5px});
+  } @else {
+    padding-bottom: $value;
+  }
+}
