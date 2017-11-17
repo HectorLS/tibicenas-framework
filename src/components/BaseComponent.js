@@ -1,6 +1,5 @@
 import States from './../helpers/StatesMachine';
 
-// var states = new States;
 
 class baseComponent {
   constructor(name, needsWatcher) {
@@ -11,10 +10,11 @@ class baseComponent {
     this.init();
   }
 
+
   init() {
-    this.stateMachine = new States;
-    // this.component.mount();
-    this.getAllComponents()
+    this.states = new States;
+    this.getAllElements()
+
     console.log('Revisar que en arrive el THIS sea el correcto')
     document.arrive(this.name, (e) => {
       console.log('Arrive detected a new component created, ADD LOGIC here !!!!!')
@@ -22,41 +22,47 @@ class baseComponent {
   }
 
 
-  getAllComponents(parent = this.body) {
+  getAllElements(parent = this.body) {
     var list = parent.getElementsByClassName(this.name);
     var i, element;
     for(i = 0; i < list.length; i++) {
       element = list[i];
-      this.updateComponent(element);
+      this.createComponent(element);
     }
   }
 
-  updateComponent(element) {
-    // var isInThePool = false;
+
+  createComponent(element) {
+    var hasSomeId;
+
+    // See if the element is stored as a component by checking the ID
     if (!element.hasAttribute('id') ||
          element.getAttribute('id') === null ||
          element.getAttribute('id') === '') {
       // Doesn't have any ID
-      this.updateId(false, element)
-        .then((component) => {
-          this.updatePool(component);
-          component.mount();
-        }
-      );
+      hasSomeId = false;
     } else {
       if(element.getAttribute('id').indexOf(this.name) <= 0) {
         // Has some ID's but no a element ID
-        this.updateId(true, element)
-          .then((component) => {
-            this.updatePool(component);
-          }
-        );
+        hasSomeId = true;
       } else {
         // Already has a component ID
-
         // Check, is this ID in the Instance POOL ?
         // If not, should be added ( or removed ) ?
       }
+    }
+
+    // If isn't tracked, update it, add the states and store it into the Pool
+    if(hasSomeId !== undefined) {
+      this.updateId(hasSomeId, element)
+        .then((component) => {
+          this.addStatesMachine(component)
+            .then((component) => {
+              this.updatePool(component);
+            }
+          );
+        }
+      );
     }
   }
 
@@ -82,8 +88,44 @@ class baseComponent {
     return component;
   }
 
+
+  async addStatesMachine(component) {
+    component.fsm = new this.states.machine();
+    await component.fsm.mount();
+    this.updateState(component);
+
+    await this.addCustomEvents();
+
+    await component.fsm.render();
+    this.updateState(component);
+
+    return component;
+  }
+
+
+  updateState(component, state) {
+    // FUTURE REFACTOR
+    // switch(FutureState) {
+    //   case: 'mount':
+    //     await component.fsm.mount();
+    //     break;
+    //   case: 'render':
+    //     await component.fsm.render();
+    //     break;
+    //   case: 'update':
+    //     await component.fsm.update();
+    //     break;
+    //   case: 'unmount':
+    //     await component.fsm.unmount();
+    //     break;
+    // }
+    component.element.setAttribute('data-state', component.fsm.state);
+  }
+
+
   updatePool(component) {
-    this.pool.push(componentObject);
+    this.pool.push(component);
+    console.log(this.pool);
   }
 
 

@@ -1,7 +1,7 @@
 import BaseComponent from './BaseComponent';
 
 class Button extends BaseComponent {
-  constructor(componentName, needsWatcher){
+  constructor(componentName, needsWatcher,){
     super(componentName, needsWatcher);
     console.log('2) CHILD component constructor runs');
   }
@@ -13,6 +13,10 @@ class Button extends BaseComponent {
     newDiv.appendChild(newContent); //añade texto al div creado.
     newDiv.classList.add('componentName');
     document.body.appendChild(newDiv);
+  }
+
+  addCustomEvents() {
+    console.log('CUSTOM EVENTS GO HERE');
   }
 }
 

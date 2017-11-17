@@ -1,6 +1,21 @@
 import Arrive              from 'arrive';
 import FiniteStatesMachine from 'javascript-state-machine';
 
+// import FiniteStatesMachine from 'javascript-state-machine';
+// var Matter = FiniteStatesMachine.factory({     //  <-- the factory is constructed here
+//     init: 'solid',
+//     transitions: [
+//       { name: 'melt',     from: 'solid',  to: 'liquid' },
+//       { name: 'freeze',   from: 'liquid', to: 'solid'  },
+//       { name: 'vaporize', from: 'liquid', to: 'gas'    },
+//       { name: 'condense', from: 'gas',    to: 'liquid' }
+//     ]
+// });
+//
+//
+
+
+
 class States {
   constructor() {
     this.options = {
@@ -11,9 +26,8 @@ class States {
         { name: 'update',  from: 'rendered',                       to: 'updated'   },
         { name: 'unmount', from: ['mounted', 'rendered, updated'], to: 'unmounted' },
       ],
-      data: {},
       methods: {
-        onMount   : () => { console.log('I mounted')   },
+        onMount   : () => { console.log('I mounted'); return true;},
         onRender  : () => { console.log('I rendered')  },
         onUpdate  : () => { console.log('I updated')   },
         onUnmount : () => { console.log('I unmounted') }
