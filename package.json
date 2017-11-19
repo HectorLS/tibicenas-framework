@@ -41,10 +41,7 @@
     "headroom.js": "^0.9.4",
     "javascript-state-machine": "^3.0.1",
     "lazysizes": "^4.0.0",
-    "prop-types": "^15.5.10",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-router-dom": "^4.2.2",
+    "plyr": "^2.0.18",
     "smooth-scrollbar": "^8.1.5"
   }
 }

@@ -1,24 +1,30 @@
 import css from './public/scss/app.scss';
 
+
+///////////////////// HELPERS ///////////////////////////
+/////////////////////////////////////////////////////////
 import Detector            from './helpers/Detector';
 import Scroller            from './helpers/Scroller';
 import Navbar              from './helpers/Navbar';
 import LazyLoading         from './helpers/LazyLoading';
 import ImagesBlockObserver from './helpers/ImagesBlockObserver';
-// import Fsm                 from './helpers/StatesMachine';
-// import BaseComponent       from './components/BaseComponent';
 import Pjax                from './helpers/Pjax';
+import States              from './helpers/StatesMachine';
 
 
+///////////////////// COMPONENTS ////////////////////////
+/////////////////////////////////////////////////////////
 import Button              from './components/Button';
+import Video               from './components/Video';
+import Card                from './components/Card';
 
 
 class Project {
   constructor() {
     this.detector            = new Detector();
+    this.states              = new States();
     this.imagesBlockObserver = new ImagesBlockObserver();
-    // this.fsm                 = new Fsm();
-
+    this.components          = {};
 
     if(this.detector.device !== ('mobile' || 'tablet')) {
       this.scroller    = new Scroller(false);
@@ -35,12 +41,14 @@ class Project {
 
 document.addEventListener('DOMContentLoaded', function() {
   var app = new Project();
-  var componentButton = new Button('x-btn', false);
 
-  document.getElementById('test').addEventListener('click', () => {
-    var btn = new Button('.prueba', false);
-    btn.createInstance();
-  });
+  app.components.button = new Button(app.states, 'x-btn',   false);
+  app.components.video  = new Video( app.states, 'x-video', true);
+  app.components.card   = new Card(  app.states, 'x-card',  false);
+
+  // document.getElementById('test').addEventListener('click', () => {
+  //   btn.createInstance();
+  // });
 
   if(app.detector.device === 'desktop') {
     app.scroller.update();

@@ -2,17 +2,17 @@ import States from './../helpers/StatesMachine';
 
 
 class baseComponent {
-  constructor(name, needsWatcher) {
+  constructor(states, name, needsWatcher) {
     this.body    = document.getElementsByTagName('body')[0];
+    this.counter = 0
     this.name    = name;
     this.pool    = [];
-    this.counter = 0
-    this.init();
+    this.states  = states;
+    this.initialize();
   }
 
 
-  init() {
-    this.states = new States;
+  initialize() {
     this.getAllElements()
 
     console.log('Revisar que en arrive el THIS sea el correcto')
