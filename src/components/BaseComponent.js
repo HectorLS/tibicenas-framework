@@ -14,10 +14,8 @@ class baseComponent {
 
   initialize() {
     this.getAllElements()
-
-    console.log('Revisar que en arrive el THIS sea el correcto')
     document.arrive(this.name, (e) => {
-      console.log('Arrive detected a new component created, ADD LOGIC here !!!!!')
+      // console.log('Arrive detected a new component created, ADD LOGIC here !!!!!')
     });
   }
 
@@ -125,7 +123,6 @@ class baseComponent {
 
   updatePool(component) {
     this.pool.push(component);
-    console.log(this.pool);
   }
 
 

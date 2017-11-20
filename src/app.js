@@ -8,8 +8,9 @@ import Scroller            from './helpers/Scroller';
 import Navbar              from './helpers/Navbar';
 import LazyLoading         from './helpers/LazyLoading';
 import ImagesBlockObserver from './helpers/ImagesBlockObserver';
-import Pjax                from './helpers/Pjax';
 import States              from './helpers/StatesMachine';
+import Pjax                from './helpers/Pjax';
+import Parallax            from './helpers/Parallax';
 
 
 ///////////////////// COMPONENTS ////////////////////////
@@ -30,6 +31,7 @@ class Project {
       this.scroller    = new Scroller(false);
       this.navbar      = new Navbar(false);
       this.lazyLoading = new LazyLoading(false);
+      this.parallax    = new Parallax(false);
     }
     else {
       this.navbar      = new Navbar(true);
@@ -56,7 +58,8 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   app.navbar.addListenerToMenuIcon(app.scroller);
-  var imgContainer = document.getElementsByClassName('main-content')[0];
+  var imgContainer = document.getElementsByClassName('section--gallery')[0];
+  // var imgContainer = document.getElementsByClassName('main-content')[0];
   app.imagesBlockObserver.createObserver(imgContainer);
 });
 

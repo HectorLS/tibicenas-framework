@@ -17,12 +17,14 @@ class ImagesBlockObserver {
     const filteredImagesList = this.removeNotDisplayedImages(rawImagesList);
 
     this.observer = new MutationObserver((mutations, observerInstance) => {
+
       // var i, mutation;
       // for(i = 0; i < mutations.length; i++) {
       //   mutation = mutations[i];
       //   console.log('inside loop');
       //   this.stopObservation(mutation, observerInstance);
       // }
+      console.log('observerInstance',  observerInstance);
       this.stopObservation(mutations[0], observerInstance);
     });
 
@@ -61,6 +63,7 @@ class ImagesBlockObserver {
 
   stopObservation(image, observerInstance) {
     if ( image.target.classList.contains('lazyloaded') ) {
+      console.log('Image with the class LAZYLOADED detected');
       observerInstance.disconnect();
     }
   }
