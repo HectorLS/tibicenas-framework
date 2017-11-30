@@ -10,6 +10,7 @@ html {
   -webkit-font-smoothing      : antialiased;
   -webkit-overflow-scrolling  : touch;
   -webkit-tap-highlight-color : transparent;
+  text-rendering              : optimizeLegibility;
   text-size-adjust            : 100%; // *1
 }
 // *1. Prevent iOS text size adjust after orientation change, without disabling user zoom.
@@ -48,7 +49,7 @@ dl, dt, dd,
 blockquote,
 form, fieldset, legend, label,
 table, tbody, tfoot, thead, tr, th, td,
-pre, abbr, address, cite, summary, code, 
+pre, abbr, address, cite, summary, code,
 del, dfn, em, ins, kbd, q,samp , sub, sup, var, time, mark {
   background: transparent;
   border: 0;

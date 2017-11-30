@@ -6,14 +6,8 @@
     <meta http-equiv='X-UA-Compatible' content='ie=edge'/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Document</title>
-    <style>
-      /*[scroller='true'] #scrollbar-wrapper {
-        height: 100vh;
-        width: 100vw;
-      }*/
-    </style>
   </head>
-  <body scroller='false'>
+  <body data-scroller='false'>
     <div id='root pjax-wrapper' class='page-wrapper'>
       <nav role='menubar' class='navbar navbar--top'>
         <ul class='navbar-list'>
@@ -44,11 +38,7 @@
         <main role='main' class='main-content'>
           <section class='section section-intro'>
             <p>Lorem ipsum</p>
-            <button id='test'>Create paragraph</button>
-            <button class='x-btn'>One button component</button>
-            <button id='withID x-' class='x-btn'>Two button component</button>
-            <button id='anotherID' class='x-btn'>Two button component</button>
-            <video poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg?v1" crossorigin="" class="x-video">
+            <video poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg?v1" crossorigin="" class="cmp-video">
                 <!-- Video files -->
                 <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.mp4" type="video/mp4">
                 <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.webm" type="video/webm">
@@ -123,15 +113,67 @@
           <span class='copyright'>Copyright 2017</span>
         </footer>
       </div> <!-- Scroller end -->
-
-      <!-- <div class='modal-wrapper'>
+      <!-- Modal 1 -->
+      <div class='modal-wrapper'>
         <div class='back-layer'></div>
         <article class='modal-content'>
           <h3>I'm a modal box</h3>
           <div class='close-wrapper'>Close</div>
         </article>
-      </div> -->
-      <a href='' class='prueba'>Another instance</a>
+      </div>
+
+      <!-- Modal 2 -->
+      <div class='modal-wrapper modal--menu'>
+        <div class='back-layer'></div>
+        <article class='modal-content'>
+          <div id="testing-line"></div>
+          <div class='menu-wrapper'>
+            <div class='menu-list-wrapper'>
+              <ul class='menu-list'>
+                <li><a href='#section1'>Section 1</a></li>
+                <li><a href='#section2'>Section 2</a> </li>
+                <li><a href='#section3'>Section 3</a></li>
+              </ul>
+            </div>
+
+
+            <div class='menu-content'>
+              <section id='section1' class='section--contact'>
+                <h4 class='title1'>Section1</h4>
+                <p>
+                  At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. Ma quande lingues coalesce, li grammatica del resultant lingue es plu simplic e regulari quam ti del coalescent lingues. Li nov lingua franca va esser plu simplic e regulari quam li existent Europan lingues.
+                </p>
+              </section>
+
+              <section id='section2' class='section--about'>
+                <h4 class='title2'>Section2</h4>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.
+                </p>
+
+                <p>
+                  Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien.
+                </p>
+
+                <p>
+                  Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet, nonummy id, imperdiet feugiat, pede. Sed lectus. Donec mollis hendrerit risus. Phasellus nec sem in justo pellentesque facilisis. Etiam imperdiet imperdiet orci. Nunc nec neque. Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi. Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo. Maecenas malesuada. Praesent congue erat at massa. Sed cursus turpis vitae tortor. Donec posuere vulputate arcu. Phasellus accumsan cursus velit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed aliquam, nisi quis porttitor congue, elit erat euismod orci, ac
+                </p>
+              </section>
+
+              <section id='section3'  class='section--follow'>
+                <h4 class='title3'>Section3</h4>
+                <p>
+                  Todas estas borrascas que nos suceden son señales de que presto ha de serenar el tiempo y han de sucedernos bien las cosas; porque no es posible que el mal ni el bien sean durables, y de aquí se sigue que, habiendo durado mucho el mal, el bien está ya cerca. Así que, no debes congojarte por las desgracias que a mí me suceden, pues a ti no te cabe parte dellas.
+                </p>
+
+                <p>
+                  Y, viéndole don Quijote de aquella manera, con muestras de tanta tristeza, le dijo: Sábete, Sancho, que no es un hombre más que otro si no hace más que otro. Todas estas borrascas que nos suceden son señales de que presto ha de serenar el tiempo y han de sucedernos bien las cosas; porque no es posible que el mal ni el bien sean durables, y de aquí se sigue que, habiendo durado mucho el mal, el bien está ya cerca. Así que, no debes congojarte por las desgracias que a mí me suceden, pues a ti no
+                </p>
+              </section>
+            </div>
+          </div>
+        </article>
+      </div>
     </div> <!-- Page-wrapper end -->
   </body>
 </html>

@@ -1,29 +1,84 @@
 .modal-wrapper {
   bottom: 0;
   left: 0;
-  opacity: 0;
   position: fixed;
+  pointer-events: none;
+  visibility: hidden;
+  user-select: none;
+  opacity: 0;
   right: 0;
   top: 0;
-  transition: all 400ms ease-out;
+  transition: all 500ms ease-out;
+  will-change: opacity;
+  z-index: 4000;
 
   .back-layer {
-    background-color: rgba(255, 255, 255, .7);
+    background-color: rgba(royalblue, 1);
+    // background-color: rgba(255,255,255, .9);
   }
 
   .back-layer,
   .modal-content {
     height: 100%;
+    position: absolute;
     width: 100%;
   }
+
   .modal-content {
     position: relative;
-    padding: 2em 1em;
 
     .close-wrapper {
       position: absolute;
       top: 0;
       right: 0;
     }
+
+  }
+
+  .close-modal-wrapper {
+    opacity: 0;
+    transition: opacity 400ms ease-out;
+    height: map-get($navbar, height-compacted);
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 4001;
+
+    @include mq($from: tablet) {
+      height: map-get($navbar, height);
+    }
   }
 }
+
+[data-scroller='true'],
+[data-scroller='false'] {
+  #scrollbar-wrapper {
+    &.scroll-locked.menu-opened {
+      ~ .modal-wrapper {
+        &.modal--menu {
+          opacity: 1;
+          pointer-events: auto;
+          visibility: visible;
+          user-select: auto;
+        }
+      }
+    }
+  }
+}
+
+[data-work='true'] {
+  .navbar {
+    opacity: 0;
+    user-select: none;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+
+// <div class="moda-wrapper">
+//   <div class="back-layer"></div>
+//   <article class="modal-content">
+//     <div class="close-wrapper"></div>
+//   </article>
+// </div>

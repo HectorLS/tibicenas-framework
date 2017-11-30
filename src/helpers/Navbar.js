@@ -4,6 +4,8 @@ class Navbar {
   constructor(mobileOrTablet) {
     this.element  = document.getElementsByClassName('navbar')[0];
     this.menuIcon = document.getElementById('menu-icon');
+    this.logo     = this.element.getElementsByClassName('logo-wrapper')[0];
+    this.menuWrapper = document.getElementsByClassName('menu-wrapper')[0];
     this.options  = {
       classes : {
         initial   : 'navbar--initialized', // when element is initialised
@@ -30,18 +32,60 @@ class Navbar {
   addListenerToMenuIcon(scroller) {
     this.menuIcon.addEventListener('click', () => {
       this.menuIcon.classList.toggle('is-active');
-      scroller.element.classList.toggle('locked');
+
+      // Smooth Menu content transition
+      if (this.menuWrapper.classList.contains('is-active')) {
+        setTimeout(()=> {
+          this.menuWrapper.classList.toggle('is-active');
+        }, 300);
+      } else {
+        this.menuWrapper.classList.toggle('is-active');
+      }
+
+      this.keepScrollPosition(scroller);
     });
   }
+
+
+  keepScrollPosition(scroller) {
+    var yOffset = window.pageYOffset;
+    scroller.element.classList.toggle('scroll-locked');
+    scroller.element.classList.toggle('menu-opened');
+
+    if(scroller.element.classList.contains('scroll-locked')) {
+      scroller.element.style.marginTop = (yOffset * -1) + 'px';
+    } else {
+      scroller.element.style.marginTop = '0px';
+      window.scrollTo(0, this.previusOffset);
+    }
+
+    this.previusOffset = yOffset;
+  }
+
+  openModalAndSaveScrollPosition(scroller) {
+    var yOffset;
+
+    scroller.customScroll ? yOffset = window.pageYOffset : yOffset = scroller.scrollbar.offset.y;
+    scroller.element.classList.toggle('scroll-locked');
+    scroller.element.classList.toggle('work-opened');
+
+    if(scroller.element.classList.contains('scroll-locked')) {
+      scroller.element.style.marginTop = (yOffset * -1) + 'px';
+    } else {
+      scroller.element.style.marginTop = '0px';
+      window.scrollTo(0, this.previusOffset);
+    }
+
+    this.previusOffset = yOffset;
+    return yOffset;
+  }
+
+
 
 
   compact(state) {
     state ? this.element.classList.add('navbar--top') : this.element.classList.remove('navbar--top');
   }
-
-
-  collapseMenu() {}
-  expandMenu() {}
 }
 
 export default Navbar;

@@ -1,7 +1,7 @@
 import BaseComponent from './BaseComponent';
 
 
-class Images extends BaseComponent {
+class Image extends BaseComponent {
   constructor(states, componentName, needsWatcher){
     super(states, componentName, needsWatcher);
     this.init();
@@ -14,4 +14,4 @@ class Images extends BaseComponent {
   }
 }
 
-export default Images;
+export default Image;

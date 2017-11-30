@@ -2,7 +2,8 @@
 //  background          : url($bg);
 
 body {
-  background-color : map-get($app, bg);
+  // background-color : map-get($app, bg);
+  background-color :turquoise;
   color            : map-get($app, text-color);
 }
 

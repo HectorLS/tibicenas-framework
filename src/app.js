@@ -1,39 +1,37 @@
 import css from './public/scss/app.scss';
 
-
 ///////////////////// HELPERS ///////////////////////////
 /////////////////////////////////////////////////////////
-import Detector            from './helpers/Detector';
-import Scroller            from './helpers/Scroller';
-import Navbar              from './helpers/Navbar';
-import LazyLoading         from './helpers/LazyLoading';
-import ImagesBlockObserver from './helpers/ImagesBlockObserver';
-import States              from './helpers/StatesMachine';
-import Pjax                from './helpers/Pjax';
-import Parallax            from './helpers/Parallax';
+import Detector       from './helpers/Detector';
+import Scroller       from './helpers/Scroller';
+import Navbar         from './helpers/Navbar';
+import LazyLoading    from './helpers/LazyLoading';
+import States         from './helpers/StatesMachine';
+import Pjax           from './helpers/Pjax';
+import TweenLite      from 'gsap/TweenLite';
+import TweenMax       from 'gsap/TweenMax';
+import CSSPlugin      from 'gsap/CSSPlugin';
+import ScrollToPlugin from 'gsap/ScrollToPlugin';
 
 
 ///////////////////// COMPONENTS ////////////////////////
 /////////////////////////////////////////////////////////
-import Button              from './components/Button';
 import Video               from './components/Video';
-import Card                from './components/Card';
 
 
 class Project {
   constructor() {
-    this.detector            = new Detector();
-    this.states              = new States();
-    this.imagesBlockObserver = new ImagesBlockObserver();
-    this.components          = {};
+    this.detector   = new Detector();
+    this.states     = new States();
+    this.components = {};
 
     if(this.detector.device !== ('mobile' || 'tablet')) {
       this.scroller    = new Scroller(false);
       this.navbar      = new Navbar(false);
       this.lazyLoading = new LazyLoading(false);
-      this.parallax    = new Parallax(false);
     }
     else {
+      this.scroller    = new Scroller(true);
       this.navbar      = new Navbar(true);
       this.lazyLoading = new LazyLoading(true);
     }
@@ -41,16 +39,10 @@ class Project {
 }
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
   var app = new Project();
 
-  app.components.button = new Button(app.states, 'x-btn',   false);
-  app.components.video  = new Video( app.states, 'x-video', true);
-  app.components.card   = new Card(  app.states, 'x-card',  false);
-
-  // document.getElementById('test').addEventListener('click', () => {
-  //   btn.createInstance();
-  // });
+  app.components.video = new Video( app.states, 'cmp-video', true);
 
   if(app.detector.device === 'desktop') {
     app.scroller.update();
@@ -58,13 +50,32 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   app.navbar.addListenerToMenuIcon(app.scroller);
-  var imgContainer = document.getElementsByClassName('section--gallery')[0];
-  // var imgContainer = document.getElementsByClassName('main-content')[0];
-  app.imagesBlockObserver.createObserver(imgContainer);
+
+
+  // TESTING MENU ANCHOR LINKS CONTENT DETECTION
+  var scrollbarContainer = document.getElementsByClassName('menu-content')[0];
+  scrollbarContainer.style.border = '4px solid red';
+  let links = document.getElementsByClassName('menu-list')[0].getElementsByTagName('a');
+
+  for (let link of links) {
+    link.addEventListener('click', (element) => {
+
+      element.preventDefault;
+      element.stopPropagation
+
+      var scrollbarContainer = document.getElementsByClassName('menu-content')[0];
+      var options = {
+        scrollTo: {
+          y: element.target.hash,
+          // autoKill: true,
+          offsetY: 268
+        },
+        ease: Power1.easeOut
+      };
+
+      TweenLite.to(scrollbarContainer, 2, options);
+
+    });
+  }
+  // END TESTING
 });
-
-
-// LISTENER PARA SI NO CARGA UNA IMAGEN Y SUSTITUIRLA POR OTRA FALLBACK !!!!
-// document.addEventListener('error', function(e) {
-//   if(e.target.nodeName == 'IMG') { e.target.src = 'fallback-img.jpg';}
-// }, true);

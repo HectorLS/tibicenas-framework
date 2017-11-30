@@ -1,6 +1,13 @@
+// <div class='close-modal-wrapper'>
+//   <button id='close-modal--work' class='close' type='button' aria-label='Close'>
+//     <span class='close-box'>
+//       <span class='close-inner'></span>
+//     </span>
+//   </button>
+// </div>
 
-.burger {
-  background-color: transparent;
+.close {
+  background-color: rgba(0,0,0,.01);;
   border: 0;
   color: inherit;
   cursor : pointer;
@@ -15,28 +22,17 @@
   transition-duration: map-get($burger, hover-transition-duration);
   transition-property: opacity, filter;
   transition-timing-function: map-get($burger, hover-transition-timing-function);
-  // @include burger--arrow(false);
-  // @include burger--arrow--turn(false);
-  @include burger--collapse(false);
-  // @include burger--elastic(false);
-  // @include burger--emphatic(false);
-  // @include burger--minus(false);
-  // @include burger--minus--two-lines(false);
-  // @include burger--slider(false);
-  // @include burger--spin(false);
-  // @include burger--stand(false);
-  // @include burger--vortex(false);
 
   &:hover {
     @if $burger-hover-use-filter == true {
-      // filter: $burger-hover-filter;
+      filter: $burger-hover-filter;
     } @else {
       // opacity: map-get($burger, hover-opacity);
     }
   }
 }
 
-.burger-box {
+.close-box {
   display: inline-block;
   height: map-get($burger, layer-height) * 3 + map-get($burger, layer-spacing) * 2;
   position: relative;
@@ -44,10 +40,12 @@
   width: map-get($burger, layer-width);
 }
 
-.burger-inner {
+.close-inner {
   display: block;
   margin-top: map-get($burger, layer-height) / -2;
   top: 50%;
+  transition-duration: 220ms;
+  transition-timing-function: cubic-bezier(.55, .055, .675, .19);
 
   &,
   &::before,
@@ -70,9 +68,34 @@
 
   &::before {
     top: (map-get($burger, layer-spacing) + map-get($burger, layer-height)) * -1;
+    transition: top 100ms 250ms ease-in, opacity 100ms ease-in;
   }
 
   &::after {
     bottom: (map-get($burger, layer-spacing) + map-get($burger, layer-height)) * -1;
+    transition: bottom 100ms 250ms ease-in, transform 220ms cubic-bezier(.55, .055, .675, .19);
+  }
+}
+
+.close {
+  &.is-active {
+    .close-inner {
+      transform: rotate(225deg);
+      transition-delay: 120ms;
+      transition-timing-function: cubic-bezier(.215, .61, .355, 1);
+
+      &::before {
+        opacity: 0;
+        top: 0;
+        transition: top 100ms ease-out,
+                    opacity 100s 120ms ease-out;
+      }
+
+      &::after {
+        bottom: 0;
+        transform: rotate(-90deg);
+        transition: bottom 100ms ease-out, transform 220ms 120ms cubic-bezier(.215, .61, .355, 1);
+      }
+    }
   }
 }

@@ -1,0 +1,188 @@
+.menu-wrapper {
+  align-content   : stretch; // Align flex-items on multilines containers
+  align-items     : stretch;
+  display         : flex;
+  flex-direction  : row;
+  flex-wrap       : wrap;
+  justify-content : space-between;
+  margin          : 0 auto;
+  padding-bottom  : 30px;
+  padding-left    : 1em;
+  // padding-top     : map-get($navbar, height-compacted);
+  padding-right   : 0;
+
+  @include mq($from: tablet) {
+    padding-left   : 3em;
+    // padding-top    : map-get($navbar, height);
+  }
+
+  .author {
+    color          : rgba(map-get($app, text-color), .3);
+    display        : block;
+    font-family    : 'Graphik-Regular';
+    font-size      : 15px;
+    font-weight    : normal;
+    letter-spacing : .3px;
+    line-height    : 25px;
+    text-align     : left;
+
+    a {
+      color: rgba(map-get($app, text-color), .3);
+      text-decoration: underline;
+    }
+
+    @include mq($from: tablet) {
+      position       : fixed;
+      top            : calc(100vh-75px);
+      left           : 3em;
+      margin-bottom  : 20px;
+    }
+  }
+
+  .menu-list-wrapper,
+  .menu-content {
+    align-self: auto;
+    flex: 0 1 auto;
+    order: 0;
+    width: susy-span(12);
+  }
+
+  .menu-list-wrapper {
+    display: none;
+
+    @include mq($from: tablet) {
+      display: block;
+      padding-top: 270px;
+      position: relative;
+      width: susy-span(3);
+
+      .menu-list {
+        position: absolute;
+
+        li {
+          display: block;
+          margin-bottom: 20px;
+
+          a {
+            font-family    : 'Graphik-Regular';
+            font-size      : 20px;
+            font-weight    : normal;
+            letter-spacing : .4px;
+            line-height    : 25px;
+            text-align     : left;
+            transition: color 300ms ease-out, margin-left 300ms ease-out;
+            will-change: color, margin-left;
+
+            &:hover {
+              text-decoration: none;
+            }
+
+            &:hover,
+            &:focus,
+            &.is-active{
+              outline: 0;
+            }
+
+            &:focus,
+            &.is-active {
+              color: rgba(245, 245, 245, 1);
+              margin-left: 25px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .menu-content {
+    // height: calc(100vh - #{map-get($navbar, height-compacted)});
+    height: 100vh;
+    order: 0;
+    overflow-y: scroll;
+    padding-right: 1em;
+    padding-top: 180px;
+    position: relative;
+    // padding-bottom: 230px;
+    // padding-bottom: 700px;
+    padding-bottom: 30px;
+
+    @include mq($from: tablet) {
+      // height: calc(100vh - #{map-get($navbar, height)});
+      width: susy-span(9);
+      padding-right: 2em;
+      padding-top: 270px;
+    }
+
+    .section--contact,
+    .section--about,
+    .section--follow {
+      border: 1px solid blue;
+      max-width: 750px;
+
+      .title {
+        color          : rgba(map-get($app, text-color), .3);
+        display        : block;
+        font-family    : 'Graphik-Regular';
+        font-size      : 20px;
+        font-weight    : normal;
+        letter-spacing : .4px;
+        line-height    : 25px;
+        margin-bottom  : 13px;
+        text-align     : left;
+
+        @include mq($from: tablet) {
+          display: none;
+        }
+      }
+
+      p {
+        font-family    : 'Graphik-Regular';
+        font-size      : 25px;
+        font-weight    : normal;
+        letter-spacing : .33px;
+        line-height    : 35px;
+        margin-bottom  : 24px;
+        text-align     : left;
+
+        &.email {
+          text-decoration: underline;
+          font-size: 22px;
+
+          @include mq($from: phablet) {
+            font-size: 25px;
+          }
+        }
+
+        @include mq($from: tablet) {
+          font-size      : 30px;
+          letter-spacing : .4px;
+        }
+      }
+    }
+
+    .section--contact {
+      padding-bottom: 90px;
+    }
+
+    .section--about {
+      padding-bottom: 115px;
+    }
+
+    .section--follow {
+      padding-bottom: 400px;
+
+      @include mq($from: tablet) {
+        padding-bottom: 700px;
+      }
+    }
+  }
+}
+
+
+
+#testing-line {
+  position: fixed;
+  border: 2px solid greenyellow;
+  top: 270px;
+  width: 100vw;
+}

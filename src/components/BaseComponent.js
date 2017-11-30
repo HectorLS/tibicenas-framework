@@ -8,20 +8,22 @@ class baseComponent {
     this.name    = name;
     this.pool    = [];
     this.states  = states;
+
     this.initialize();
   }
 
 
   initialize() {
-    this.getAllElements()
-    document.arrive(this.name, (e) => {
-      // console.log('Arrive detected a new component created, ADD LOGIC here !!!!!')
+    this.getAllElements();
+    document.arrive(`.${this.name}`, (element) => {
+      console.log('Arrive detected a new element which one match a component class:\n', element);
+      this.createComponent(element);
     });
   }
 
 
   getAllElements(parent = this.body) {
-    var list = parent.getElementsByClassName(this.name);
+    const list = parent.getElementsByClassName(this.name);
     var i, element;
     for(i = 0; i < list.length; i++) {
       element = list[i];
@@ -40,8 +42,8 @@ class baseComponent {
       // Doesn't have any ID
       hasSomeId = false;
     } else {
-      if(element.getAttribute('id').indexOf(this.name) <= 0) {
-        // Has some ID's but no a element ID
+      if(element.getAttribute('id').indexOf(this.name) < 0) {
+        // Has some ID's but no an element ID
         hasSomeId = true;
       } else {
         // Already has a component ID
@@ -50,7 +52,7 @@ class baseComponent {
       }
     }
 
-    // If isn't tracked, update it, add the states and store it into the Pool
+    // If isn't tracked, update it, and store it into the Pool
     if(hasSomeId !== undefined) {
       this.updateId(hasSomeId, element)
         .then((component) => {
@@ -92,7 +94,7 @@ class baseComponent {
     await component.fsm.mount();
     this.updateState(component);
 
-    await this.addCustomEvents();
+    await this.init(component);
 
     await component.fsm.render();
     this.updateState(component);

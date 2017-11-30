@@ -55,8 +55,7 @@ class Detector {
     this.detectBrowser();
     this.detectDevice();
     this.detectOS();
-    console.log(`*******\nBrowser: ${this.browser}\nDevice: ${this.device}\nOS: ${this.os}\n*******`);
-    // alert(`*******\nBrowser: ${this.browser}\nDevice: ${this.device}\nOS: ${this.os}\n*******`);
+    console.info(`*******\nBrowser: ${this.browser}\nDevice: ${this.device}\nOS: ${this.os}\n*******`);
   }
 }
 
