@@ -2,8 +2,7 @@
 //  background          : url($bg);
 
 body {
-  // background-color : map-get($app, bg);
-  background-color :turquoise;
+  background-color : map-get($app, bg);
   color            : map-get($app, text-color);
 }
 
@@ -18,7 +17,12 @@ body {
 }
 
 
-[scroller='true'] {
+#scrollbar-wrapper {
+  // transition: all 300ms ease-out;
+}
+
+
+[data-scroller='true'] {
   #scrollbar-wrapper {
     height: 100vh;
     width: 100vw;
@@ -26,34 +30,24 @@ body {
 }
 
 
-[scroller='true'],
-[scroller='false'] {
+[data-scroller='true'],
+[data-scroller='false'] {
   #scrollbar-wrapper {
-    &.locked {
+    margin-top: 0;
+
+    &.scroll-locked {
       pointer-events: none;
+      user-select: none;
     }
   }
 }
 
 
-[role='main'] {
-  min-height: 600px;
-}
-
-// HEIGHT BASE ON THE NAVBAR HEIGHT
-#scrollbar-wrapper {
-  padding-top: map-get($navbar, height-compacted);
-  transition: all 300ms ease-out;
-  will-change: padding-top;
-}
-
-.navbar.navbar--top {
-  + #scrollbar-wrapper {
-    padding-top: map-get($navbar, height);
+[data-scroller='false'] {
+  #scrollbar-wrapper {
+    &.scroll-locked {
+      height: 100vh; // Forces to go top;
+      overflow: hidden;
+    }
   }
-}
-
-
-.section {
-  padding: .5em 1em;
 }

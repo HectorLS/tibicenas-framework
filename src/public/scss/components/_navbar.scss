@@ -45,6 +45,8 @@
     padding: 0 1em;
     text-align: center;
     vertical-align: middle;
+    transition: line-height 200ms ease-out;
+    will-change: line-height;
   }
 
   &.navbar--top {

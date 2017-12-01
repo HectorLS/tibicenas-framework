@@ -19,6 +19,7 @@ class Scroller {
 
   init() {
     this.scrollbar = Scrollbar.init(this.element, this.options);
+    console.log(this.scrollbar);
     document.getElementsByTagName('body')[0].setAttribute('data-scroller', true);
   }
 
@@ -27,10 +28,11 @@ class Scroller {
   }
 
   addListener(navbar) {
-    this.scrollbar.addListener((data) => {
+    this.scrollbar.addListener( _.throttle((data) => {
       data.offset.y === 0 ? navbar.compact(true) : navbar.compact(false);
-      data.offset.y <= navbar.logo.getBoundingClientRect().height*2 ? navbar.logo.classList.remove('hidden') : navbar.logo.classList.add('hidden');
-    });
+      // data.offset.y <= navbar.logo.getBoundingClientRect().height*2 ? navbar.logo.classList.remove('hidden') : navbar.logo.classList.add('hidden');
+      console.log('SCROLLING EVENT');
+    }, 100));
   }
 
 
