@@ -1,0 +1,21 @@
+
+.parallax {
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+
+  &.full-width {
+    width: 100vw;
+    height: 300px;
+    background-color: tomato;
+  }
+
+  .parallax-img {
+    position: absolute;
+    left: 0;
+    /* bottom: 0; */
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}

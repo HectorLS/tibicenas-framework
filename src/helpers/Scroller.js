@@ -19,7 +19,6 @@ class Scroller {
 
   init() {
     this.scrollbar = Scrollbar.init(this.element, this.options);
-    console.log(this.scrollbar);
     document.getElementsByTagName('body')[0].setAttribute('data-scroller', true);
   }
 
@@ -28,10 +27,54 @@ class Scroller {
   }
 
   addListener(navbar) {
+    // TEMP.
+    var parallax = document.getElementsByClassName('parallax')[0];
+    var parallaxImage = parallax.getElementsByClassName('parallax-img')[0];
+    var styles;
+    // End TEMP.
+
+
     this.scrollbar.addListener( _.throttle((data) => {
       data.offset.y === 0 ? navbar.compact(true) : navbar.compact(false);
       // data.offset.y <= navbar.logo.getBoundingClientRect().height*2 ? navbar.logo.classList.remove('hidden') : navbar.logo.classList.add('hidden');
-      console.log('SCROLLING EVENT');
+      // TEMP.
+      const docEl    = document.documentElement,
+            viewport = {};
+
+      var scrollbar = this.element;
+
+      viewport.width  = docEl.clientWidth  < window.innerWidth  ? window.innerWidth  : docEl.clientWidth;
+      viewport.height = docEl.clientHeight < window.innerHeight ? window.innerHeight : docEl.clientHeight;
+
+      var element = this.getElementPosition(parallax, 0);
+      viewport.scrollX = this.scrollbar.offset.x;
+      viewport.scrollY = this.scrollbar.offset.y;
+      if(this.inYAxis(element, viewport)) {
+        console.log('element', element);
+        console.log('viewport', viewport);
+
+
+        function percentageInScreen(element, viewport){
+          return 100*element.top/viewport.height;
+        }
+
+        function getYOffset(element,viewport){
+          return (percentageInScreen(element, viewport)*element.height/2)/100;
+        }
+
+        function parallaxIsCentered(element, viewport) {
+          if( ((viewport.height/2 - element.height/2)+ 1) >= element.top  &&
+              ((viewport.height/2 - element.height/2)- 1) <= element.top ) {
+            return true;
+          }
+        }
+
+        var yOffset = getYOffset(element, viewport);
+        console.log('yOffset', yOffset);
+        styles = {transform: `translateY(-50%) translate3d(0, ${yOffset}px, 0)`}
+        Object.assign(parallaxImage.style, styles);
+      }
+      // End TEMP.
     }, 100));
   }
 
@@ -73,7 +116,6 @@ class Scroller {
     }
     else {
       // IF THE ELEMENT WITH THE SCROLL IS THE VIEWPORT
-
       // window.addEventListener('scroll', () => {
       //   viewport.scrollX = window.pageXOffset || docEl.scrollLeft;
       //   viewport.scrollY = window.pageYOffset || docEl.scrollTop;
@@ -146,6 +188,7 @@ class Scroller {
 
 
   inYAxis(elementPosition, viewport){
+    console.log(elementPosition.bottom >= 0 && elementPosition.top <= viewport.height)
     return elementPosition.bottom >= 0 && elementPosition.top <= viewport.height;
   }
 
