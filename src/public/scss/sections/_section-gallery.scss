@@ -18,6 +18,10 @@ $img-ratio: 66.7;
       order: 0;
       width: susy-span(12);
 
+      @include mq($from: phablet) {
+        width: susy-span(6);
+      }
+
       .img-wrapper {
         display: block;
         width: 100%;
@@ -30,10 +34,6 @@ $img-ratio: 66.7;
           width: 100%;
           display: block;
         }
-      }
-
-      @include mq($from: phablet) {
-        width: susy-span(6);
       }
     }
   }

@@ -1,5 +1,5 @@
 import States from './../helpers/StatesMachine';
-
+import Arrive from 'arrive';
 
 class baseComponent {
   constructor(states, name, needsWatcher) {
@@ -8,6 +8,13 @@ class baseComponent {
     this.name    = name;
     this.pool    = [];
     this.states  = states;
+
+    //Need test
+    this.arriveDefaultOptions = {
+      fireOnAttributesModification: false, // Setting it to true would make arrive event fire on existing elements which start to satisfy selector after some modification in DOM attributes (an arrive event won't fire twice for a single element even if the option is true). If false, it'd only fire for newly created elements.
+      onceOnly: false,                      // Setting it to true would ensure that registered callbacks fire only once. No need to unbind the event if the attribute is set to true, it'll automatically unbind after firing once.
+      existing: false                      // Setting it to true would ensure that the registered callback is fired for the elements that already exist in the DOM and match the selector. If options.onceOnly is set, the callback is only called once with the first element matching the selector.
+    };
 
     this.initialize();
   }
@@ -19,6 +26,11 @@ class baseComponent {
       console.log('Arrive detected a new element which one match a component class:\n', element);
       this.createComponent(element);
     });
+
+    // document.leave(`.${this.name}`, (element) => {
+      // console.log('Arrive detected an element elimination that match a component class:\n', element);
+      // this.removeComponent(element);
+    // });
   }
 
 

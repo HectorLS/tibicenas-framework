@@ -1,4 +1,3 @@
-import Arrive              from 'arrive';
 import FiniteStatesMachine from 'javascript-state-machine';
 
 

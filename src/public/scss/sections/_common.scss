@@ -19,6 +19,15 @@ body {
 
 #scrollbar-wrapper {
   // transition: all 300ms ease-out;
+  ~ .test-center {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+    height:2px;
+    background: black;
+    z-index: 9000;
+  }
 }
 
 

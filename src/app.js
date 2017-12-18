@@ -40,7 +40,7 @@ class Project {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  var app = new Project();
+  window.app = new Project();
 
   app.components.video = new Video( app.states, 'cmp-video', true);
 

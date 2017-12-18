@@ -55,23 +55,28 @@ class Scroller {
 
 
         function percentageInScreen(element, viewport){
-          return 100*element.top/viewport.height;
+          console.log(100*(element.top+(element.height/2))/viewport.height + '%');
+          return 100*(element.top+(element.height/2))/viewport.height;
         }
 
         function getYOffset(element,viewport){
-          return (percentageInScreen(element, viewport)*element.height/2)/100;
+          return (percentageInScreen(element, viewport)*element.height/-2)/100;
         }
 
-        function parallaxIsCentered(element, viewport) {
-          if( ((viewport.height/2 - element.height/2)+ 1) >= element.top  &&
-              ((viewport.height/2 - element.height/2)- 1) <= element.top ) {
-            return true;
-          }
-        }
+        // var percentageY = (viewport.scrollY - element.top + viewport.height) / (element.height + viewport.height);
+
+
+
+        // function parallaxIsCentered(element, viewport) {
+        //   if( ((viewport.height/2 - element.height/2)+ 1) >= element.top  &&
+        //       ((viewport.height/2 - element.height/2)- 1) <= element.top ) {
+        //     return true;
+        //   }
+        // }
 
         var yOffset = getYOffset(element, viewport);
         console.log('yOffset', yOffset);
-        styles = {transform: `translateY(-50%) translate3d(0, ${yOffset}px, 0)`}
+        styles = {transform: `translate3d(0, ${yOffset}px, 0)`}
         Object.assign(parallaxImage.style, styles);
       }
       // End TEMP.
