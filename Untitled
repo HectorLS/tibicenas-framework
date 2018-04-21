@@ -1,0 +1,54 @@
+
+<nav role='menubar' class='navbar navbar--top'>
+  <!-- <div class="navbar-relative-wrapper" style='position: relative;'> -->
+    <ul class='navbar-list'>
+      <li>
+        <a href='#'>
+          <div class='logo-wrapper'>
+            <img src='/assets/logo--kerococo.png' alt='Logo'>
+          </div>
+        </a>
+      </li>
+      <li id='menu-icon-wrapper'>
+        <button id='menu-icon' class='burger' type='button' aria-label='Menu' aria-controls='navigation'>
+          <span class='burger-box'>
+            <span class='burger-inner'></span>
+          </span>
+        </button>
+      </li>
+    </ul>
+
+    <div id='navbar-contents-wrapper' class='navbar-contents-wrapper'>
+      <section class='navbar-contents'>
+        <ul class='navbar-list--contents'>
+          <li>
+            Link 1
+          </li>
+          <li>
+            Link 2
+          </li>
+          <li class='hide-until-desktop'>
+            <a href='#' class='link link--logo'>
+              <div class='logo-wrapper'>
+                <img src='' alt='Logo'>
+                LOGO
+              </div>
+            </a>
+          </li>
+          <li>
+            Link 3
+          </li>
+          <li>
+            Link 4
+          </li>
+          <li class='visible-until-desktop'>
+            Link 5
+          </li>
+          <li class='visible-until-desktop'>
+            Link 6
+          </li>
+        </ul>
+      </section>
+    </div>
+  <!-- </div> -->
+</nav>

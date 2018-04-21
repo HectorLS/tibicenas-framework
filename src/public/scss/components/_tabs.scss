@@ -1,0 +1,35 @@
+.tabs-nav-list {
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include mq($from: nexus7) {
+    margin-bottom: 50px;
+  }
+
+  li {
+    display: inline-block;
+    width: auto;
+
+    .tab-button {
+      @include x-rem(font-size, 16px);
+      cursor: pointer;
+      font-family: map-get($font-family, primary);
+      font-weight: 500;
+      line-height: 15px;
+      user-select: none;
+      padding: 20px 0;
+
+      @include mq($from: nexus7) {
+        @include x-rem(font-size, 18px);
+        line-height: 24px;
+      }
+    }
+  }
+}
+
+.hide-radio {
+  display: none;
+}

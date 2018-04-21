@@ -63,12 +63,12 @@ class Scroller {
 
 
   update() {
-    this.scrollbar.update();
+    if (!!this.scrollbar) this.scrollbar.update();
   }
 
 
   destroyAll() {
-    this.scrollbar.update();
+    if (!!this.scrollbar) this.scrollbar.update();
   }
 
 

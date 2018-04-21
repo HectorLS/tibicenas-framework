@@ -1,0 +1,49 @@
+.iframe-block {
+  transform: translate(-50%, -50%);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+
+  @include mq($from: tablet) {
+    width: 84%;
+  }
+
+  // @include mq($from: desktop-xs) {
+  //   width: 84%;
+  // }
+  //
+  // @include mq($from: desktop-lg) {
+  //   width: 70%;
+  // }
+  //
+  // @include mq($from: large-screen) {
+  //   width: 60%;
+  // }
+
+  .iframe-wrapper {
+    opacity: 0;
+    position: relative;
+    transition: opacity 600ms $easePrinciple 400ms, transform 600ms $easePrinciple 400ms;
+    transform: scale(.8);
+    height: 0;
+    overflow: hidden;
+    display: block;
+    width: 100%;
+
+    &.loaded {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    iframe {
+      position: absolute;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

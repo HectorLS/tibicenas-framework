@@ -1,7 +1,7 @@
 
 
 @mixin placeholder-color($color) {
-  // This pseudo selector needs to be splitted in sigle rules.
+  // This pseudo selectors needs to be splitted in sigle rules.
   &:-moz-placeholder {
     color: $color;
   }

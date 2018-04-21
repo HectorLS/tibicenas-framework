@@ -16,7 +16,7 @@ class LazyLoading {
   constructor() {
     // DevicePixelRatio reduced on touch devices,
     // to avoid extra large (weight) images on retina displays
-    app.debice.mobileOrTablet ? this.devicePixelRatio = window.devicePixelRatio * .8 : this.devicePixelRatio = window.devicePixelRatio * .8;
+    app.device.mobileOrTablet ? this.devicePixelRatio = window.devicePixelRatio * .8 : this.devicePixelRatio = window.devicePixelRatio * .8;
     window.lazySizesConfig.OptimumX = () => {
       return this.devicePixelRatio;
     }

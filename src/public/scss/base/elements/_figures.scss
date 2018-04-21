@@ -6,7 +6,7 @@
     $FIGURE
 \*------------------------------------*/
 figure {
-	margin-bottom : $base__line-height;
+	margin-bottom : $base__line-height*1px;
 
 	img {
 		margin-bottom : $base__line-height / 4;

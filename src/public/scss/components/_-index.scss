@@ -8,9 +8,28 @@
 @import 'modals';
 
 
-// $Navbar
+// $Navbar Default
 // ================================================
 @import 'navbar';
+
+
+// $Burguers
+// ================================================
+@import 'burgers';
+
+
+// $Accordion
+// ================================================
+@import 'accordion';
+
+
+// $Tabs
+// ================================================
+@import 'tabs';
+
+// $Close-icon
+// ================================================
+@import 'close-icon';
 
 
 // $Spinners
@@ -23,26 +42,21 @@
 @import 'buttons';
 
 
-// $Burguers
-// ================================================
-@import 'burgers';
-
-
-// $Close Icon
-// ================================================
-@import 'close-icon';
-
-
-// $Images
+// $images
 // ================================================
 @import 'images';
 
 
-// $Parallax
+// $Iframes
 // ================================================
-@import 'parallax';
+@import 'iframes';
 
 
-// $Form Inputs
+// $Form inputs
 // ================================================
 @import 'form-inputs';
+
+
+// $Video plyr
+// ================================================
+@import 'video-plyr';

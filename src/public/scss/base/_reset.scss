@@ -19,19 +19,11 @@ html {
 *::after,
 *::before {
   box-sizing: inherit;
-}
+} // NOTE: IE 8 ignores box-sizing: border-box if min/max-width/height is used.
 
-// NOTE: IE 8 ignores box-sizing: border-box if min/max-width/height is used.
 html,
 body {
   min-height: 100%;
-}
-
-body {
-  @include x-rem(font-size, 16px);
-  font-family: $font--primary;
-  line-height: $base__line-height;
-  width : 100%;
 }
 
 code {
@@ -56,6 +48,15 @@ del, dfn, em, ins, kbd, q,samp , sub, sup, var, time, mark {
   direction: ltr;
   margin: 0;
   padding: 0;
+}
+
+body {
+  @include x-rem(font-size, 16px);
+  background-color : map-get($app, bg);
+  color            : map-get($app, text-color);
+  font-family      : map-get($font-family, primary);
+  line-height      : $base__line-height;
+  width            : 100%;
 }
 
 // Correct `block` display not defined for:
@@ -108,6 +109,10 @@ audio:not([controls]) {
 }
 
 
+video {
+  width: 100%;
+}
+
 // Address `[hidden]` styling not present in IE 8/9/10.
 // Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
 [hidden] {
@@ -134,4 +139,20 @@ img {
   -ms-interpolation-mode: bicubic;   //Smooth images scaling for IE
   max-width: 100%;
   vertical-align : middle;
+
+  &[src],
+  &[srcset] {
+  	visibility: visible;
+  }
+}
+
+button {
+  border: none;
+  box-sizing: inherit;
+  cursor: pointer;
+
+  &:active,
+  &:focus {
+    outline: 0;
+  }
 }

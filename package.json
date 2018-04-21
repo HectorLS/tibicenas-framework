@@ -44,8 +44,9 @@
     "lazysizes": "^4.0.0",
     "lodash": "^4.17.4",
     "npm": "^5.6.0",
-    "plyr": "^2.0.18",
+    "plyr": "^3.2.0",
     "rellax": "^1.4.0",
-    "smooth-scrollbar": "^8.1.5"
+    "smooth-scrollbar": "^8.1.5",
+    "swiper": "^4.2.2"
   }
 }

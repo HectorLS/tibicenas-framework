@@ -1,6 +1,8 @@
 
 @import '~susy/sass/susy';
+// @import '~susy/sass/plugins/svg-grid';
 
 @import '~sass-mq/mq';
 
-@import '~plyr/src/scss/plyr';
+@import '~plyr/src/sass/plyr';      // Comment this line if project has no videos
+@import '~swiper/dist/css/swiper';  // Comment this line if project has no sliders

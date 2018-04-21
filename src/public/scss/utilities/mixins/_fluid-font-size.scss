@@ -1,22 +1,13 @@
-@mixin fluid-font-size($properties, $min-screen, $max-screen, $min-value, $max-value) {
-  & {
-    @each $property in $properties {
-      #{$property}: $min-value;
-    }
-
-    @media screen and (min-width: $min-screen) {
-      @each $property in $properties {
-        #{$property}: calc-interpolation($min-screen, $min-value, $max-screen, $max-value);
-      }
-    }
-
-    @media screen and (min-width: $max-screen) {
-      @each $property in $properties {
-        #{$property}: $max-value;
-      }
-    }
-  }
-}
-
-
 // https://www.smashingmagazine.com/2016/05/fluid-typography/
+@mixin fluid-font($min-breakpoint, $max-breakpoint, $min, $max) {
+
+  $min-screen: rem(map-get($mq-breakpoints, $min-breakpoint));
+  $max-screen: rem(map-get($mq-breakpoints, $max-breakpoint));
+
+  $min-value: rem($min);
+  $max-value: rem($max);
+  $max-value-line-height: rem($max + 8px);
+
+  font-size: calc-interpolation($min-screen, $min-value, $max-screen, $max-value);
+  line-height: calc-interpolation($min-screen, $min-value, $max-screen, $max-value-line-height);
+}

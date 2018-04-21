@@ -4,41 +4,59 @@ class Pjax {
   constructor() {
     Barba.Pjax.Dom.wrapperId      = 'pjax-wrapper';
     Barba.Pjax.Dom.containerClass = 'pjax-content';
-    this.counter = 0;
+
     const self = this;
+
+    this.oldContainerDimensions = {
+      width: 0,
+      height: 0
+    };
+
     this.options = {
       start: function() {
-        Promise
-        .all([this.newContainerLoading, this.fadeOut()])
-        .then(this.fadeIn.bind(this));
+        // Store oldContainerDimensions for the new elements those are based on position logic
+        self.oldContainerDimensions = app.scroller.getElementPosition(this.oldContainer);
+
+
+        Promise.all([this.newContainerLoading, this.fadeOut()])
+          .then(this.fadeIn.bind(this));
       },
       fadeOut: function() {
-        this.counter++
         const deferred = Barba.Utils.deferred();  // Promise to tell Barba that must to wait until we finish here
 
         // Close navbar
         app.navbar.closeNavbar();
-
+        // This avoid the scrollbar to appears while both pages are in the DOM
+        document.body.setAttribute('data-page-loading', true);
+        // Smooth fade of the current content
         setTimeout(() => {
           this.oldContainer.classList.remove('visible');
+          app.scroller.scrollToTop();
           this.oldContainer.classList.add('hidden');
         }, 250);
-
+        //        Get page needed data        \\
+        // ___________________________________//
+        setCurrentPage();
+        self.preShowNewPageActions();
 
         setTimeout(() => {
           deferred.resolve();
         }, 550);  // This have to match the opacity transition timing in the _common.scss file + the before timeout
-
         return deferred.promise;
       },
       fadeIn: function() {
-        self.updateDataUrl(this.newContainer);
-        this.newContainer.classList.add('fade-in');
-        this.done();
 
-        window.app.scroller.restart();
-        window.app.scroller.scrollToTop();
+        self.postShowNewPageActions(this.newContainer);
+
+        //        Finish Transition           \\
+        // ___________________________________//
+        document.body.setAttribute('data-page-loading', false);
+
+        this.newContainer.classList.add('fade-in'); // Show new Content
+        self.updateDataUrl(this.newContainer);
         self.updateGoogleAnalytics();
+        this.done();                                // Finish Page transition
+        app.scroller.restart(this.newContainer);    // Reset Scroller
       }
     };
     this.init();
@@ -72,6 +90,16 @@ class Pjax {
 
     this.addCustomTransition();
   }
+
+
+  preShowNewPageActions() {
+
+  }
+
+  postShowNewPageActions() {
+
+  }
+
 
 
   addCustomTransition() {
@@ -113,8 +141,8 @@ class Pjax {
 
 
   updateGoogleAnalytics() {
-    const title = document.getElementsByTagName('title')[0].textContent;
-    if(!!window.gtag) {
+    if(!!window.gtag && !!window.googleAnalyticsId) {
+      const title = document.getElementsByTagName('title')[0].textContent;
       window.gtag('config', window.googleAnalyticsId, {'page_path': window.location.pathname, 'title': title});
     }
   }

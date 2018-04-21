@@ -1,18 +1,11 @@
 
 
-
-
-
-/*------------------------------------*\
-    $LINKS
-\*------------------------------------*/
+//    		$Links                      \\
+// ___________________________________//
 a {
-	color : map-get($links, default);
+	color: map-get($links, default);
 	text-decoration : none;
-
-	&:visited {
-		color : map-get($links, visited);
-	}
+	transition      : all 300ms $easePrinciple;
 
 	&:hover {
 		text-decoration : underline;
@@ -20,15 +13,20 @@ a {
 	}
 
 	&:focus {
-		outline : thin dotted;
 		color   : map-get($links, focus);
 	}
 
+	&:visited {
+		color : map-get($links, visited);
+	}
+
 	&:hover,
+	&:focus,
 	&:active {
 		outline : 0;
 	}
 }
+
 
 //    		$Screen Reader Text         \\
 // ___________________________________//

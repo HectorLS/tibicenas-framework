@@ -1,0 +1,38 @@
+
+.cmp-link-to-embed {
+  cursor: pointer;
+
+  .icon {
+    display: inline-block;
+    opacity: 1;
+    position: absolute;
+    visibility: visible;
+    user-select: none;
+    z-index: 15;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    .icon--video {
+      polygon {
+        transition: fill 300ms $easePrinciple;
+        will-change: fill;
+      }
+    }
+  }
+
+  &:hover {
+    img,
+    video {
+      transform: scale(1);
+    }
+
+    .icon {
+      .icon--video {
+        polygon {
+          fill: map-get($app, yellow);
+        }
+      }
+    }
+  }
+}

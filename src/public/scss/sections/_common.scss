@@ -1,43 +1,119 @@
-//  $bg: '../assets/img/bg.jpg';
-//  background          : url($bg);
 
 body {
-  background-color : map-get($app, bg);
-  color            : map-get($app, text-color);
+  transition: background-color 300ms $easePrinciple;
+  will-change: background-color;
+
+  .scrollbar-track {
+    background: transparent;
+    background-color: transparent;
+    z-index: 6000;
+
+    &.scrollbar-track-y {
+      width: 11px;
+      margin: 0 auto;
+      text-align: center;
+
+      .scrollbar-thumb.scrollbar-thumb-y {
+        width: 7px;
+        // background: map-get($app, orange);
+        opacity: .8;
+      }
+    }
+  }
 }
 
-html,
-body {
-  min-height: 100%;
+.fixed-elements-wrapper,
+#scrollbar-wrapper {
+  position: static;
+}
+
+.fixed-elements-wrapper {
+    position: static;
+    z-index: 1;
+//   position: fixed;
+//   width: 100%;
+//   height: 0;
+//   z-index: 1;
+//
+//   .navbar {
+//     position: absolute !important;
+//     z-index: 5000
+//   }
+//
+}
+
+.page-overflow-y-container {
+  height: 100%;
+  overflow-y: hidden;
+}
+
+.page-overflow-x-container {
+  overflow-x: hidden;
+  width: 100vw;
+}
+
+
+img,
+.separator {
+  user-select: none;
+  pointer-events: none;
 }
 
 .page-wrapper {
   min-height: 100vh;
-  position: relative;
+  position  : relative;
+  overflow  : hidden;
 }
 
 
-#scrollbar-wrapper {
-  // transition: all 300ms ease-out;
-  ~ .test-center {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    transform: translateY(-50%);
-    height:2px;
-    background: black;
-    z-index: 9000;
+.pjax-content {
+  opacity: 0;
+  overflow: hidden;
+  transition: opacity 300ms $easePrinciple;
+  will-change: opacity;
+
+  &.hidden,
+  &.fade-out {
+    opacity: 0;
+  }
+
+  &.visible,
+  &.fade-in {
+    opacity: 1;
+  }
+
+  &.hidden {
+    opacity: 0;
+  }
+
+  .hide-until-tablet {
+    display: none;
+
+    @include mq($from: tablet) {
+      display: block;
+    }
+  }
+
+  .visible-until-tablet {
+    display: block;
+
+    @include mq($from: tablet) {
+      display: none;
+    }
   }
 }
 
 
+//           $Main Scroller              \\
+// ______________________________________//
 [data-scroller='true'] {
+  overflow: hidden;
+
   #scrollbar-wrapper {
     height: 100vh;
-    width: 100vw;
+    width : 100%;
   }
 }
-
 
 [data-scroller='true'],
 [data-scroller='false'] {
@@ -51,16 +127,26 @@ body {
   }
 }
 
-
 [data-scroller='false'] {
   #scrollbar-wrapper {
     &.scroll-locked {
-      height: 100vh; // Forces to go top;
+      height: 100vh;     // Forces to go top;
       overflow: hidden;
     }
   }
 }
 
+
+//           $Sections                   \\
+// ______________________________________//
 .section {
-  padding: 2em 1em;
+  position: relative;
+
+  .title {
+    @include x-rem(font-size, 16px);
+  }
+
+  p,
+  .description {
+  }
 }

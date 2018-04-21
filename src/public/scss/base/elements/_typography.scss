@@ -12,7 +12,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family    : $font--heading;
+  font-family    : map-get($font-family, heading);
   text-rendering : optimizelegibility;
   font-weight    : 400;
 }
@@ -41,52 +41,20 @@ h6 {
 }
 
 
-// REFACTOR THIS
-
-$mod_1: 1.067;
-$mod_2: 1.333;
-
-$h1-min: pow($mod_1, 4) * 1rem;
-$h1-max: pow($mod_2, 4) * 1rem;
-
-$h2-min: pow($mod_1, 3) * 1rem;
-$h2-max: pow($mod_2, 3) * 1rem;
-
-$h3-min: pow($mod_1, 2) * 1rem;
-$h3-max: pow($mod_2, 2) * 1rem;
-
-$h4-min: $mod_1 * 1rem;
-$h4-max: $mod_1 * 1rem;
-
-$h5-min: 1rem;
-$h5-max: 1rem;
-
-$h6-min: (1rem / $mod_1);
-$h6-max: (1rem / $mod_2);
-
-
-h1 {
-  @include fluid-font-size(font-size, 37.5rem, 80rem, $h1-min, $h1-max);
-}
-// END FLUID H1
-
-
 //       $PARAGRAPHS and $LIST        \\
 // ___________________________________//
-
-
 p {
   @include x-rem(font-size, $base__font-size);
-  color: map-get($app, text-color);
+  color: inherit;
   font-weight   : 300;
   line-height   : $base__line-height;
-  margin-bottom : $base__line-height;
+  // margin-bottom : $base__line-height;
 }
+
 
 small {
 	@include x-rem(font-size, 12);
 }
-
 
 
 ol,
@@ -107,7 +75,7 @@ dt {
 //*Use always a paragraph inside the blockquote tags
 blockquote  {
   border-left   : 10px solid map-get($app, text-color);
-  font-family   : $font--secondary;
+  font-family   : map-get($font-family, primary);
   font-style    : normal;
   margin        : 0 0 $base__line-height*1px 0;
   padding-left  : em(15px);
@@ -130,6 +98,7 @@ q {
   quotes     : none;
 }
 
+
 blockquote p::before,
 blockquote p::after,
 q:before,
@@ -140,7 +109,6 @@ q:after {
 cite {
   font-style : normal;
 }
-
 
 
 //            $TEXT-LEVEL             \\
@@ -186,7 +154,7 @@ code,
 kbd,
 samp {
   @include x-rem(font-size, 14);
-  font-family : $font--code;
+  font-family : map-get($font-family, code);
   line-height : $base__line-height;
 }
 

@@ -1,16 +1,16 @@
-import 'babel-polyfill'; // Webpack needs
+// import 'babel-polyfill'; // Webpack needs
 import css from './public/scss/app.scss';
 
 
 ///////////////////// GLOBAL LIBS ///////////////////////
 /////////////////////////////////////////////////////////
-
+import './helpers/HandyFunctions';
 
 ///////////////////// HELPERS ///////////////////////////
 /////////////////////////////////////////////////////////
 import Device         from './helpers/Device';
+import Ajax           from './helpers/Ajax';
 import Scroller       from './helpers/Scroller';
-import Navbar         from './helpers/Navbar';
 import LazyLoading    from './helpers/LazyLoading';
 import States         from './helpers/StatesMachine';
 import Parser         from './helpers/Parser';
@@ -30,12 +30,10 @@ import Parallax        from './components/Parallax';
 /////////////////////////////////////////////////////////
 class Project {
   constructor() {
-    this.device   = new Device();
-    this.states     = new States();
-    this.components = {};
-
-    this.scroller    = new Scroller();
-    this.lazyLoading = new LazyLoading();
+    this.device      = new Device();
+    this.states      = new States();
+    this.ajax        = new Ajax();
+    this.components  = {};
   }
 }
 
@@ -43,7 +41,10 @@ class Project {
 ////////////////////// PAGE LOAD ////////////////////////
 /////////////////////////////////////////////////////////
 document.addEventListener('DOMContentLoaded', () => {
-  window.app = new Project();
+  window.app      = new Project();
+  app.scroller    = new Scroller();
+  app.lazyLoading = new LazyLoading();
+  app.pjax        = new Pjax();
 
   // Tracking current URL
   window.currentPage  = '';
@@ -64,12 +65,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if(!app.device.mobileOrTablet) {
     app.scroller.update();
-    app.scroller.addListener(app.navbar); // // OPTIMIZE:
   }
+  // app.scroller.addListener(app.navbar); // // OPTIMIZE:
+  // app.navbar.addListenerToMenuIcon(app.scroller);  // OPTIMIZE
 
 
   // TODO navbar   REFACTOR
   // TODO scroller REFACTOR
   // TODO parallax REFACTOR
-  app.navbar.addListenerToMenuIcon(app.scroller);  // OPTIMIZE
 });
