@@ -2,8 +2,8 @@ import BaseComponent from './BaseComponent';
 
 
 class Image extends BaseComponent {
-  constructor(states, componentName, needsWatcher){
-    super(states, componentName, needsWatcher);
+  constructor(componentName, needsWatcher){
+    super(componentName, needsWatcher);
     this.init();
   }
 

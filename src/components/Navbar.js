@@ -1,11 +1,13 @@
 import Headroom from 'headroom.js';
 
 class Navbar {
-  constructor(mobileOrTablet) {
+  constructor() {
     this.element  = document.getElementsByClassName('navbar')[0];
     this.menuIcon = document.getElementById('menu-icon');
-    this.logo     = this.element.getElementsByClassName('logo-wrapper')[0];
+
+    if (!!this.element) this.logo = this.element.getElementsByClassName('logo-wrapper')[0];
     this.menuWrapper = document.getElementsByClassName('menu-wrapper')[0];
+
     this.options  = {
       classes : {
         initial   : 'navbar--initialized', // when element is initialised
@@ -17,38 +19,43 @@ class Navbar {
         notBottom : 'navbar--not-bottom'   // when not at bottom of scroll area
       }
     };
-    mobileOrTablet ? this.init(true) : this.init(false);
+    this.init();
   }
 
 
-  init(withHeadroom) {
-    if(withHeadroom) {
+  init(withHeadroom = app.device.mobileOrTablet) {
+    if(withHeadroom && !!this.element) {
       this.headroom = new Headroom(this.element, this.options);
       this.headroom.init();
     }
   }
 
 
-  addListenerToMenuIcon(scroller) {
+  addListenerToMenuIcon(scroller, childScroller) {
+    this.childScroller = childScroller; // This should be removed once app belongs to window object
+
     this.menuIcon.addEventListener('click', () => {
       this.menuIcon.classList.toggle('is-active');
 
       // Smooth Menu content transition
       if (this.menuWrapper.classList.contains('is-active')) {
         setTimeout(()=> {
+          this.logo.classList.remove('menu-open');
           this.menuWrapper.classList.toggle('is-active');
+          this.childScroller.scrollToTop();
         }, 300);
       } else {
         this.menuWrapper.classList.toggle('is-active');
+        this.logo.classList.add('menu-open');
       }
 
       this.keepScrollPosition(scroller);
-    });
+    }, false);
   }
 
 
   keepScrollPosition(scroller) {
-    var yOffset = window.pageYOffset;
+    const yOffset = window.pageYOffset;
     scroller.element.classList.toggle('scroll-locked');
     scroller.element.classList.toggle('menu-opened');
 
@@ -63,9 +70,8 @@ class Navbar {
   }
 
   openModalAndSaveScrollPosition(scroller) {
-    var yOffset;
-
-    scroller.customScroll ? yOffset = window.pageYOffset : yOffset = scroller.scrollbar.offset.y;
+    let yOffset;
+    scroller.customScroll ? yOffset = scroller.scrollbar.offset.y : yOffset = window.pageYOffset;
     scroller.element.classList.toggle('scroll-locked');
     scroller.element.classList.toggle('work-opened');
 

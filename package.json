@@ -43,6 +43,7 @@
     "javascript-state-machine": "^3.0.1",
     "lazysizes": "^4.0.0",
     "lodash": "^4.17.4",
+    "npm": "^5.6.0",
     "plyr": "^2.0.18",
     "rellax": "^1.4.0",
     "smooth-scrollbar": "^8.1.5"

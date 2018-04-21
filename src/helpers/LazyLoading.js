@@ -13,10 +13,10 @@ import 'lazysizes/plugins/progressive/ls.progressive.min';
 
 
 class LazyLoading {
-  constructor(mobileOrTablet) {
+  constructor() {
     // DevicePixelRatio reduced on touch devices,
     // to avoid extra large (weight) images on retina displays
-    mobileOrTablet ? this.devicePixelRatio = window.devicePixelRatio * .8 : this.devicePixelRatio = window.devicePixelRatio * .8;
+    app.debice.mobileOrTablet ? this.devicePixelRatio = window.devicePixelRatio * .8 : this.devicePixelRatio = window.devicePixelRatio * .8;
     window.lazySizesConfig.OptimumX = () => {
       return this.devicePixelRatio;
     }

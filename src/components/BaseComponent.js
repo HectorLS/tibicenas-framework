@@ -1,20 +1,12 @@
-import States from './../helpers/StatesMachine';
-import Arrive from 'arrive';
+import { findIndex } from 'lodash';
 
 class baseComponent {
-  constructor(states, name, needsWatcher) {
-    this.body    = document.getElementsByTagName('body')[0];
+  constructor(name, needsWatcher, states = app.states) {
+    this.body    = document.body;
     this.counter = 0
     this.name    = name;
     this.pool    = [];
     this.states  = states;
-
-    //Need test
-    this.arriveDefaultOptions = {
-      fireOnAttributesModification: false, // Setting it to true would make arrive event fire on existing elements which start to satisfy selector after some modification in DOM attributes (an arrive event won't fire twice for a single element even if the option is true). If false, it'd only fire for newly created elements.
-      onceOnly: false,                      // Setting it to true would ensure that registered callbacks fire only once. No need to unbind the event if the attribute is set to true, it'll automatically unbind after firing once.
-      existing: false                      // Setting it to true would ensure that the registered callback is fired for the elements that already exist in the DOM and match the selector. If options.onceOnly is set, the callback is only called once with the first element matching the selector.
-    };
 
     this.initialize();
   }
@@ -23,29 +15,27 @@ class baseComponent {
   initialize() {
     this.getAllElements();
     document.arrive(`.${this.name}`, (element) => {
-      console.log('Arrive detected a new element which one match a component class:\n', element);
+      // console.log('Arrive detected a new element which one match a component class:\n', element);
       this.createComponent(element);
     });
-
-    // document.leave(`.${this.name}`, (element) => {
-      // console.log('Arrive detected an element elimination that match a component class:\n', element);
-      // this.removeComponent(element);
-    // });
   }
 
 
   getAllElements(parent = this.body) {
     const list = parent.getElementsByClassName(this.name);
-    var i, element;
-    for(i = 0; i < list.length; i++) {
-      element = list[i];
-      this.createComponent(element);
+
+    if (list.length > 0) {
+      let i, element;
+      for(i = 0; i < list.length; i++) {
+        element = list[i];
+        this.createComponent(element);
+      }
     }
   }
 
 
   createComponent(element) {
-    var hasSomeId;
+    let hasSomeId;
 
     // See if the element is stored as a component by checking the ID
     if (!element.hasAttribute('id') ||
@@ -58,7 +48,7 @@ class baseComponent {
         // Has some ID's but no an element ID
         hasSomeId = true;
       } else {
-        // Already has a component ID
+        // TODO Already has a component ID
         // Check, is this ID in the Instance POOL ?
         // If not, should be added ( or removed ) ?
       }
@@ -81,21 +71,21 @@ class baseComponent {
 
   async updateId(hasSomeId, element){
     this.counter++;
-    var elementId = `${this.name}_${this.counter}`,
-        fullId;
+    const elementId = `${this.name}_${this.counter}`;
+    let fullId;
 
     if(hasSomeId) {
-      var currentId = element.getAttribute('id');
+      const currentId = element.getAttribute('id');
       fullId = `${currentId} ${elementId}`;
     } else {
       fullId = elementId;
     }
 
     element.setAttribute('id', fullId);
-    var component = {
+    const component = {
       element : element,
       id      : elementId
-    }
+    };
 
     return component;
   }
@@ -140,8 +130,97 @@ class baseComponent {
   }
 
 
-  destroyComponent() {}
-  destroyAllComponents() {}
+  getComponentById(elementId) {
+    const index = _.findIndex(this.pool, { id: elementId });
+    return this.pool[index];
+  }
+
+
+  destroyComponent(componentId, childComponentsClassName) {
+    if (!!componentId) {
+      const componentIndex = _.findIndex(this.pool, ['id', componentId]);
+
+      if (componentIndex !== undefined) {
+
+        var component;
+        if (this.pool.length > 0) {
+          component = this.pool[componentIndex];
+
+          if (!!childComponentsClassName) {
+            this.findChildComponents(component, childComponentsClassName, true);
+          }
+
+          if(!!component.element.parentNode) {
+            component.element.parentNode.removeChild(component.element);
+          }
+          this.pool.splice(componentIndex, 1);
+        }
+      }
+    }
+  }
+
+
+  destroyAllComponents(childComponentsClassName) {
+    if (this.pool.length > 0) {
+      for(let component of this.pool) {
+
+        if (!!childComponentsClassName) {
+          this.findChildComponents(component, childComponentsClassName, true);
+        }
+
+        if(!!component.element.parentNode) {
+          component.element.parentNode.removeChild(component.element);
+        }
+      }
+    }
+    this.pool = [];
+  }
+
+
+  findChildComponents(component, childComponentsClassName, destroy) {
+    const appComponentName = this.getAppComponentName(childComponentsClassName);
+    const childIdList = [];
+
+    if (!!childComponentsClassName) {
+      component.childComponents = component.element.getElementsByClassName(childComponentsClassName);
+
+      if(destroy && component.childComponents.length > 0) {
+
+        for(let child of component.childComponents) {
+          const childId = child.getAttribute('id');
+          childIdList.push(childId);
+        }
+
+        for(let id of childIdList) {
+          if (!!app.components[appComponentName]) {
+            app.components[appComponentName].destroyComponent(id);
+          }
+        }
+      }
+    }
+  }
+
+
+  getAppComponentName(childComponentsClassName){
+    const appComponentName = [];
+    const tempArray = childComponentsClassName.split('-');
+    tempArray.shift();
+
+    function toCapitalize(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    if(tempArray.length > 0) {
+      for(let [index, string] of tempArray.entries()) {
+        if (index == 0) {
+          appComponentName.push(string);
+        } else if (index > 0) {
+          appComponentName.push(toCapitalize(string));
+        }
+      }
+    }
+    return appComponentName.join('');
+  }
 }
 
 export default baseComponent;

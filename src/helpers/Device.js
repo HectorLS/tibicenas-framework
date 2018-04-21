@@ -1,6 +1,6 @@
 import bowser from 'bowser';
 
-class Detector {
+class Device {
   constructor() {
     this.html = document.getElementsByTagName('html')[0];
     this.device;
@@ -8,6 +8,14 @@ class Detector {
     this.os;
 
     this.init();
+  }
+
+
+  init() {
+    this.detectBrowser();
+    this.detectDevice();
+    this.detectOS();
+    console.info(`*******\nBrowser: ${this.browser}\nDevice: ${this.device}\nOS: ${this.os}\n*******`);
   }
 
 
@@ -36,6 +44,7 @@ class Detector {
     switch(this.device) {
       case 'mobile' :
       case 'tablet' :
+        this.mobileOrTablet = true;
         if      (bowser.ios)          { this.html.setAttribute('data-os', 'ios');           this.os = 'ios'; }
         else if (bowser.android)      { this.html.setAttribute('data-os', 'android');       this.os = 'android'; }
         else if (bowser.blackberry)   { this.html.setAttribute('data-os', 'blackberry');    this.os = 'blackberry'; }
@@ -43,21 +52,14 @@ class Detector {
         break;
       default :
       case 'desktop' :
+        this.mobileOrTablet = false;
         if      (bowser.mac)     { this.html.setAttribute('data-os', 'mac');     this.os = 'mac'; }
         else if (bowser.windows) { this.html.setAttribute('data-os', 'windows'); this.os = 'windows'; }
         else if (bowser.linux)   { this.html.setAttribute('data-os', 'linux');   this.os = 'linux'; }
         break;
     }
   }
-
-
-  init() {
-    this.detectBrowser();
-    this.detectDevice();
-    this.detectOS();
-    console.info(`*******\nBrowser: ${this.browser}\nDevice: ${this.device}\nOS: ${this.os}\n*******`);
-  }
 }
 
 
-export default Detector;
+export default Device;

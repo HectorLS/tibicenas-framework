@@ -1,10 +1,35 @@
-import Scrollbar    from 'smooth-scrollbar';  // https://github.com/idiotWu/smooth-scrollbar/blob/develop/docs/api.md
-import { debounce } from "lodash";
-import { throttle } from "lodash";
+import Scrollbar, { ScrollbarPlugin } from 'smooth-scrollbar';  // https://github.com/idiotWu/smooth-scrollbar/blob/develop/docs/api.md
+import { debounce, throttle }         from 'lodash';
+
+
+
+class InvertDeltaPlugin extends ScrollbarPlugin {
+  static pluginName     = 'invertDelta';
+  static defaultOptions = {
+    events: [],
+  };
+
+  transformDelta(delta, fromEvent) {
+    if (this.shouldInvertDelta(fromEvent)) {
+      return {
+        x: delta.y,
+        y: 0          //This should be delta.x or 0 if you want to avoid vertical scrolling
+      };
+    }
+    return delta;
+  }
+
+  shouldInvertDelta(fromEvent) {
+    return this.options.events.some(rule => fromEvent.type.match(rule));
+  }
+}
+
+Scrollbar.use(InvertDeltaPlugin);
+
+
 
 class Scroller {
-  constructor(mobileOrTablet, element = document.getElementById('scrollbar-wrapper')) {
-    this.element = element;
+  constructor(verticalWheelScroll = true) {
     this.options = {
       damping: 0.25,
       thumbMinSize: 5,
@@ -12,75 +37,104 @@ class Scroller {
       alwaysShowTracks: false,
       continuousScrolling: true
     };
-    this.customScroll = !mobileOrTablet;
-    mobileOrTablet ? '' : this.init();
+
+    if (!verticalWheelScroll) {
+      this.options.plugins = {
+        invertDelta: {
+          events: [/wheel/]
+        }
+      }
+    }
+
+    if(!app.device.mobileOrTablet) this.init();
   }
 
 
-  init() {
-    this.scrollbar = Scrollbar.init(this.element, this.options);
-    document.getElementsByTagName('body')[0].setAttribute('data-scroller', true);
+  init(container = document) {
+    this.customScroll = true;
+    this.element = container.getElementsByClassName('scrollbar-wrapper')[0];
+
+    if (!!this.element) {
+      this.scrollbar = Scrollbar.init(this.element, this.options);
+    } else {
+      document.body.setAttribute('data-scroller', true);
+    }
   }
+
 
   update() {
     this.scrollbar.update();
   }
 
-  addListener(navbar) {
-    // TEMP.
-    var parallax = document.getElementsByClassName('parallax')[0];
-    var parallaxImage = parallax.getElementsByClassName('parallax-img')[0];
-    var styles;
-    // End TEMP.
+
+  destroyAll() {
+    this.scrollbar.update();
+  }
 
 
-    this.scrollbar.addListener( _.throttle((data) => {
+  // This must be refactored for other elements
+  addListener(navbar, childScroller) {
+    this.scrollbar.addListener((data) => {
       data.offset.y === 0 ? navbar.compact(true) : navbar.compact(false);
-      // data.offset.y <= navbar.logo.getBoundingClientRect().height*2 ? navbar.logo.classList.remove('hidden') : navbar.logo.classList.add('hidden');
-      // TEMP.
-      const docEl    = document.documentElement,
-            viewport = {};
-
-      var scrollbar = this.element;
-
-      viewport.width  = docEl.clientWidth  < window.innerWidth  ? window.innerWidth  : docEl.clientWidth;
-      viewport.height = docEl.clientHeight < window.innerHeight ? window.innerHeight : docEl.clientHeight;
-
-      var element = this.getElementPosition(parallax, 0);
-      viewport.scrollX = this.scrollbar.offset.x;
-      viewport.scrollY = this.scrollbar.offset.y;
-      if(this.inYAxis(element, viewport)) {
-        console.log('element', element);
-        console.log('viewport', viewport);
+      data.offset.y <= 10 ? navbar.logo.classList.remove('hidden') : navbar.logo.classList.add('hidden');
+    });
+  }
 
 
-        function percentageInScreen(element, viewport){
-          console.log(100*(element.top+(element.height/2))/viewport.height + '%');
-          return 100*(element.top+(element.height/2))/viewport.height;
+  scrollHasChanged(condition, callback, callbackParams, throttlingValue = 0) {
+    this.scrollbar.addListener(_.throttle((data) => {
+      if (condition) callback(callbackParams);
+    }, throttlingValue));
+  }
+
+
+  restart(container = document, verticalWheelScroll = true) {
+    if (this.customScroll) {
+
+      if (verticalWheelScroll) {
+        this.options.plugins = {};
+      } else {
+        this.options.plugins = {
+          invertDelta: {
+            events: [/wheel/]
+          }
         }
-
-        function getYOffset(element,viewport){
-          return (percentageInScreen(element, viewport)*element.height/-2)/100;
-        }
-
-        // var percentageY = (viewport.scrollY - element.top + viewport.height) / (element.height + viewport.height);
-
-
-
-        // function parallaxIsCentered(element, viewport) {
-        //   if( ((viewport.height/2 - element.height/2)+ 1) >= element.top  &&
-        //       ((viewport.height/2 - element.height/2)- 1) <= element.top ) {
-        //     return true;
-        //   }
-        // }
-
-        var yOffset = getYOffset(element, viewport);
-        console.log('yOffset', yOffset);
-        styles = {transform: `translate3d(0, ${yOffset}px, 0)`}
-        Object.assign(parallaxImage.style, styles);
       }
-      // End TEMP.
-    }, 100));
+
+      this.element = document.getElementById('scrollbar-wrapper');
+      this.init(container);
+      this.update();
+    }
+  }
+
+  elementIsVisible(component, threshold, axis, scrollbarContainer, edgeDistance) {
+    const docEl    = document.documentElement,
+          element  = component.element,
+          viewport = {};
+
+    var scrollbar;
+    scrollbarContainer ? scrollbar = scrollbarContainer : scrollbar = this.element;
+
+    viewport.width  = docEl.clientWidth  < window.innerWidth  ? window.innerWidth  : docEl.clientWidth;
+    viewport.height = docEl.clientHeight < window.innerHeight ? window.innerHeight : docEl.clientHeight;
+
+    if (this.customScroll) {
+      this.scrollbar.addListener((data) => {
+
+        var elementPosition = this.getElementPosition(element, threshold);
+        viewport.scrollX = this.scrollbar.offset.x;
+        viewport.scrollY = this.scrollbar.offset.y;
+        var result;
+        axis === 'y' || 'Y' ? result = this.inYAxis(elementPosition, viewport) : result = this.inXAxis(elementPosition, viewport);
+
+        // This line only for parallax.js (needs to be extracted as a callback)
+        // IDEA block scroll on all the list minus the active ones
+        // new click, scroll to top, block the active one, active the new one
+        // debugger;
+
+        result ? component.running = true : component.running = false;
+      });
+    }
   }
 
 
@@ -93,88 +147,16 @@ class Scroller {
     this.element.classList.remove('scroll-locked');
   }
 
-  // Future Refactor would be great to use this new API for the most modern browsers
-  //  IntersectionObserver
-  //  ====================
-  //    https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
-  //    https://w3c.github.io/IntersectionObserver/
-  //    https://github.com/w3c/IntersectionObserver/blob/gh-pages/explainer.md
-  elementIsVisible(element, threshold, axis, scrollbarContainer, edgeDistance) {
-    const docEl    = document.documentElement,
-          viewport = {};
-
-    var scrollbar;
-    scrollbarContainer ? scrollbar = scrollbarContainer : scrollbar = this.element;
-
-    viewport.width  = docEl.clientWidth  < window.innerWidth  ? window.innerWidth  : docEl.clientWidth;
-    viewport.height = docEl.clientHeight < window.innerHeight ? window.innerHeight : docEl.clientHeight;
-
-    if (this.customScroll) {
-      this.scrollbar.addListener((data) => {
-        var elementPosition = this.getElementPosition(element, threshold);
-
-        viewport.scrollX = this.scrollbar.offset.x;
-        viewport.scrollY = this.scrollbar.offset.y;
-
-        axis === 'y' || 'Y' ? this.inYAxis(elementPosition, viewport) : this.inXAxis(elementPosition, viewport);
-      });
-    }
-    else {
-      // IF THE ELEMENT WITH THE SCROLL IS THE VIEWPORT
-      // window.addEventListener('scroll', () => {
-      //   viewport.scrollX = window.pageXOffset || docEl.scrollLeft;
-      //   viewport.scrollY = window.pageYOffset || docEl.scrollTop;
-      //
-      //   axis === 'y' || 'Y' ? this.inYAxis(elementPosition, viewport) : this.inXAxis(elementPosition, viewport);
-      // });
-
-      // IF THE ELEMENT WITH THE SCROLL IS A CHILD DOCUMENT ELEMENT: LIKE A MODAL BOX
-      // NEED A REFACTOR to catch both cases
-      document.getElementsByClassName('menu-content')[0].addEventListener('scroll', () => {
-        var elementPosition = this.getElementPosition(element, threshold);
-        viewport.scrollX = document.getElementsByClassName('modal-content')[0].pageXOffset;
-        viewport.scrollY = document.getElementsByClassName('modal-content')[0].pageYOffset;
-
-        axis === 'y' || 'Y' ? this.inYAxis(elementPosition, viewport) : this.inXAxis(elementPosition, viewport);
-      });
-    }
-  }
-
-
-  elementReachsThisEdge (element, threshold, axis, scrollbarContainer, edgeDistance) {
-    // just FOR Y AXIS now, needs refactor
-    const target   = document.querySelectorAll(`a[href^='#${element.getAttribute('id')}']`)[0],
-          docEl    = document.documentElement,
-          viewport = {};
-
-    var scrollbar;
-    scrollbarContainer ? scrollbar = scrollbarContainer : scrollbar = this.element;
-
-    if(edgeDistance !== undefined)  {
-      viewport.height = edgeDistance;
-    } else {
-      viewport.height = docEl.clientHeight < window.innerHeight ? window.innerHeight : docEl.clientHeight;
-    }
-
-    scrollbar.addEventListener('scroll', _.throttle(() => {
-      var elementPosition = this.getElementPosition(element, threshold);
-
-      if (elementPosition.bottom >= viewport.height && elementPosition.top <= viewport.height) {
-        !!target ? target.classList.add('is-active') : '';
-      } else {
-        !!target ? target.classList.remove('is-active') : '';
-      }
-    }, 200));
-  }
-
 
   getElementPosition(element, threshold) {
+    const oldContainer = app.pjax.oldContainerDimensions;
+
     var calibrate = (ElementCoordinates, threshold = 0) => {
       var element = {
-        top    : ElementCoordinates.top - threshold,
-        bottom : ElementCoordinates.bottom + threshold,
-        left   : ElementCoordinates.left - threshold,
-        right  : ElementCoordinates.right + threshold
+        top    : ElementCoordinates.top - threshold - oldContainer.height,
+        bottom : ElementCoordinates.bottom + threshold - oldContainer.height,
+        left   : ElementCoordinates.left - threshold - oldContainer.width,
+        right  : ElementCoordinates.right + threshold - oldContainer.width
       };
 
       element.width  = element.right  - element.left;
@@ -193,10 +175,17 @@ class Scroller {
 
 
   inYAxis(elementPosition, viewport){
-    console.log(elementPosition.bottom >= 0 && elementPosition.top <= viewport.height)
     return elementPosition.bottom >= 0 && elementPosition.top <= viewport.height;
   }
 
+
+  scrollToTop(){
+    if (this.customScroll) {
+      this.scrollbar.scrollTop = 0;
+    } else {
+      window.scrollTo(0,0);
+    }
+  }
 
   scrollTo() {}
   setPosition(){}

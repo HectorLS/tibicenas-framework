@@ -1,81 +1,75 @@
+import 'babel-polyfill'; // Webpack needs
 import css from './public/scss/app.scss';
+
+
+///////////////////// GLOBAL LIBS ///////////////////////
+/////////////////////////////////////////////////////////
+
 
 ///////////////////// HELPERS ///////////////////////////
 /////////////////////////////////////////////////////////
-import Detector       from './helpers/Detector';
+import Device         from './helpers/Device';
 import Scroller       from './helpers/Scroller';
 import Navbar         from './helpers/Navbar';
 import LazyLoading    from './helpers/LazyLoading';
 import States         from './helpers/StatesMachine';
+import Parser         from './helpers/Parser';
 import Pjax           from './helpers/Pjax';
-import TweenLite      from 'gsap/TweenLite';
-import TweenMax       from 'gsap/TweenMax';
-import CSSPlugin      from 'gsap/CSSPlugin';
-import ScrollToPlugin from 'gsap/ScrollToPlugin';
+import WebStorage     from './helpers/WebStorage';
 
 
 ///////////////////// COMPONENTS ////////////////////////
 /////////////////////////////////////////////////////////
-import Video               from './components/Video';
+import Navbar          from './components/Navbar';
+import Parallax        from './components/Parallax';
+// import Image           from './components/Image';
 
 
+
+///////////////////// CONSTRUCTOR ///////////////////////
+/////////////////////////////////////////////////////////
 class Project {
   constructor() {
-    this.detector   = new Detector();
+    this.device   = new Device();
     this.states     = new States();
     this.components = {};
 
-    if(this.detector.device !== ('mobile' || 'tablet')) {
-      this.scroller    = new Scroller(false);
-      this.navbar      = new Navbar(false);
-      this.lazyLoading = new LazyLoading(false);
-    }
-    else {
-      this.scroller    = new Scroller(true);
-      this.navbar      = new Navbar(true);
-      this.lazyLoading = new LazyLoading(true);
-    }
+    this.scroller    = new Scroller();
+    this.lazyLoading = new LazyLoading();
   }
 }
 
 
+////////////////////// PAGE LOAD ////////////////////////
+/////////////////////////////////////////////////////////
 document.addEventListener('DOMContentLoaded', () => {
   window.app = new Project();
 
-  app.components.video = new Video( app.states, 'cmp-video', true);
+  // Tracking current URL
+  window.currentPage  = '';
+  window.previousPage = '';
+  window.setCurrentPage = () => {
+    previousPage = currentPage;
+    currentPage  = document.body.getAttribute('data-url');
+  }
+  setCurrentPage();
 
-  if(app.detector.device === 'desktop') {
+
+
+
+  //
+  //           ADDING COMPONENTS           \\
+  // ______________________________________//
+  app.components.navbar = new Navbar();
+
+  if(!app.device.mobileOrTablet) {
     app.scroller.update();
-    app.scroller.addListener(app.navbar);
+    app.scroller.addListener(app.navbar); // // OPTIMIZE:
   }
 
-  app.navbar.addListenerToMenuIcon(app.scroller);
 
-
-  // TESTING MENU ANCHOR LINKS CONTENT DETECTION
-  var scrollbarContainer = document.getElementsByClassName('menu-content')[0];
-  scrollbarContainer.style.border = '4px solid red';
-  let links = document.getElementsByClassName('menu-list')[0].getElementsByTagName('a');
-
-  for (let link of links) {
-    link.addEventListener('click', (element) => {
-
-      element.preventDefault;
-      element.stopPropagation
-
-      var scrollbarContainer = document.getElementsByClassName('menu-content')[0];
-      var options = {
-        scrollTo: {
-          y: element.target.hash,
-          // autoKill: true,
-          offsetY: 268
-        },
-        ease: Power1.easeOut
-      };
-
-      TweenLite.to(scrollbarContainer, 2, options);
-
-    });
-  }
-  // END TESTING
+  // TODO navbar   REFACTOR
+  // TODO scroller REFACTOR
+  // TODO parallax REFACTOR
+  app.navbar.addListenerToMenuIcon(app.scroller);  // OPTIMIZE
 });
