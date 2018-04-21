@@ -87,7 +87,7 @@ $burger: (
   layer-width   : 32px,
   layer-height  : 2px,
   layer-spacing : 6px,
-  layer-color   : map-get($app, dark-green),
+  layer-color   : $white,
   layer-border-radius : 4px,
   hover-opacity : .7,
   hover-transition-duration        : 150ms,

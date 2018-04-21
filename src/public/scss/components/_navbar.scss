@@ -1,73 +1,210 @@
-
 .navbar {
   background-color: map-get($app, bg-navbar);
-  height: map-get($navbar, height-compacted);
+  height: map-get($navbar, height--mobile);
   position: fixed;
   top: 0;
-  transition: all 300ms ease-out;
+  left: 0;
+  right: 0;
+  transition: all 300ms $easePrinciple;
   width: 100%;
-  z-index: 50;
+  z-index: 5000;
+  opacity: 1;
 
-  ul {
-    display: inline-block;
+  &.hidden {
+    opacity: 0;
+  }
 
-    &:first-child {
-      width: 85%;
-    }
+  @include mq($from: desktop-xs) {
+    height: map-get($navbar, height--desktop);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 
-    &:last-child {
-      width: 15%;
-    }
-
-    li {
-      display: inline-block;
-      height: 100%;
+    &:before,
+    &:after {
+      content: none;
     }
   }
 
   .navbar-list {
-    height: map-get($navbar, height-compacted);
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+
+    margin: 0;
+    position: relative;
+    width: 100vw;
+    z-index: 2;
+
+
+    &.is-active {
+      justify-content: flex-end;
+    }
+
+    @include mq($from: desktop-xs) {
+      display: none;
+    }
+
+    #menu-icon-wrapper {
+      @include mq($from: desktop-xs) {
+        display: none;
+      }
+    }
 
     li {
-      padding: 0 .5em;
+      display: inline-block;
+
+      &:first-child {
+
+        a {
+          padding: 10px 18px;
+          height: auto;
+          cursor: pointer;
+        }
+      }
     }
-  }
 
-  .navbar-sublist {
-    text-align: right;
-  }
+    .logo-wrapper {
+      display: inline-block;
+      width: map-get($navbar, logo-height--mobile);
 
-  a {
-    color: map-get($app, text-light);
-    display: inline-block;
-    height : 100%;
-    line-height: map-get($navbar, height-compacted);
-    padding: 0 1em;
-    text-align: center;
-    vertical-align: middle;
-    transition: line-height 200ms ease-out;
-    will-change: line-height;
-  }
-
-  &.navbar--top {
-    height: map-get($navbar, height);
-
-    .navbar-list {
-      height: map-get($navbar, height);
+      @include mq($from: desktop-xs) {
+        width: map-get($navbar, logo-height--desktop);
+      }
     }
 
     a {
-      line-height: map-get($navbar, height);
+      @include x-rem(font-size, 14px);
+      color: map-get($app, dark-green);
+      display: inline-block;
+      font-weight: 500;
+      height : 100%;
+      line-height: map-get($navbar, height--mobile);
+      text-align: center;
+      vertical-align: middle;
+
+      &:hover {
+        text-decoration: none;
+      }
     }
   }
-}
 
-.testing-fullcentered {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 100%;
-  height: 1px;
-  // background-color: red;
-  opacity: 0;
+
+
+  .navbar-contents-wrapper {
+    align-items: flex-start;
+    background-color: map-get($app, bg-navbar);
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    overflow-y: auto;
+    position: absolute;
+    padding-bottom: 40px;
+    padding-top: 20px;
+    transform: translateX(-100vw);
+    transition: transform 300ms $easePrinciple;
+    width: 100vw;
+    will-change: transform;
+
+    &.is-active {
+      transform: translateX(0);
+    }
+
+    // REVISADO HASTA AQUI
+    @include mq($from: desktop-xs) {
+      background-color: transparent;
+      display: flex;
+      height: 100%;
+      justify-content: center;
+      order: 2;
+      overflow-y: visible;
+      padding: 0;
+      position: relative;
+      transform: translate(0, 15px);
+      vertical-align: middle;
+      width: 100vw;
+    }
+
+    .navbar-list--contents {
+
+      @include mq($from: desktop-xs) {
+        margin-bottom: 0;
+        height: 100%;
+      }
+
+      li {
+        display: block;
+        text-align: center;
+
+        &.hide-until-desktop {
+          display: none;
+        }
+
+        @include mq($from: desktop-xs) {
+          display: inline-block;
+          height: 100%;
+          min-width: 150px;
+
+          &.hide-until-desktop {
+            display: inline-block;
+          }
+
+          &.visible-until-desktop {
+            display: none;
+          }
+
+          .logo-wrapper {
+            width: map-get($navbar, logo-width--desktop);
+          }
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+
+        &:nth-child(3) {
+          .link {
+            opacity: 1;
+          }
+        }
+      }
+
+
+      .link {
+        @include x-rem(font-size, 24px);
+        color: map-get($app, dark-green);
+        display: block;
+        font-weight: 500;
+        line-height: 24px;
+        margin-bottom: 30px;
+        opacity: .6;
+        padding: 17px 0;
+        transition: opacity 300ms $easePrinciple;
+        will-change: opacity;
+
+        &:active,
+        &:hover {
+          text-decoration: none;
+          opacity: 1;
+        }
+
+        @include mq($from: desktop-xs) {
+          @include x-rem(font-size, 16px);
+          display: inline-block;
+          height: 100%;
+          padding: 0 20px;
+          transform: translateY(-10px);
+          line-height : map-get($navbar, height--desktop);
+
+          &.link--logo {
+            transform: translateY(0);
+          }
+
+          &:active {
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
 }

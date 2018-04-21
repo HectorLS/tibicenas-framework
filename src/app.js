@@ -56,9 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
   setCurrentPage();
 
 
-
-
-  //
   //           ADDING COMPONENTS           \\
   // ______________________________________//
   app.components.navbar = new Navbar();
@@ -67,7 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
     app.scroller.update();
   }
   // app.scroller.addListener(app.navbar); // // OPTIMIZE:
-  // app.navbar.addListenerToMenuIcon(app.scroller);  // OPTIMIZE
 
 
   // TODO navbar   REFACTOR

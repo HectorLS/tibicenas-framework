@@ -1,12 +1,15 @@
 import Headroom from 'headroom.js';
 
 class Navbar {
-  constructor() {
-    this.element  = document.getElementsByClassName('navbar')[0];
-    this.menuIcon = document.getElementById('menu-icon');
+  constructor(mobileOrTablet) {
+    this.element     = document.getElementsByClassName('navbar')[0];
+    this.menuIcon    = document.getElementById('menu-icon');
+    this.menuLinks   = document.getElementById('navbar-contents-wrapper');
+    this.navbarList  = document.getElementsByClassName('navbar-list')[0];
+    this.backLayer   = document.getElementsByClassName('back-layer--menu')[0];
+    this.menuWrapper = document.getElementsByClassName('menu-wrapper')[0];
 
     if (!!this.element) this.logo = this.element.getElementsByClassName('logo-wrapper')[0];
-    this.menuWrapper = document.getElementsByClassName('menu-wrapper')[0];
 
     this.options  = {
       classes : {
@@ -19,43 +22,46 @@ class Navbar {
         notBottom : 'navbar--not-bottom'   // when not at bottom of scroll area
       }
     };
-    this.init();
+    this.init(app.device.mobileOrTablet);
   }
 
 
-  init(withHeadroom = app.device.mobileOrTablet) {
-    if(withHeadroom && !!this.element) {
+  init(withHeadroom) {
+    if(withHeadroom) {
       this.headroom = new Headroom(this.element, this.options);
       this.headroom.init();
     }
+
+    this.addListenerToMenuIcon();
   }
 
 
-  addListenerToMenuIcon(scroller, childScroller) {
-    this.childScroller = childScroller; // This should be removed once app belongs to window object
-
+  addListenerToMenuIcon() {
     this.menuIcon.addEventListener('click', () => {
-      this.menuIcon.classList.toggle('is-active');
-
-      // Smooth Menu content transition
-      if (this.menuWrapper.classList.contains('is-active')) {
-        setTimeout(()=> {
-          this.logo.classList.remove('menu-open');
-          this.menuWrapper.classList.toggle('is-active');
-          this.childScroller.scrollToTop();
-        }, 300);
-      } else {
-        this.menuWrapper.classList.toggle('is-active');
-        this.logo.classList.add('menu-open');
-      }
-
-      this.keepScrollPosition(scroller);
+      this.toggleMenuState();
     }, false);
   }
 
 
+  toggleMenuState() {
+    this.menuIcon.classList.toggle('is-active');
+    this.menuLinks.classList.toggle('is-active');
+    this.navbarList.classList.toggle('is-active');
+    // this.backLayer.classList.toggle('is-active');
+    app.scroller.element.classList.toggle('scroll-locked');
+  }
+
+  closeNavbar() {
+    this.menuIcon.classList.remove('is-active');
+    this.menuLinks.classList.remove('is-active');
+    this.navbarList.classList.remove('is-active');
+    // this.backLayer.classList.remove('is-active');
+    app.scroller.element.classList.remove('scroll-locked');
+  }
+
+
   keepScrollPosition(scroller) {
-    const yOffset = window.pageYOffset;
+    var yOffset = window.pageYOffset;
     scroller.element.classList.toggle('scroll-locked');
     scroller.element.classList.toggle('menu-opened');
 
@@ -70,23 +76,22 @@ class Navbar {
   }
 
   openModalAndSaveScrollPosition(scroller) {
-    let yOffset;
+    console.log('OPEN&CLOSE MOBAL NAVB');
+    var yOffset;
     scroller.customScroll ? yOffset = scroller.scrollbar.offset.y : yOffset = window.pageYOffset;
     scroller.element.classList.toggle('scroll-locked');
-    scroller.element.classList.toggle('work-opened');
+    scroller.element.classList.toggle('modal-opened');
 
     if(scroller.element.classList.contains('scroll-locked')) {
-      scroller.element.style.marginTop = (yOffset * -1) + 'px';
+      // scroller.element.style.marginTop = (yOffset * -1) + 'px';
     } else {
-      scroller.element.style.marginTop = '0px';
-      window.scrollTo(0, this.previusOffset);
+      // scroller.element.style.marginTop = '0px';
+      // window.scrollTo(0, this.previusOffset);
     }
 
     this.previusOffset = yOffset;
     return yOffset;
   }
-
-
 
 
   compact(state) {
