@@ -56,8 +56,9 @@ class Scroller {
 
     if (!!this.element) {
       this.scrollbar = Scrollbar.init(this.element, this.options);
-    } else {
       document.body.setAttribute('data-scroller', true);
+    } else {
+      document.body.setAttribute('data-scroller', false);
     }
   }
 

@@ -1,0 +1,34 @@
+
+body[data-scroller='true'] {
+
+  .scrollbar-track {
+    &.scrollbar-track-x,
+    &.scrollbar-track-y {
+
+    }
+    &.scrollbar-track-y {
+      width: 6px;
+      transition: width 200ms $easePrinciple;
+      will-change: width;
+    }
+  }
+
+  .scrollbar-thumb {
+    .scrollbar-thumb-x,
+    .scrollbar-thumb-y {
+
+    }
+
+    .scrollbar-thumb-y {
+
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      .scrollbar-thumb-y {
+        width: 8px;
+      }
+    }
+  }
+}

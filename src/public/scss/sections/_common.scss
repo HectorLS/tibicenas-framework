@@ -2,24 +2,6 @@
 body {
   transition: background-color 300ms $easePrinciple;
   will-change: background-color;
-
-  .scrollbar-track {
-    background: transparent;
-    background-color: transparent;
-    z-index: 6000;
-
-    &.scrollbar-track-y {
-      width: 11px;
-      margin: 0 auto;
-      text-align: center;
-
-      .scrollbar-thumb.scrollbar-thumb-y {
-        width: 7px;
-        // background: map-get($app, orange);
-        opacity: .8;
-      }
-    }
-  }
 }
 
 .fixed-elements-wrapper,

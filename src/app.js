@@ -55,15 +55,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   setCurrentPage();
 
-
+  //           Fade in page content        \\
+  // ______________________________________//
+  const pjaxContent = document.getElementsByClassName('pjax-content')[0];
+  pjaxContent.classList.add('visible');
   //           ADDING COMPONENTS           \\
   // ______________________________________//
   app.components.navbar = new Navbar();
 
   if(!app.device.mobileOrTablet) {
-    app.scroller.update();
+    // app.scroller.update();
   }
-  // app.scroller.addListener(app.navbar); // // OPTIMIZE:
 
 
   // TODO navbar   REFACTOR

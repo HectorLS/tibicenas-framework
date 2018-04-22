@@ -6310,7 +6310,7 @@ smart-buffer@^1.0.13:
   version "1.1.15"
   resolved "https://registry.yarnpkg.com/smart-buffer/-/smart-buffer-1.1.15.tgz#7f114b5b65fab3e2a35aa775bb12f0d1c649bf16"
 
-smooth-scrollbar@^8.1.5:
+smooth-scrollbar@^8.2.7:
   version "8.2.7"
   resolved "https://registry.yarnpkg.com/smooth-scrollbar/-/smooth-scrollbar-8.2.7.tgz#41a3f84ee4677ae7a417081e3384e1e15ebcdb86"
   dependencies:
