@@ -1,6 +1,5 @@
 import autoprefixer      from 'autoprefixer';
-import DashboardPlugin   from 'webpack-dashboard/plugin';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
+// import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlPlugin        from 'html-webpack-plugin';
 import path              from 'path';
 import webpack           from 'webpack';
@@ -18,7 +17,7 @@ const imagesFolder = 'public/assets/img/',
         build        : path.resolve(__dirname, buildFolder),
         src          : path.resolve(__dirname, sourceFolder),
         node_modules : path.resolve(__dirname, 'node_modules'),
-        appJS        : path.resolve(__dirname, `${sourceFolder}/app.js`),
+        appJS        : path.resolve(__dirname, `${sourceFolder}/index.js`),
         indexHTML    : path.resolve(__dirname, `${sourceFolder}/index.html`)
       };
 
@@ -52,17 +51,16 @@ const devServerOptions = {
 };
 
 const pluginsDev = [
-  new DashboardPlugin(),
   autoprefixer,
   new HtmlPlugin(HtmlPluginOptions),
-  new ExtractTextPlugin(ExtractTextPluginOptions),
+  // new ExtractTextPlugin(ExtractTextPluginOptions),
   new webpack.HotModuleReplacementPlugin()
 ];
 
 const pluginsProd = [
   require('autoprefixer'),
-  new HtmlPlugin(HtmlPluginOptions),
-  new ExtractTextPlugin(ExtractTextPluginOptions)
+  // new HtmlPlugin(HtmlPluginOptions),
+  // new ExtractTextPlugin(ExtractTextPluginOptions)
 ];
 
 var pluginsList = isProd ? pluginsProd : pluginsDev;
@@ -89,17 +87,9 @@ const scss = {
   }
 }
 
-const stylesDev  = ['style-loader', 'css-loader?sourceMap', postcss, scss];
-
-const stylesProd = ExtractTextPlugin.extract({
-  fallback: 'style-loader',
-  use: ['css-loader', postcss, scss],
-  publicPath: buildFolder
-});
-
 const styles = {
   test: /\.scss$/,
-  use: isProd ? stylesProd : stylesDev
+  use: ['style-loader', 'css-loader?sourceMap', postcss, scss]
 };
 
 const javascript = {
