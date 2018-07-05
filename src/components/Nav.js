@@ -7,8 +7,8 @@ const Nav = () => {
     <nav role='navigation'>
       <ul>
         <li><NavLink exact to='/'        activeClassName='active'>Home</NavLink></li>
-        <li><NavLink exact to='/doc'     activeClassName='active'>Doc</NavLink></li>
-        <li><NavLink       to='/contact' activeClassName='active'>Contact</NavLink></li>
+        <li><NavLink       to='/blog'    activeClassName='active'>Blog</NavLink></li>
+        <li><NavLink exact to='/about'   activeClassName='active'>About</NavLink></li>
       </ul>
     </nav>
   );
