@@ -1,0 +1,20 @@
+.navbar {
+  background-color: royalblue;
+  height: 60px;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+
+  .list--navigation {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 100%;
+
+    li {
+      display: inline-block;
+      color: $white;
+    }
+  }
+}
